@@ -30,14 +30,19 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>90</y>
-      <width>211</width>
-      <height>16</height>
+      <x>80</x>
+      <y>70</y>
+      <width>301</width>
+      <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>23</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Rymä kutone pankkiautomaatti!</string>
+     <string>Rymä kutone pankkiTomaatti!</string>
     </property>
    </widget>
   </widget>

@@ -27,6 +27,5 @@ private slots:
 private:
     Ui::MainWindow *ui;
     paaSivu *olioPaaSivu;
-    QTimer * ptrQTimer;
 };
 #endif // MAINWINDOW_H

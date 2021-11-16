@@ -15,8 +15,14 @@ public:
     explicit paaSivu(QWidget *parent = nullptr);
     ~paaSivu();
 
+private slots:
+    void on_kirjauduNappi_clicked();
+    void on_takaisinNappi_clicked();
+
 private:
     Ui::paaSivu *ui;
+signals:
+
 };
 
 #endif // PAASIVU_H

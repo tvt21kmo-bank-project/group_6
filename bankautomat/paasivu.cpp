@@ -12,3 +12,13 @@ paaSivu::~paaSivu()
 {
     delete ui;
 }
+
+void paaSivu::on_kirjauduNappi_clicked()
+{
+    qDebug()<<"Kirjaudu painettu";
+}
+
+void paaSivu::on_takaisinNappi_clicked()
+{
+    this->close();
+}
