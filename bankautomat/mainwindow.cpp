@@ -20,8 +20,5 @@ MainWindow::~MainWindow()
 void MainWindow::on_jatka_clicked()
 {
     olioPaaSivu->show();
-
-   MainWindow w;
-    w.show();
 }
 

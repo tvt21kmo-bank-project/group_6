@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <QThread>
 
 #include "paasivu.h"
 
@@ -26,5 +27,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     paaSivu *olioPaaSivu;
+    QTimer * ptrQTimer;
 };
 #endif // MAINWINDOW_H
