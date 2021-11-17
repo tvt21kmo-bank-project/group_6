@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     olioPaaSivu = new paaSivu;
 }
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -19,10 +20,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_jatka_clicked()
 {
-   // this->hide();
-    olioPaaSivu->show();
+   // this->hide();                         // piilotetaan nykyinen sivu
+    olioPaaSivu->show();                    // avataan pääsivu
 
+    qDebug()<<"jatka painettu";
 
-  //  olioPaaSivu->hide();
+    //  olioPaaSivu->hide();
     //  this->show();
 }

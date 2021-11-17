@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include <QTimer>
+
 namespace Ui {
 class paaSivu;
 }
@@ -18,9 +20,13 @@ public:
 private slots:
     void on_kirjauduNappi_clicked();
     void on_takaisinNappi_clicked();
+    void myTimerSlot();
 
 private:
     Ui::paaSivu *ui;
+    short timerCounter;
+    QTimer *olioQtimer;
+
 signals:
 
 };
