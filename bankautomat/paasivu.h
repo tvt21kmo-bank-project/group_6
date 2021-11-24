@@ -10,6 +10,8 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
+#include "tyyppi.h"
+
 namespace Ui {
 class paaSivu;
 }
@@ -27,7 +29,9 @@ private slots:
     void on_takaisinNappi_clicked();
     void myTimerSlot();
 
-    void testi(QNetworkReply *reply);
+    void kirjauduSisaan(QNetworkReply *reply);
+
+
 
 private:
     Ui::paaSivu *ui;
@@ -36,6 +40,8 @@ private:
 
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
+
+    Tyyppi *oliotyyppi;
 
 signals:
 
