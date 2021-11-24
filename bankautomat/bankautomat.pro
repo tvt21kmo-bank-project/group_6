@@ -12,15 +12,21 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    paasivu.cpp
+    paasivu.cpp \
+    toimintosivu.cpp \
+    tyyppi.cpp
 
 HEADERS += \
     mainwindow.h \
-    paasivu.h
+    paasivu.h \
+    toimintosivu.h \
+    tyyppi.h
 
 FORMS += \
     mainwindow.ui \
-    paasivu.ui
+    paasivu.ui \
+    toimintosivu.ui \
+    tyyppi.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

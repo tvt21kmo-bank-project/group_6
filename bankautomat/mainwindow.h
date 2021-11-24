@@ -8,6 +8,7 @@
 #include <QThread>
 
 #include "paasivu.h"
+//#include "tyyppi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

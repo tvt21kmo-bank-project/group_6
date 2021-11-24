@@ -10,6 +10,8 @@ paaSivu::paaSivu(QWidget *parent) :
     timerCounter = 0;
 
     connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+
+    oliotyyppi = new Tyyppi;
 }
 
 paaSivu::~paaSivu()
@@ -17,6 +19,9 @@ paaSivu::~paaSivu()
     delete ui;
     delete olioQtimer;
     olioQtimer = nullptr;
+    delete oliotyyppi;
+    oliotyyppi = nullptr;
+
 }
 
 void paaSivu::on_kirjauduNappi_clicked()
@@ -36,7 +41,7 @@ void paaSivu::on_kirjauduNappi_clicked()
         request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
         loginManager = new QNetworkAccessManager(this);
         connect(loginManager, SIGNAL(finished (QNetworkReply*)),
-        this, SLOT(testi(QNetworkReply*)));
+        this, SLOT(kirjauduSisaan(QNetworkReply*)));
         reply = loginManager->post(request, QJsonDocument(json).toJson());
 
 }
@@ -61,17 +66,24 @@ void paaSivu::myTimerSlot()
     }
 }
 
-void paaSivu::testi(QNetworkReply *reply)
+void paaSivu::kirjauduSisaan(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
         qDebug()<<response_data;
         if(response_data=="true"){
             qDebug()<<"Oikea tunnus ...avaa form";
-           // objPankki->show();
+            oliotyyppi->show();
+            ui->LineEdit_pinKoodi->setText("");
+            ui->LineEdit_kayttajaTunnus->setText("");
+            this->close();
         }
         else {
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
             qDebug()<<"tunnus ja salasana ei täsmää";
+            ui->labelHylatty->setText("koitappa uudellee");
         }
 }
+
+
+
