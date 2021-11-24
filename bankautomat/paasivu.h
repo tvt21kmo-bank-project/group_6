@@ -5,6 +5,11 @@
 
 #include <QTimer>
 
+#include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+
 namespace Ui {
 class paaSivu;
 }
@@ -22,10 +27,15 @@ private slots:
     void on_takaisinNappi_clicked();
     void myTimerSlot();
 
+    void testi(QNetworkReply *reply);
+
 private:
     Ui::paaSivu *ui;
     short timerCounter;
     QTimer *olioQtimer;
+
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
 
 signals:
 
