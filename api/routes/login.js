@@ -14,7 +14,7 @@ router.post('/',
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(password,dbResult[0].password, function(err,compareResult) {
+              bcrypt.compare(password,dbResult[0].pin, function(err,compareResult) {
                 if(compareResult) {
                   console.log("succes");
                   response.send(true);
