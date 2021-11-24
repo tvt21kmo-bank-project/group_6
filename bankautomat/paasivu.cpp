@@ -81,7 +81,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
             qDebug()<<"tunnus ja salasana ei täsmää";
-           // ui->labelHylatty->setText("koitappa uudellee");
+            ui->labelHylatty->setText("koitappa uudellee");
         }
 }
 

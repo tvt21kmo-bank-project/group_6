@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
-
+#include "toimintosivu.h"
 //#include "mainwindow.h"
 
 namespace Ui {
@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::Tyyppi *ui;
+    Toimintosivu *olioToimintoSivu;
 
 };
 

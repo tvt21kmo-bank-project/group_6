@@ -106,6 +106,19 @@
     <string>PinKoodi</string>
    </property>
   </widget>
+  <widget class="QLabel" name="labelHylatty">
+   <property name="geometry">
+    <rect>
+     <x>136</x>
+     <y>332</y>
+     <width>171</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

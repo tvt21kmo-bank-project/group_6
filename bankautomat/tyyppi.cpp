@@ -6,13 +6,15 @@ Tyyppi::Tyyppi(QWidget *parent) :
     ui(new Ui::Tyyppi)
 {
     ui->setupUi(this);
+ olioToimintoSivu = new Toimintosivu;
 
 }
 
 Tyyppi::~Tyyppi()
 {
     delete ui;
-
+    delete olioToimintoSivu;
+    olioToimintoSivu = nullptr;
 
 }
 
@@ -27,7 +29,7 @@ void Tyyppi::on_pushButtonCredit_clicked()
 void Tyyppi::on_pushButtonDebit_clicked()
 {
     qDebug()<<"debit painettu";
-
+    olioToimintoSivu->show();
 }
 
 
