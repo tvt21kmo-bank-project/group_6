@@ -2,6 +2,8 @@
 #define TOIMINTOSIVU_H
 
 #include <QDialog>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 namespace Ui {
 class Toimintosivu;
@@ -12,11 +14,20 @@ class Toimintosivu : public QDialog
     Q_OBJECT
 
 public:
-    explicit Toimintosivu(QWidget *parent = nullptr);
+    explicit Toimintosivu(QString test, QWidget *parent = nullptr);
     ~Toimintosivu();
+
+
+
+
+
+
+private slots:
+
 
 private:
     Ui::Toimintosivu *ui;
+
 
 
 };

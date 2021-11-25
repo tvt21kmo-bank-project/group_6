@@ -10,9 +10,9 @@ const user={
     return db.query('select * from user_table where id_user=?', [id], callback);
   },*/
   add: function(user, callback) {
-    bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      return db.query('insert into kortti (idKortti, pin) values(?,?)',
-      [user.username, hash], callback);
+    bcrypt.hash(user.pin, saltRounds, function(err, hash) {
+      return db.query('insert into kortti (idKortti, pin, Asiakas_idAsiakas, Tili_idTili) values(?,?,?,?)',       // tassaa yritetty kaikkea kummallista
+      [user.idKortti, hash, user.Asiakas_idAsiakas, user.Tili_idTili], callback); 
     });
   },/*
   delete: function(id, callback) {

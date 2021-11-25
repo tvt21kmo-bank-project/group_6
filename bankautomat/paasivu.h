@@ -42,6 +42,7 @@ private:
     QNetworkReply *reply;
 
     Tyyppi *oliotyyppi;
+    QString kayttajaTunnus;
 
     int vaaraPin = 0;
 
