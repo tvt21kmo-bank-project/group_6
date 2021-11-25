@@ -28,6 +28,7 @@ void paaSivu::on_kirjauduNappi_clicked()
 {
     qDebug()<<"Kirjaudu painettu";
 
+
        QJsonObject json; //luodaan JSON objekti ja lisätään data
            kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
            qDebug()<< kayttajaTunnus;
@@ -53,6 +54,7 @@ void paaSivu::on_kirjauduNappi_clicked()
            connect(loginManager, SIGNAL(finished (QNetworkReply*)),
            this, SLOT(kirjauduSisaan(QNetworkReply*)));
            reply = loginManager->post(request, QJsonDocument(json).toJson());
+
 
 
 }
