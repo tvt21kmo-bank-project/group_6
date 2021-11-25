@@ -43,6 +43,7 @@ private:
 
     Tyyppi *oliotyyppi;
     QString kayttajaTunnus;
+    int vaaraPin = 0;
 
 
 signals:
