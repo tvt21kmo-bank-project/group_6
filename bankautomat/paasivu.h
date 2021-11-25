@@ -44,6 +44,7 @@ private:
     Tyyppi *oliotyyppi;
     QString kayttajaTunnus;
 
+
 signals:
 
 };
