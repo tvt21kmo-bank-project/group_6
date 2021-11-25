@@ -6,7 +6,8 @@ Tyyppi::Tyyppi(QWidget *parent) :
     ui(new Ui::Tyyppi)
 {
     ui->setupUi(this);
- olioToimintoSivu = new Toimintosivu;
+
+ //qDebug()<<kayttajaTunnus;
 
 }
 
@@ -15,6 +16,8 @@ Tyyppi::~Tyyppi()
     delete ui;
     delete olioToimintoSivu;
     olioToimintoSivu = nullptr;
+
+
 
 }
 
@@ -29,6 +32,9 @@ void Tyyppi::on_pushButtonCredit_clicked()
 void Tyyppi::on_pushButtonDebit_clicked()
 {
     qDebug()<<"debit painettu";
+    qDebug()<<kayttajaTunnus;
+    olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
+    //olioToimintoSivu->setKT(kayttajaTunnus);
     olioToimintoSivu->show();
 }
 
@@ -36,5 +42,10 @@ void Tyyppi::on_pushButtonDebit_clicked()
 void Tyyppi::on_pushButtonKirjauduUlos_clicked()
 {
     this->close();
+}
+
+void Tyyppi::setKayttajaTunnus(const QString &newKayttajaTunnus)
+{
+    kayttajaTunnus = newKayttajaTunnus;
 }
 

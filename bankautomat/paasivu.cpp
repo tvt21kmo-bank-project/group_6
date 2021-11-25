@@ -12,7 +12,7 @@ paaSivu::paaSivu(QWidget *parent) :
     connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
 
     oliotyyppi = new Tyyppi;
-    olioQtimer->start(1000);
+    //olioQtimer->start(1000);
 }
 
 paaSivu::~paaSivu()
@@ -30,8 +30,19 @@ void paaSivu::on_kirjauduNappi_clicked()
     qDebug()<<"Kirjaudu painettu";
 
     QJsonObject json; //luodaan JSON objekti ja lisätään data
+        kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
+        qDebug()<< kayttajaTunnus;
         json.insert("username",ui->LineEdit_kayttajaTunnus->text());
         json.insert("password",ui->LineEdit_pinKoodi->text());
+
+      //  QJsonObject json2;
+      //  json2.insert("username",ui->LineEdit_kayttajaTunnus->text());
+       // QJsonDocument doc(json2);                                      //nailla saa tulostettua kayttajatunnuksen qdebugilla
+        //QByteArray bytes = doc.toJson();
+
+        //qDebug() << json2;
+
+
         QString site_url="http://localhost:3000/login";
         QString credentials="newAdmin:newPass";
         QNetworkRequest request((site_url));
@@ -73,6 +84,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
         qDebug()<<response_data;
         if(response_data=="true"){
             qDebug()<<"Oikea tunnus ...avaa form";
+            oliotyyppi->setKayttajaTunnus(kayttajaTunnus);
             oliotyyppi->show();
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");

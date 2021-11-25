@@ -18,6 +18,8 @@ public:
     explicit Tyyppi(QWidget *parent = nullptr);
     ~Tyyppi();
 
+    void setKayttajaTunnus(const QString &newKayttajaTunnus);
+
 private slots:
     void on_pushButtonCredit_clicked();
 
@@ -28,6 +30,7 @@ private slots:
 private:
     Ui::Tyyppi *ui;
     Toimintosivu *olioToimintoSivu;
+    QString kayttajaTunnus;
 
 };
 
