@@ -6,8 +6,8 @@ bankautomat/build/
 
 bankautomat/*.user
 
-DS_Store
+.DS_Store
 
-api/DS_Store
+api/.DS_Store
 
-bankautomat/DS_store
+bankautomat/.DS_store
