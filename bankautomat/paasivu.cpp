@@ -27,33 +27,33 @@ paaSivu::~paaSivu()
 void paaSivu::on_kirjauduNappi_clicked()
 {
     qDebug()<<"Kirjaudu painettu";
-  //  olioQtimer->start(1000);
 
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-        kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
-        qDebug()<< kayttajaTunnus;
-        json.insert("username",ui->LineEdit_kayttajaTunnus->text());
-        json.insert("password",ui->LineEdit_pinKoodi->text());
+       QJsonObject json; //luodaan JSON objekti ja lisätään data
+           kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
+           qDebug()<< kayttajaTunnus;
+           json.insert("username",ui->LineEdit_kayttajaTunnus->text());
+           json.insert("password",ui->LineEdit_pinKoodi->text());
 
-      //  QJsonObject json2;
-      //  json2.insert("username",ui->LineEdit_kayttajaTunnus->text());
-       // QJsonDocument doc(json2);                                      //nailla saa tulostettua kayttajatunnuksen qdebugilla
-        //QByteArray bytes = doc.toJson();
+         //  QJsonObject json2;
+         //  json2.insert("username",ui->LineEdit_kayttajaTunnus->text());
+          // QJsonDocument doc(json2);                                      //nailla saa tulostettua kayttajatunnuksen qdebugilla
+           //QByteArray bytes = doc.toJson();
 
-        //qDebug() << json2;
+           //qDebug() << json2;
 
 
-        QString site_url="http://localhost:3000/login";
-        QString credentials="newAdmin:newPass";
-        QNetworkRequest request((site_url));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        QByteArray data = credentials.toLocal8Bit().toBase64();
-        QString headerData = "Basic " + data;
-        request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-        loginManager = new QNetworkAccessManager(this);
-        connect(loginManager, SIGNAL(finished (QNetworkReply*)),
-        this, SLOT(kirjauduSisaan(QNetworkReply*)));
-        reply = loginManager->post(request, QJsonDocument(json).toJson());
+           QString site_url="http://localhost:3000/login";
+           QString credentials="newAdmin:newPass";
+           QNetworkRequest request((site_url));
+           request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+           QByteArray data = credentials.toLocal8Bit().toBase64();
+           QString headerData = "Basic " + data;
+           request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+           loginManager = new QNetworkAccessManager(this);
+           connect(loginManager, SIGNAL(finished (QNetworkReply*)),
+           this, SLOT(kirjauduSisaan(QNetworkReply*)));
+           reply = loginManager->post(request, QJsonDocument(json).toJson());
+
 
 }
 
@@ -73,6 +73,7 @@ void paaSivu::myTimerSlot()
         olioQtimer->stop();
         qDebug()<<"Timer stop";
         timerCounter = 0;
+        ui->labelHylatty->setText("");
         this->close();
     }
 }
@@ -90,12 +91,20 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             this->close();
         }
         else {
+            vaaraPin++;
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
-            qDebug()<<"tunnus ja salasana ei täsmää";
+            qDebug()<<"tunnus ja salasana ei täsmää" << vaaraPin;
             ui->labelHylatty->setText("koitappa uudellee");
+
+            if (vaaraPin >= 3)
+            {
+                qDebug()<<"kortti lukittu " << vaaraPin;
+                ui->labelHylatty->setText("kortti lukittu kolmmannen yrityksen jälkeen");
+                vaaraPin = 0;
+                olioQtimer->start(1000);
+            }
         }
 }
-
 
 
