@@ -23,7 +23,7 @@ public:
 
 
 private slots:
-    void on_btnTesti_clicked();
+
 
 private:
     Ui::Toimintosivu *ui;
