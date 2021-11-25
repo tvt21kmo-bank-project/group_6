@@ -23,7 +23,7 @@ void MainWindow::on_jatka_clicked()
    // this->hide();                         // piilotetaan nykyinen sivu
     olioPaaSivu->show();                    // avataan pääsivu
 
-    qDebug()<<"jatka painettu";
+    qDebug()<<"jatka painettu";    
 
     //  olioPaaSivu->hide();
     //  this->show();

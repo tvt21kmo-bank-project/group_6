@@ -43,6 +43,8 @@ private:
 
     Tyyppi *oliotyyppi;
 
+    int vaaraPin = 0;
+
 signals:
 
 };

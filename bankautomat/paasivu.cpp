@@ -12,6 +12,7 @@ paaSivu::paaSivu(QWidget *parent) :
     connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
 
     oliotyyppi = new Tyyppi;
+    olioQtimer->start(1000);
 }
 
 paaSivu::~paaSivu()
@@ -27,7 +28,6 @@ paaSivu::~paaSivu()
 void paaSivu::on_kirjauduNappi_clicked()
 {
     qDebug()<<"Kirjaudu painettu";
-  //  olioQtimer->start(1000);
 
     QJsonObject json; //luodaan JSON objekti ja lisätään data
         json.insert("username",ui->LineEdit_kayttajaTunnus->text());
@@ -62,6 +62,7 @@ void paaSivu::myTimerSlot()
         olioQtimer->stop();
         qDebug()<<"Timer stop";
         timerCounter = 0;
+        ui->labelHylatty->setText("");
         this->close();
     }
 }
@@ -78,10 +79,19 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             this->close();
         }
         else {
+            vaaraPin++;
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
-            qDebug()<<"tunnus ja salasana ei täsmää";
+            qDebug()<<"tunnus ja salasana ei täsmää" << vaaraPin;
             ui->labelHylatty->setText("koitappa uudellee");
+
+            if (vaaraPin >= 3)
+            {
+                qDebug()<<"kortti lukittu " << vaaraPin;
+                ui->labelHylatty->setText("kortti lukittu kolmmannen yrityksen jälkeen");
+                vaaraPin = 0;
+                olioQtimer->start(1000);
+            }
         }
 }
 
