@@ -5,6 +5,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
+#include <QString>
 
 namespace Ui {
 class Toimintosivu;
@@ -37,6 +38,9 @@ private:
 
     QNetworkAccessManager *naytaSaldoManager;
     QNetworkReply *reply;
+
+    QString urli;
+
 
 
 
