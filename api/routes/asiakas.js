@@ -10,8 +10,8 @@ router.get('/:id?',
         response.json(err);
       } else {
         //response.json(dbResult);
-        //response.json(dbResult[0].username);
-        response.send(dbResult[0].username);
+        response.json(dbResult[0].Nimi);
+        //response.send(dbResult[0].nimi);
       }
     });
   } else {

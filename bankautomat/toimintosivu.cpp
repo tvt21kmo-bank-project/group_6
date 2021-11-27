@@ -10,6 +10,26 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     ui->textBrowserAsiakkaanNimi->setText("Tilin haltija "+test);
    // olioToimintosivu = new Toimintosivu;
     urli = test;
+
+    QString testi5 = QString("http://localhost:3000/asiakas/%1").arg(urli);
+    QString site_url=testi5;
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    naytaAsiakasManager = new QNetworkAccessManager(this);
+    connect(naytaAsiakasManager, SIGNAL(finished (QNetworkReply*)),                     // tassa kohtaa mokkoseta ei keksi ratkaisua, milla tuleva data saadaan tonne reply2 kohtaan
+    this, SLOT(testi6));
+    reply2 = naytaAsiakasManager->get(request);
+
+
+
+
+    QByteArray response_data2=reply2->readAll();
+    ui->textBrowserAsiakkaanNimi->setText("Tervetuloa: "+response_data2);
+    qDebug()<<response_data2;
      qDebug()<<test;
 }
 

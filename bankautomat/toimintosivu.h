@@ -38,8 +38,11 @@ private:
 
     QNetworkAccessManager *naytaSaldoManager;
     QNetworkReply *reply;
+    QNetworkReply *reply2;
+    QNetworkAccessManager *naytaAsiakasManager;
 
     QString urli;
+    QString testi6;
 
 
 
