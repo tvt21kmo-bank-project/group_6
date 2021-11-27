@@ -50,10 +50,10 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    qDebug()<<response_data;
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    qDebug()<<json_doc["saldo"];
-    QString pankki=json_doc["saldo"].toString();//+" : "+json_doc["summa"].toString();// : "//+json_doc["isbn"].toString();
-    ui->textBrowserSaldo->setText(pankki);
+    //qDebug()<<response_data;
+    //QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+   // qDebug()<<json_doc["saldo"];
+    //QString pankki=json_doc["saldo"].toString();//+" : "+json_doc["summa"].toString();// : "//+json_doc["isbn"].toString();
+    ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);
 }
 
