@@ -8,3 +8,11 @@ authPass='newPass'
 MYSQL = "mysql://netuser:netpass@localhost:3306/pankkiautomaatti"
 </pre>
 
+Kayttajatunnuksia databasessa alkaa olla 3 kkpl.
+eli kirjautuminen tapahtuu seuraavilla tunnuksilla
+
+id              pin
+5432            1234
+5678            1234
+5432            1234
+
