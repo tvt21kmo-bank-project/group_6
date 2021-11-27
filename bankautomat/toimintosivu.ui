@@ -78,7 +78,7 @@
     <string>Kirjaudu ulos</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="textBrowserSaldo">
    <property name="geometry">
     <rect>
      <x>210</x>

@@ -17,13 +17,12 @@ Tyyppi::~Tyyppi()
     delete olioToimintoSivu;
     olioToimintoSivu = nullptr;
 
-
-
 }
 
 void Tyyppi::on_pushButtonCredit_clicked()
 {
     qDebug()<<"credit painettu";
+    this->close();
 
 
 }
@@ -36,6 +35,7 @@ void Tyyppi::on_pushButtonDebit_clicked()
     olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     //olioToimintoSivu->setKT(kayttajaTunnus);
     olioToimintoSivu->show();
+    this->close();
 }
 
 

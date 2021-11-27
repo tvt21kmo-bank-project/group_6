@@ -39,7 +39,6 @@ void paaSivu::on_kirjauduNappi_clicked()
          //  json2.insert("username",ui->LineEdit_kayttajaTunnus->text());
           // QJsonDocument doc(json2);                                      //nailla saa tulostettua kayttajatunnuksen qdebugilla
            //QByteArray bytes = doc.toJson();
-
            //qDebug() << json2;
 
 
