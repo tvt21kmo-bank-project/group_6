@@ -11,8 +11,8 @@ const user={
   },*/
   add: function(user, callback) {
     bcrypt.hash(user.pin, saltRounds, function(err, hash) {
-      return db.query('insert into kortti (idKortti, pin, Asiakas_idAsiakas, Tili_idTili) values(?,?,?,?)',       // tassaa yritetty kaikkea kummallista
-      [user.idKortti, hash, user.Asiakas_idAsiakas, user.Tili_idTili], callback); 
+      return db.query('insert into kortti (idKortti, pin, Asiakas_idAsiakas, Tili_idTili, Tila) values(?,?,?,?,?)',       // tassaa yritetty kaikkea kummallista
+      [user.idKortti, hash, user.Asiakas_idAsiakas, user.Tili_idTili, user.Tila], callback); 
     });
   },/*
   delete: function(id, callback) {
