@@ -11,8 +11,10 @@ MYSQL = "mysql://netuser:netpass@localhost:3306/pankkiautomaatti"
 Kayttajatunnuksia databasessa alkaa olla 3 kkpl.
 eli kirjautuminen tapahtuu seuraavilla tunnuksilla
 
+
+<pre>
 id              pin
 5432            1234
 5678            1234
 5432            1234
-
+</pre>
