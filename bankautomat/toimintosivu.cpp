@@ -29,11 +29,11 @@ void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
 void Toimintosivu::on_pushButtonSaldo_clicked()
 {
 
-    qDebug()<<"saldo painettu";
+    //qDebug()<<"saldo painettu";
     //QString testi3 = urli;
     QString testi4 = QString("http://localhost:3000/pankki/%1").arg(urli);
    // QString site_url=("http://localhost:3000/pankki/%1").arg(testi3);
-    qDebug()<<"testi 4"+testi4;
+    //qDebug()<<"testi 4"+testi4;
     QString site_url=testi4;
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -50,9 +50,10 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
+    qDebug()<<response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     qDebug()<<json_doc["saldo"];
-    QString pankki=json_doc["saldo"].toString();//+" : "+json_doc["author"].toString()+" : "+json_doc["isbn"].toString();
+    QString pankki=json_doc["saldo"].toString();//+" : "+json_doc["summa"].toString();// : "//+json_doc["isbn"].toString();
     ui->textBrowserSaldo->setText(pankki);
 }
 
