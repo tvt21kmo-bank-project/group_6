@@ -8,6 +8,9 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->textBrowserAsiakkaanNimi->setText("Tilin haltija "+test);
+   // olioToimintosivu = new Toimintosivu;
+    urli = test;
+     qDebug()<<test;
 }
 
 
@@ -25,9 +28,13 @@ void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
 
 void Toimintosivu::on_pushButtonSaldo_clicked()
 {
-    qDebug()<<"saldo painettu";
 
-    QString site_url="http://localhost:3000/pankki/1";
+    qDebug()<<"saldo painettu";
+    //QString testi3 = urli;
+    QString testi4 = QString("http://localhost:3000/pankki/%1").arg(urli);
+   // QString site_url=("http://localhost:3000/pankki/%1").arg(testi3);
+    qDebug()<<"testi 4"+testi4;
+    QString site_url=testi4;
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
