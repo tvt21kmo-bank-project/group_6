@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 
 const saltRounds=10;
 const user={
- /* get: function(callback) {
-    return db.query('select * from user_table', callback);
-  },
+ // get: function(callback) {
+ //   return db.query('select * from Asiakas', callback);
+ // },
   getById: function(id, callback) {
-    return db.query('select * from user_table where id_user=?', [id], callback);
-  },*/
+    return db.query('select Nimi from Asiakas JOIN kortti ON Asiakas.idAsiakas=Kortti.Asiakas_idAsiakas where idKortti=?', [id], callback);
+  },
   add: function(user, callback) {
     bcrypt.hash(user.pin, saltRounds, function(err, hash) {
       return db.query('insert into kortti (idKortti, pin, Asiakas_idAsiakas, Tili_idTili, Tila) values(?,?,?,?,?)',       // tassaa yritetty kaikkea kummallista
