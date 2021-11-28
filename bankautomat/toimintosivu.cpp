@@ -8,11 +8,10 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->textBrowserAsiakkaanNimi->setText("Tilin haltija "+test);
-   // olioToimintosivu = new Toimintosivu;
     urli = test;
 
-    QString testi5 = QString("http://localhost:3000/asiakas/%1").arg(urli);
-    QString site_url=testi5;
+
+    QString site_url=QString("http://localhost:3000/asiakas/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -20,17 +19,19 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaAsiakasManager = new QNetworkAccessManager(this);
-    connect(naytaAsiakasManager, SIGNAL(finished (QNetworkReply*)),                     // tassa kohtaa mokkoseta ei keksi ratkaisua, milla tuleva data saadaan tonne reply2 kohtaan
-    this, SLOT(testi6));
+    connect(naytaAsiakasManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(naytaAsiakasSlot(QNetworkReply*)));
     reply2 = naytaAsiakasManager->get(request);
 
 
+}
 
 
+void Toimintosivu::naytaAsiakasSlot(QNetworkReply *reply2)
+{
     QByteArray response_data2=reply2->readAll();
     ui->textBrowserAsiakkaanNimi->setText("Tervetuloa: "+response_data2);
-    qDebug()<<response_data2;
-     qDebug()<<test;
+
 }
 
 
@@ -49,12 +50,8 @@ void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
 void Toimintosivu::on_pushButtonSaldo_clicked()
 {
 
-    //qDebug()<<"saldo painettu";
-    //QString testi3 = urli;
-    QString testi4 = QString("http://localhost:3000/pankki/%1").arg(urli);
-   // QString site_url=("http://localhost:3000/pankki/%1").arg(testi3);
-    //qDebug()<<"testi 4"+testi4;
-    QString site_url=testi4;
+
+    QString site_url= QString("http://localhost:3000/pankki/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -70,10 +67,8 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    //qDebug()<<response_data;
-    //QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-   // qDebug()<<json_doc["saldo"];
-    //QString pankki=json_doc["saldo"].toString();//+" : "+json_doc["summa"].toString();// : "//+json_doc["isbn"].toString();
     ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);
 }
+
+
 

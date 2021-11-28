@@ -33,6 +33,8 @@ private slots:
 
     void naytaSaldoSlot (QNetworkReply *reply);
 
+    void naytaAsiakasSlot (QNetworkReply *reply2);
+
 private:
     Ui::Toimintosivu *ui;
 
@@ -42,7 +44,7 @@ private:
     QNetworkAccessManager *naytaAsiakasManager;
 
     QString urli;
-    QString testi6;
+
 
 
 
