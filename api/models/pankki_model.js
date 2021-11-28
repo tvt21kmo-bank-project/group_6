@@ -6,15 +6,14 @@ const pankki = {
   },
   getAll: function(callback) {
     return db.query('select saldo from tili', callback);
-  },
- /* add: function(book, callback) {
-    return db.query(
-      'insert into book (name,author,isbn) values(?,?,?)',
-      [book.name, book.author, book.isbn],
+  },/*
+  nosta: function(postData, callback) {
+    return db.query('call nostarahaa(?,?)',
+      [postData.idKortti, postData.summa],
       callback
     );
   },
-  delete: function(id, callback) {
+  /*delete: function(id, callback) {
     return db.query('delete from book where id_book=?', [id], callback);
   },
   update: function(id, book, callback) {

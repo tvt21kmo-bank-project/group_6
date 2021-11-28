@@ -24,17 +24,16 @@ router.get('/:id?',
 });
 
 /*
-router.post('/', 
-function(request, response) {
-  book.add(request.body, function(err, dbResult) {
+router.post('/debitnosto', function(request, response) {
+  pankki.nosta(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
-      response.json(request.body);
+      response.json(dbResult.affectedRows);
     }
   });
 });
-
+/*
 
 router.delete('/:id', 
 function(request, response) {

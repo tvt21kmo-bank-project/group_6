@@ -6,8 +6,8 @@ const user={
  // get: function(callback) {
  //   return db.query('select * from Asiakas', callback);
  // },
-  getById: function(id, callback) {
-    return db.query('select Nimi from Asiakas JOIN kortti ON Asiakas.idAsiakas=Kortti.Asiakas_idAsiakas where idKortti=?', [id], callback);
+  getById: function(id, callback) {         
+    return db.query('select Nimi from Asiakas JOIN kortti ON Asiakas.idAsiakas=Kortti.Asiakas_idAsiakas where idKortti=?', [id], callback);         // tasta tulee kortti idlla asiakkaan nimi
   },
   add: function(user, callback) {
     bcrypt.hash(user.pin, saltRounds, function(err, hash) {
