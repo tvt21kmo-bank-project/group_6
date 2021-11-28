@@ -27,8 +27,8 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var asiakasRouter = require('./routes/asiakas');
 var pankkiRouter = require('./routes/pankki');
-/*var loginRouter = require('./routes/login');
-var bankRouter = require('./routes/bank');*/
+var debitnostoRouter = require('./routes/debitnosto');
+/*var bankRouter = require('./routes/bank');*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/login', loginRouter);
 app.use('/asiakas', asiakasRouter);
 app.use('/pankki', pankkiRouter);
-/*app.use('/login', loginRouter);
-app.use('/bank', bankRouter);*/
+app.use('/debitnosto', debitnostoRouter);
+/*app.use('/bank', bankRouter);*/
 
 module.exports = app;

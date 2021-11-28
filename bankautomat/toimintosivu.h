@@ -6,6 +6,7 @@
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
 #include <QString>
+#include "nostarahaa.h"
 
 namespace Ui {
 class Toimintosivu;
@@ -19,10 +20,14 @@ public:
     explicit Toimintosivu(QString test, QWidget *parent = nullptr);
     ~Toimintosivu();
 
+    //QString testi9;
 
 
 
 
+    //void setOlioNostarahaa(NostaRahaa *newOlioNostarahaa);
+
+    void setKayttajatunnus2(const QString &newKayttajatunnus2);
 
 private slots:
 
@@ -35,6 +40,8 @@ private slots:
 
     void naytaAsiakasSlot (QNetworkReply *reply2);
 
+    void on_pushButtonNosta_clicked();
+
 private:
     Ui::Toimintosivu *ui;
 
@@ -43,9 +50,11 @@ private:
     QNetworkReply *reply2;
     QNetworkAccessManager *naytaAsiakasManager;
 
+
+
+    NostaRahaa *olioNostarahaa;
     QString urli;
-
-
+    QString kayttajatunnus2;
 
 
 

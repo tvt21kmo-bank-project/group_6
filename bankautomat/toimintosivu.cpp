@@ -9,8 +9,7 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     ui->setupUi(this);
     ui->textBrowserAsiakkaanNimi->setText("Tilin haltija "+test);
     urli = test;
-
-
+    kayttajatunnus2=urli;
     QString site_url=QString("http://localhost:3000/asiakas/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -23,6 +22,7 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     this, SLOT(naytaAsiakasSlot(QNetworkReply*)));
     reply2 = naytaAsiakasManager->get(request);
 
+   // olioNostarahaa = new NostaRahaa(urli);
 
 }
 
@@ -38,6 +38,8 @@ void Toimintosivu::naytaAsiakasSlot(QNetworkReply *reply2)
 Toimintosivu::~Toimintosivu()
 {
     delete ui;
+    delete olioNostarahaa;
+    olioNostarahaa = nullptr;
 }
 
 void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
@@ -68,7 +70,22 @@ void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);
+
 }
 
+
+
+
+void Toimintosivu::on_pushButtonNosta_clicked()
+{
+    olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
+    olioNostarahaa->show();
+
+}
+
+void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
+{
+    kayttajatunnus2 = newKayttajatunnus2;
+}
 
 
