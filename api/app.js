@@ -28,7 +28,7 @@ var loginRouter = require('./routes/login');
 var asiakasRouter = require('./routes/asiakas');
 var pankkiRouter = require('./routes/pankki');
 var debitnostoRouter = require('./routes/debitnosto');
-/*var bankRouter = require('./routes/bank');*/
+var tapahtumatRouter = require('./routes/tapahtumat');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -44,6 +44,6 @@ app.use('/login', loginRouter);
 app.use('/asiakas', asiakasRouter);
 app.use('/pankki', pankkiRouter);
 app.use('/debitnosto', debitnostoRouter);
-/*app.use('/bank', bankRouter);*/
+app.use('/tapahtumat', tapahtumatRouter);
 
 module.exports = app;

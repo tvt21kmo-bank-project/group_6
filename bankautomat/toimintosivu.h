@@ -42,6 +42,10 @@ private slots:
 
     void on_pushButtonNosta_clicked();
 
+    void on_pushButtonTilitapahtumat_clicked();
+
+    void naytaTilitapahtumatSlot (QNetworkReply *reply3);
+
 private:
     Ui::Toimintosivu *ui;
 
@@ -49,6 +53,7 @@ private:
     QNetworkReply *reply;
     QNetworkReply *reply2;
     QNetworkAccessManager *naytaAsiakasManager;
+    QNetworkAccessManager *naytaTilitapahtumatManager;
 
 
 
