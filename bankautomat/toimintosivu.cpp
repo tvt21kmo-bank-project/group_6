@@ -60,6 +60,11 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
     connect(naytaSaldoManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot(QNetworkReply*)));
     reply = naytaSaldoManager->get(request);
+    qDebug()<<"Nayta saldo painettu";
+
+   // on_pushButtonTilitapahtumat_clicked();
+    naytaSaldoTilitapahtumat();
+
 }
 
 void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
@@ -106,13 +111,33 @@ void Toimintosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString Tapahtumat;
-    foreach (const QJsonValue &value, json_array) {
+
+
+    foreach (const QJsonValue &value, json_array)
+    {
     QJsonObject json_obj = value.toObject();
     Tapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" |   PVM: "+json_obj["aika"].toString()+"    |   Tapahtuma: "+json_obj["Tapahtuma"].toString()+"  |   Summa: "+QString::number(json_obj["Maara"].toInt())+"\r";
     }
+
     qDebug()<<Tapahtumat;
     ui->textBrowserTiliTapahtumat->setText(Tapahtumat);
     reply->deleteLater();
     naytaTilitapahtumatManager->deleteLater();
+}
+
+void Toimintosivu::naytaSaldoTilitapahtumat()
+{
+    QString site_url= QString("http://localhost:3000/tapahtumat/saldoTapahtuma/%1").arg(urli);
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    naytaTilitapahtumatManager = new QNetworkAccessManager(this);
+    connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
+    reply = naytaTilitapahtumatManager->get(request);
+    qDebug()<<"Saldo Tilitapahtumat painettu";
 }
 

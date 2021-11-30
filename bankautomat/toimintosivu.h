@@ -46,6 +46,8 @@ private slots:
 
     void naytaTilitapahtumatSlot (QNetworkReply *reply3);
 
+    void naytaSaldoTilitapahtumat();
+
 private:
     Ui::Toimintosivu *ui;
 

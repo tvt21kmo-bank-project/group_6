@@ -12,8 +12,20 @@ router.get('/:id?',
         response.json(dbResult);
       }
     });
-  } else {
+  }/* else {
     pankki.getAll(function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }*/
+});
+router.get('/saldoTapahtuma/:id?',
+ function(request, response) {
+  if (request.params.id) {
+    pankki.saldoTapahtuma(request.params.id, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
