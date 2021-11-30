@@ -36,7 +36,9 @@ Toimintosivu::~Toimintosivu()
 {
     delete ui;
     delete olioNostarahaa;
+    delete olioPano;
     olioNostarahaa = nullptr;
+    olioPano = nullptr;
 }
 
 void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
@@ -139,5 +141,12 @@ void Toimintosivu::naytaSaldoTilitapahtumat()
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Saldo Tilitapahtumat painettu";
+}
+
+
+void Toimintosivu::on_pushButtonPane_clicked()
+{
+    olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
+    olioPano->show();
 }
 

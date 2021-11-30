@@ -7,6 +7,7 @@
 #include <QNetworkAccessManager>
 #include <QString>
 #include "nostarahaa.h"
+#include "pano.h"
 
 namespace Ui {
 class Toimintosivu;
@@ -48,6 +49,8 @@ private slots:
 
     void naytaSaldoTilitapahtumat();
 
+    void on_pushButtonPane_clicked();
+
 private:
     Ui::Toimintosivu *ui;
 
@@ -60,6 +63,7 @@ private:
 
 
     NostaRahaa *olioNostarahaa;
+    Pano *olioPano;
     QString urli;
     QString kayttajatunnus2;
 
