@@ -12,22 +12,28 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    muusumma.cpp \
     nostarahaa.cpp \
     paasivu.cpp \
+    pano.cpp \
     toimintosivu.cpp \
     tyyppi.cpp
 
 HEADERS += \
     mainwindow.h \
+    muusumma.h \
     nostarahaa.h \
     paasivu.h \
+    pano.h \
     toimintosivu.h \
     tyyppi.h
 
 FORMS += \
     mainwindow.ui \
+    muusumma.ui \
     nostarahaa.ui \
     paasivu.ui \
+    pano.ui \
     toimintosivu.ui \
     tyyppi.ui
 
