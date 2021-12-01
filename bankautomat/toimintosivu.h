@@ -8,6 +8,7 @@
 #include <QString>
 #include "nostarahaa.h"
 #include "pano.h"
+#include "tilitapahtumat.h"
 
 namespace Ui {
 class Toimintosivu;
@@ -64,6 +65,7 @@ private:
     Pano *olioPano;
     QString urli;
     QString kayttajatunnus2;
+    Tilitapahtumat *olioTilitapahtumat;
 
 
 

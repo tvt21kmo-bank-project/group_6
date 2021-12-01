@@ -11,6 +11,7 @@
 #include <QMainWindow>
 #include <QtNetwork>
 #include "muusumma.h"
+#include "apusivu.h"
 
 
 namespace Ui {
@@ -35,6 +36,16 @@ private slots:
 
     void on_pushButton_MuuPano_clicked();
 
+    void on_pushButtonKuuskymppia_clicked();
+
+    void PaneTimerSlot();
+
+    void on_pushButtonSatane_clicked();
+
+    void on_pushButtonNelkyt_clicked();
+
+    void on_pushButtonKaksSataa_clicked();
+
 private:
     Ui::Pano *ui;
 
@@ -46,6 +57,8 @@ private:
     MuuSumma *olioMuuSumma;
 
     QString kayttajatunnus2;
+
+
 
 
 };
