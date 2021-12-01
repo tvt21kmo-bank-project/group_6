@@ -26,7 +26,7 @@ void NostaRahaa::on_pushButton_20_clicked()
   //  kayttis = olioToimintosivu->urli;
 
     json.insert("idKortti",kayttis);
-    json.insert("summa",1);
+    json.insert("summa",200);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -74,4 +74,14 @@ void NostaRahaa::on_pushButton_Palaa_clicked()
     this->close();
 }
 
+
+
+void NostaRahaa::on_pushButton_Muu_Summa_clicked()
+{
+
+    olioMuuSummaNosto = new MuuSummaNosto(kayttis);
+    olioMuuSummaNosto -> show();
+
+
+}
 

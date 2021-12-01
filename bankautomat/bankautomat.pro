@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     muusumma.cpp \
+    muusummanosto.cpp \
     nostarahaa.cpp \
     paasivu.cpp \
     pano.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     apusivu.h \
     mainwindow.h \
     muusumma.h \
+    muusummanosto.h \
     nostarahaa.h \
     paasivu.h \
     pano.h \
@@ -33,6 +35,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     muusumma.ui \
+    muusummanosto.ui \
     nostarahaa.ui \
     paasivu.ui \
     pano.ui \

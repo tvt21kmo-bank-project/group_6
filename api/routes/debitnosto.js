@@ -7,10 +7,19 @@ router.post('/nostarahaa', function(request, response){
         if(err){
             response.json(err);
         }
+        
         else{
+            if(dbResult.affectedRows < 1 ){
+            console.log("et saa");
+            response.json("Varat ei riitä");
+            }
+            else{
+            console.log("succes1");
+            console.log(dbResult.affectedRows);
             response.json(dbResult.affectedRows);
-        }
-    })
+            }}
+    }
+    )
 }
 );
 /*

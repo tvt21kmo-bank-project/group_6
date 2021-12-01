@@ -34,6 +34,7 @@ private:
    QNetworkAccessManager *loginManager;
    QNetworkReply *reply;
    QString kayttis;
+
 };
 
 #endif // MUUSUMMA_H
