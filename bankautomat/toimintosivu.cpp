@@ -41,9 +41,11 @@ Toimintosivu::~Toimintosivu()
     delete olioNostarahaa;
     delete olioPano;
     delete olioToimintosivuQtimer;
+    delete olioTilitapahtumat;
     olioToimintosivuQtimer = nullptr;
     olioNostarahaa = nullptr;
     olioPano = nullptr;
+    olioTilitapahtumat = nullptr;
 
 }
 
@@ -106,7 +108,14 @@ void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
 
 void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 {
-    QString site_url= QString("http://localhost:3000/tapahtumat/%1").arg(urli);
+
+    olioTilitapahtumat = new Tilitapahtumat(kayttajatunnus2);
+    olioTilitapahtumat->show();
+
+
+
+
+   /* QString site_url= QString("http://localhost:3000/tapahtumat/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -117,7 +126,7 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
     connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply = naytaTilitapahtumatManager->get(request);
-    qDebug()<<"Tilitapahtumat painettu";
+    qDebug()<<"Tilitapahtumat painettu"; */
 
     olioToimintosivuQtimer->stop();
     timerCounter = 0;
@@ -165,9 +174,10 @@ void Toimintosivu::naytaSaldoTilitapahtumat()
 void Toimintosivu::on_pushButtonPane_clicked()
 {
     olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
-    olioPano->show();
-
+    olioPano->show();  
+    olioToimintosivuQtimer->stop();
     timerCounter = 0;
+    olioPanoQtimer->start(1000);
 }
 
 void Toimintosivu::toimintosivuTimerSlot()

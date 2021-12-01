@@ -19,7 +19,8 @@ SOURCES += \
     paasivu.cpp \
     pano.cpp \
     toimintosivu.cpp \
-    tyyppi.cpp
+    tyyppi.cpp \
+    tilitapahtumat.cpp
 
 HEADERS += \
     apusivu.h \
@@ -30,7 +31,8 @@ HEADERS += \
     paasivu.h \
     pano.h \
     toimintosivu.h \
-    tyyppi.h
+    tyyppi.h \
+    tilitapahtumat.h
 
 FORMS += \
     mainwindow.ui \
@@ -40,7 +42,8 @@ FORMS += \
     paasivu.ui \
     pano.ui \
     toimintosivu.ui \
-    tyyppi.ui
+    tyyppi.ui \
+    tilitapahtumat.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
