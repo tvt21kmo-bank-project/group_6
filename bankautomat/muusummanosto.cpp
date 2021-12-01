@@ -1,22 +1,20 @@
-#include "muusumma.h"
-#include "ui_muusumma.h"
+#include "muusummanosto.h"
+#include "ui_muusummanosto.h"
 
-MuuSumma::MuuSumma(QString test2, QWidget *parent) :
+MuuSummaNosto::MuuSummaNosto(QString test2, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MuuSumma)
+    ui(new Ui::MuuSummaNosto)
 {
     ui->setupUi(this);
     kayttis=test2;
-
-
 }
 
-MuuSumma::~MuuSumma()
+MuuSummaNosto::~MuuSummaNosto()
 {
     delete ui;
 }
 
-void MuuSumma::on_pushButton_MuuSummaSET_clicked()
+void MuuSummaNosto::on_pushButton_MuuSummaNosto_clicked()
 {
     QJsonObject json; //luodaan JSON objekti ja lisätään data
        // MuuSumma1 = ui->lineEdit_MuuSumma->text();
@@ -24,8 +22,8 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
        // json.insert("summa",ui->LineEdit_pinKoodi->text());
         qDebug()<<kayttis;
         json.insert("idKortti",kayttis);
-        json.insert("summa",ui->lineEdit_MuuSumma->text());
-        QString site_url="http://localhost:3000/pano/panerahaa";
+        json.insert("summa",ui->lineEdit_MuuNosto->text());
+        QString site_url="http://localhost:3000/debitnosto/nostarahaa";
         QString credentials="newAdmin:newPass";
         QNetworkRequest request((site_url));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -33,12 +31,10 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
         QString headerData = "Basic " + data;
         request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
         loginManager = new QNetworkAccessManager(this);
-        //connect(loginManager, SIGNAL(finished (QNetworkReply*)),
-     //   this, SLOT(kirjauduSisaan(QNetworkReply*)));
+        connect(loginManager, SIGNAL(finished (QNetworkReply*)),
+        this, SLOT(naytaSaldoSlot3(QNetworkReply*)));
         reply = loginManager->post(request, QJsonDocument(json).toJson());
 
-
-        ui->label_Panosumma->setText(ui->lineEdit_MuuSumma->text());
 
 
 
@@ -64,6 +60,12 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
         //this->close;
 
 
+}
+
+void MuuSummaNosto::naytaSaldoSlot3(QNetworkReply *reply4)
+{
+    QByteArray response_data=reply4->readAll();
+    ui->label_MuuNosto->setText(response_data);
 
 }
 

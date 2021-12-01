@@ -11,9 +11,10 @@
 #include <QMainWindow>
 #include <QtNetwork>
 
-
+#include "muusumma.h"
 //#include "toimintosivu.h"
 #include "apusivu.h"
+#include "muusummanosto.h"
 
 namespace Ui {
 class NostaRahaa;
@@ -36,6 +37,8 @@ private slots:
 
     void nostaRahaaTimerSlot();
 
+    void on_pushButton_Muu_Summa_clicked();
+
 private:
     Ui::NostaRahaa *ui;
     //QNetworkAccessManager *debitManager;
@@ -45,6 +48,9 @@ private:
     QNetworkReply *reply3;
 
     QString kayttis;
+    MuuSummaNosto *olioMuuSummaNosto;
+
+
 };
 
 #endif // NOSTARAHAA_H
