@@ -33,6 +33,29 @@ router.get('/saldoTapahtuma/:id?',
       }
     });
   }
-});
+});/*
+router.post('/Tapahtumalisaa/:id?/:offset?',
+ function(request, response) {
+  if (request.params.id) {
+    pankki.TapahtumaLisaa(request.params.id, request.params.offset, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }
+});*/
+router.post('/TapahtumaLisaa', function(request, response){
+  pankki.TapahtumaLisaa(request.body, function(err, dbResult){
+      if(err){
+          response.json(err);
+      }
+      else{
+          response.json(dbResult);
+      }
+  })
+}
+);
 
 module.exports = router;

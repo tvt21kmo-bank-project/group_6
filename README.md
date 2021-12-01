@@ -18,3 +18,5 @@ id              pin
 5678            1234
 5432            1234
 </pre>
+
+threadstack size 256k
