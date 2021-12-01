@@ -15,6 +15,8 @@ NostaRahaa::NostaRahaa(QString test2, QWidget *parent) :
 NostaRahaa::~NostaRahaa()
 {
     delete ui;
+    delete olioNostaRahaaQtimer;
+    olioNostaRahaaQtimer = nullptr;
 }
 
 void NostaRahaa::on_pushButton_20_clicked()
@@ -66,8 +68,10 @@ void NostaRahaa::nostaRahaaTimerSlot()
 
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
-    this->close();
+    olioNostaRahaaQtimer->stop();
+    timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
+    this->close();
 }
 
 
