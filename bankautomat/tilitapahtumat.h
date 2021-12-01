@@ -6,6 +6,8 @@
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
 #include <QString>
+#include <QNetworkReply>
+#include <QtNetwork>
 
 namespace Ui {
 class Tilitapahtumat;

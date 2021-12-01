@@ -7,7 +7,7 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
 {
     urli=test2;
     ui->setupUi(this);  
-    QString site_url= QString("http://localhost:3000/tapahtumat/%1").arg(urli);
+    QString site_url= QString("http://localhost:3000/tapahtumat/saldotapahtuma/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -28,7 +28,7 @@ Tilitapahtumat::~Tilitapahtumat()
 
 void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
 {
-    QByteArray response_data=reply->readAll();
+    QByteArray response_data=reply3->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString Tapahtumat;
@@ -40,9 +40,10 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     Tapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" |   PVM: "+json_obj["aika"].toString()+"    |   Tapahtuma: "+json_obj["Tapahtuma"].toString()+"  |   Summa: "+QString::number(json_obj["Maara"].toInt())+"\r";
     }
 
+
     qDebug()<<Tapahtumat;
-    ui->textBrowser->setText(Tapahtumat);
-    reply->deleteLater();
+    ui->textBrowser_2->setText(Tapahtumat);
+    reply3->deleteLater();
     naytaTilitapahtumatManager->deleteLater();
 }
 
