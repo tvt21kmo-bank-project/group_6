@@ -13,6 +13,7 @@
 
 
 //#include "toimintosivu.h"
+#include "apusivu.h"
 
 namespace Ui {
 class NostaRahaa;
@@ -32,6 +33,8 @@ private slots:
     void on_pushButton_Palaa_clicked();
 
     void naytaSaldoSlot2 (QNetworkReply *reply3);
+
+    void nostaRahaaTimerSlot();
 
 private:
     Ui::NostaRahaa *ui;

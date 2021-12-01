@@ -22,6 +22,8 @@ void MainWindow::on_jatka_clicked()
 {
    // this->hide();                         // piilotetaan nykyinen sivu
     olioPaaSivu->show();                    // avataan pääsivu
+    olioQtimer->start(1000);
+
 
     qDebug()<<"jatka painettu";
 

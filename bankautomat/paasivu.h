@@ -11,6 +11,7 @@
 #include <QJsonDocument>
 
 #include "tyyppi.h"
+#include "apusivu.h"
 
 namespace Ui {
 class paaSivu;
@@ -27,16 +28,18 @@ public:
 private slots:
     void on_kirjauduNappi_clicked();
     void on_takaisinNappi_clicked();
-    void myTimerSlot();
 
     void kirjauduSisaan(QNetworkReply *reply);
 
+public slots:
+    void myTimerSlot();
+    void myPinTimerSlot();
 
 
 private:
     Ui::paaSivu *ui;
-    short timerCounter;
-    QTimer *olioQtimer;
+    //short timerCounter;
+    //QTimer *olioQtimer;
 
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
