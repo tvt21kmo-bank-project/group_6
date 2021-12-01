@@ -8,11 +8,15 @@ NostaRahaa::NostaRahaa(QString test2, QWidget *parent) :
     ui->setupUi(this);
     kayttis=test2;
 
+    connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
+
 }
 
 NostaRahaa::~NostaRahaa()
 {
     delete ui;
+    delete olioNostaRahaaQtimer;
+    olioNostaRahaaQtimer = nullptr;
 }
 
 void NostaRahaa::on_pushButton_20_clicked()
@@ -45,10 +49,28 @@ void NostaRahaa::naytaSaldoSlot2(QNetworkReply *reply3)
 
 }
 
+void NostaRahaa::nostaRahaaTimerSlot()
+{
+    timerCounter++;
+    qDebug()<<"nosta rahaa timer "<<timerCounter;
+
+    if (timerCounter==timerAika2)
+    {
+        olioNostaRahaaQtimer->stop();
+        qDebug()<<"Timer stop";
+        timerCounter = 0;
+        this->close();
+        olioToimintosivuQtimer->start(1000);
+    }
+}
+
 
 
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
+    olioNostaRahaaQtimer->stop();
+    timerCounter = 0;
+    olioToimintosivuQtimer->start(1000);
     this->close();
 }
 

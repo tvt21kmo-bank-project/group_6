@@ -10,6 +10,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    apusivu.cpp \
     main.cpp \
     mainwindow.cpp \
     muusumma.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     tyyppi.cpp
 
 HEADERS += \
+    apusivu.h \
     mainwindow.h \
     muusumma.h \
     nostarahaa.h \

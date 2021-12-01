@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include "toimintosivu.h"
+//#include "apusivu.h"
 //#include "mainwindow.h"
 
 namespace Ui {
@@ -22,10 +23,10 @@ public:
 
 private slots:
     void on_pushButtonCredit_clicked();
-
     void on_pushButtonDebit_clicked();
-
     void on_pushButtonKirjauduUlos_clicked();
+
+    void MyTimerTyyppiSlot();
 
 private:
     Ui::Tyyppi *ui;

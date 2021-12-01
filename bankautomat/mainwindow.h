@@ -8,7 +8,7 @@
 #include <QThread>
 
 #include "paasivu.h"
-//#include "tyyppi.h"
+#include "tyyppi.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,5 +28,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     paaSivu *olioPaaSivu;
+    //Toimintosivu *olioToimintoSivu;
 };
 #endif // MAINWINDOW_H

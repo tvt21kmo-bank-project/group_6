@@ -22,10 +22,6 @@ public:
     ~Toimintosivu();
 
     //QString testi9;
-
-
-
-
     //void setOlioNostarahaa(NostaRahaa *newOlioNostarahaa);
 
     void setKayttajatunnus2(const QString &newKayttajatunnus2);
@@ -50,6 +46,8 @@ private slots:
     void naytaSaldoTilitapahtumat();
 
     void on_pushButtonPane_clicked();
+
+    void toimintosivuTimerSlot();
 
 private:
     Ui::Toimintosivu *ui;
