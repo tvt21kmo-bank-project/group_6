@@ -47,3 +47,29 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     naytaTilitapahtumatManager->deleteLater();
 }
 
+
+void Tilitapahtumat::on_pushButton_KirjauduUlos_clicked()
+{
+
+    {
+       /*olioNostaRahaaQtimer->stop();  // tahan oma timer
+        */
+        timerCounter = 0;
+        olioToimintosivuQtimer->start(1000);
+        this->close();
+    }
+}
+
+
+void Tilitapahtumat::on_pushButton_Palaa_clicked()
+{ // tajan vissiin halutaankin palaa takasin tapahtumissa? nyt se palaa takaisin edelliseen sivuun niinkuin toi kirjaudu uloskin. OOn nappara
+    {
+       /*olioNostaRahaaQtimer->stop();  // tahan oma timer
+        */
+        timerCounter = 0;
+        olioToimintosivuQtimer->start(1000);
+        this->close();
+    }
+
+}
+
