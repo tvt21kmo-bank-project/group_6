@@ -24,6 +24,8 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
 Tilitapahtumat::~Tilitapahtumat()
 {
     delete ui;
+    delete olioToimintosivuQtimer;
+    olioPinQtimer = nullptr;
 }
 
 void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)

@@ -17,6 +17,8 @@ Pano::Pano(QString test2, QWidget *parent) :
 Pano::~Pano()
 {
     delete ui;
+    delete olioPanoQtimer;
+    olioPanoQtimer = nullptr;
 }
 
 void Pano::setKayttajatunnus2(const QString &newKayttajatunnus2)
@@ -170,9 +172,12 @@ void Pano::PaneTimerSlot()
 
 void Pano::on_pushButton_Palaa_clicked()
 {
-                                                        //Laura tekee tähän
-}
+    olioPanoQtimer->stop();
+    timerCounter = 0;
+    olioToimintosivuQtimer->start(1000);
+    this->close();
 
+}
 
 void Pano::on_pushButton_MuuPano_clicked()
 {

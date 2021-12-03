@@ -76,7 +76,6 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 
     naytaSaldoTilitapahtumat();
 
-    olioToimintosivuQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
 
@@ -130,7 +129,7 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 
     olioToimintosivuQtimer->stop();
     timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    //olioToimintosivuQtimer->start(1000);
 
 }
 
