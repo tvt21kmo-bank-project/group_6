@@ -10,4 +10,4 @@ QTimer *olioPanoQtimer = new QTimer;
 
 short timerCounter = 0;
 short timerAika1 = 5;
-short timerAika2 = 10;
+short timerAika2 = 50;

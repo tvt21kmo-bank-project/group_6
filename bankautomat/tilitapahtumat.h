@@ -8,6 +8,7 @@
 #include <QString>
 #include <QNetworkReply>
 #include <QtNetwork>
+#include "apusivu.h"
 
 namespace Ui {
 class Tilitapahtumat;
@@ -29,6 +30,8 @@ private:
 
 private slots:
     void naytaTilitapahtumatSlot (QNetworkReply *reply3);
+    void on_pushButton_KirjauduUlos_clicked();
+    void on_pushButton_Palaa_clicked();
 };
 
 #endif // TILITAPAHTUMAT_H
