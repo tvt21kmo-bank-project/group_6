@@ -27,11 +27,18 @@ private:
     QNetworkAccessManager *naytaTilitapahtumatManager;
     QString urli;
     QNetworkReply *reply3;
+    int offsetmuuttuja = 0;
+    QString kayttis;
+    void Naytatilitapahtumat();
+    QString Tapahtumat2;
+    int ListanLoppu=0;
+
 
 private slots:
     void naytaTilitapahtumatSlot (QNetworkReply *reply3);
     void on_pushButton_KirjauduUlos_clicked();
     void on_pushButton_Palaa_clicked();
+    void on_pushButton_NaytaLisaa_clicked();
 };
 
 #endif // TILITAPAHTUMAT_H
