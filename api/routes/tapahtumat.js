@@ -34,5 +34,20 @@ router.get('/saldoTapahtuma/:id?',
     });
   }
 });
+router.post('/tapahtumaLisaa', function(request, response){
+  pankki.TapahtumaLisaa(request.body, function(err, dbResult){
+      if(err){
+          response.json(err);
+          console.log("tapahtuma lisaa if");
+          response.json("Varat tapahtumaei riitä");
+      }
+      else{
+        console.log("tapahtuma lisaa else");
+        console.log(dbResult.affectedRows);
+        response.json(dbResult);
+      }
+  })
+}
+);
 
 module.exports = router;

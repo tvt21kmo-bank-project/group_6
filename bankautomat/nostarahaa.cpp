@@ -64,8 +64,6 @@ void NostaRahaa::nostaRahaaTimerSlot()
     }
 }
 
-
-
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
     olioNostaRahaaQtimer->stop();
@@ -81,7 +79,5 @@ void NostaRahaa::on_pushButton_Muu_Summa_clicked()
 
     olioMuuSummaNosto = new MuuSummaNosto(kayttis);
     olioMuuSummaNosto -> show();
-
-
 }
 
