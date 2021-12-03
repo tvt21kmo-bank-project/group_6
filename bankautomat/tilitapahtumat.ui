@@ -26,21 +26,26 @@
   <widget class="QPushButton" name="pushButton_NaytaLisaa">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>320</y>
-     <width>91</width>
-     <height>41</height>
+     <x>760</x>
+     <y>120</y>
+     <width>101</width>
+     <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Nayta lisaa</string>
+    <string>↑</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_Palaa">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>320</y>
+     <x>20</x>
+     <y>260</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -52,14 +57,19 @@
   <widget class="QPushButton" name="pushButton_KirjauduUlos">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>320</y>
+     <x>760</x>
+     <y>240</y>
      <width>101</width>
-     <height>41</height>
+     <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>Kirjaudu Ulos</string>
+    <string>↓</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -78,6 +88,24 @@
    </property>
    <property name="text">
     <string>Tilitapahtumat</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Eilisaa">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>110</y>
+     <width>611</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
