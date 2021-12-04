@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     olioPaaSivu = new paaSivu;
+
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -22,11 +26,20 @@ void MainWindow::on_jatka_clicked()
 {
    // this->hide();                         // piilotetaan nykyinen sivu
     olioPaaSivu->show();                    // avataan pääsivu
-    olioQtimer->start(1000);
+    //olioQtimer->start(1000);
+  //  olioQtimer2->start(1000;
+
+    Timer2 * olioTimer2;
+   olioTimer2 = new Timer2;
+
+   olioTimer2->Timerkayntiin();
 
 
-    qDebug()<<"jatka painettu";
+    qDebug()<<olioTimer2->timerCounter3;
 
-    //  olioPaaSivu->hide();
-    //  this->show();
+   if (olioTimer2->timerCounter3 == olioTimer2->timerAika3){
+       qDebug()<<"paasivu suljettu";
+       olioPaaSivu->paaSivuSulku();
+   }
+
 }

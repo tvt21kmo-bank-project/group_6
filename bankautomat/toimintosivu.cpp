@@ -77,7 +77,7 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
     naytaSaldoTilitapahtumat();
 
     timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    //olioToimintosivuQtimer->start(1000);
 
 }
 
@@ -89,10 +89,10 @@ void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 
 void Toimintosivu::on_pushButtonNosta_clicked()
 {
-    olioToimintosivuQtimer->stop();
+    //olioToimintosivuQtimer->stop();
     olioNostaRahaaQtimer->stop();
     timerCounter = 0;
-    olioNostaRahaaQtimer->start(1000);
+   // olioNostaRahaaQtimer->start(1000);
 
     olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioNostarahaa->show();

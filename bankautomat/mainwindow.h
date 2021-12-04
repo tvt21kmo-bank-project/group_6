@@ -9,6 +9,7 @@
 
 #include "paasivu.h"
 #include "tyyppi.h"
+#include "timer2.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

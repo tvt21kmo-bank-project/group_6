@@ -12,6 +12,7 @@
 
 #include "tyyppi.h"
 #include "apusivu.h"
+#include "timer2.h"
 
 namespace Ui {
 class paaSivu;
@@ -24,6 +25,8 @@ class paaSivu : public QDialog
 public:
     explicit paaSivu(QWidget *parent = nullptr);
     ~paaSivu();
+
+    void paaSivuSulku();
 
 private slots:
     void on_kirjauduNappi_clicked();

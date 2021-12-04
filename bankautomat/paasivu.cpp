@@ -13,6 +13,10 @@ paaSivu::paaSivu(QWidget *parent) :
     connect(olioPinQtimer,SIGNAL(timeout()),this,SLOT(myPinTimerSlot()));
 
     oliotyyppi = new Tyyppi;
+
+
+
+
 }
 
 paaSivu::~paaSivu()
@@ -23,6 +27,11 @@ paaSivu::~paaSivu()
     delete oliotyyppi;
     oliotyyppi = nullptr;
 
+}
+
+void paaSivu::paaSivuSulku()
+{
+        this->close();
 }
 
 void paaSivu::on_kirjauduNappi_clicked()
@@ -104,7 +113,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             oliotyyppi->show();
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
-            olioQtimer->stop();
+           // olioQtimer->stop();
             timerCounter = 0;
             this->close();
         }

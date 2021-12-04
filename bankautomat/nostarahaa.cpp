@@ -56,19 +56,19 @@ void NostaRahaa::nostaRahaaTimerSlot()
 
     if (timerCounter==timerAika2)
     {
-        olioNostaRahaaQtimer->stop();
+       // olioNostaRahaaQtimer->stop();
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
-        olioToimintosivuQtimer->start(1000);
+       // olioToimintosivuQtimer->start(1000);
     }
 }
 
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
-    olioNostaRahaaQtimer->stop();
+    //olioNostaRahaaQtimer->stop();
     timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+   // olioToimintosivuQtimer->start(1000);
     this->close();
 }
 

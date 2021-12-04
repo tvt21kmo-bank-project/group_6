@@ -35,7 +35,8 @@ void Tyyppi::on_pushButtonDebit_clicked()
     this->close();
     olioTyyppiQtimer->stop();
     timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+   // olioToimintosivuQtimer->start(1000);
+     olioQtimer->start(1000);
 }
 
 
@@ -61,6 +62,6 @@ void Tyyppi::MyTimerTyyppiSlot()
 void Tyyppi::setKayttajaTunnus(const QString &newKayttajaTunnus)
 {
     kayttajaTunnus = newKayttajaTunnus;
-    olioTyyppiQtimer->start(1000);
+   // olioTyyppiQtimer->start(1000);
 }
 
