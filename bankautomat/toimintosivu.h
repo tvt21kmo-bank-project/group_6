@@ -9,6 +9,7 @@
 #include "nostarahaa.h"
 #include "pano.h"
 #include "tilitapahtumat.h"
+#include "saldosivu.h"
 
 namespace Ui {
 class Toimintosivu;
@@ -34,7 +35,7 @@ private slots:
 
     void on_pushButtonSaldo_clicked();
 
-    void naytaSaldoSlot (QNetworkReply *reply);
+    //void naytaSaldoSlot (QNetworkReply *reply);
 
     void naytaAsiakasSlot (QNetworkReply *reply2);
 
@@ -42,9 +43,9 @@ private slots:
 
     void on_pushButtonTilitapahtumat_clicked();
 
-    void naytaTilitapahtumatSlot (QNetworkReply *reply3);
+    //void naytaTilitapahtumatSlot (QNetworkReply *reply3);
 
-    void naytaSaldoTilitapahtumat();
+    //void naytaSaldoTilitapahtumat();
 
     void on_pushButtonPane_clicked();
 
@@ -53,11 +54,11 @@ private slots:
 private:
     Ui::Toimintosivu *ui;
 
-    QNetworkAccessManager *naytaSaldoManager;
+    //QNetworkAccessManager *naytaSaldoManager;
     QNetworkReply *reply;
     QNetworkReply *reply2;
     QNetworkAccessManager *naytaAsiakasManager;
-    QNetworkAccessManager *naytaTilitapahtumatManager;
+    //QNetworkAccessManager *naytaTilitapahtumatManager;
 
 
 
@@ -66,6 +67,7 @@ private:
     QString urli;
     QString kayttajatunnus2;
     Tilitapahtumat *olioTilitapahtumat;
+    Saldosivu *olioSaldoSivu;
 
 
 
