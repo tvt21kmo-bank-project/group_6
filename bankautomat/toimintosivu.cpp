@@ -42,10 +42,12 @@ Toimintosivu::~Toimintosivu()
     delete olioPano;
     delete olioToimintosivuQtimer;
     delete olioTilitapahtumat;
+    delete olioSaldoSivu;
     olioToimintosivuQtimer = nullptr;
     olioNostarahaa = nullptr;
     olioPano = nullptr;
     olioTilitapahtumat = nullptr;
+    olioSaldoSivu = nullptr;
 
 }
 
@@ -57,35 +59,21 @@ void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
 
 void Toimintosivu::on_pushButtonSaldo_clicked()
 {
+    olioSaldoSivu = new Saldosivu(kayttajatunnus2);
+    olioSaldoSivu->show();
+    olioSaldoSivu->naytaSaldo();
+    olioSaldoSivu->naytaTilitapahtumat();
 
 
-    QString site_url= QString("http://localhost:3000/pankki/%1").arg(urli);
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaSaldoManager = new QNetworkAccessManager(this);
-    connect(naytaSaldoManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot(QNetworkReply*)));
-    reply = naytaSaldoManager->get(request);
-    qDebug()<<"Nayta saldo painettu";
 
-   // on_pushButtonTilitapahtumat_clicked();
-
-    naytaSaldoTilitapahtumat();
-
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
 
 }
 
-void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
+/*void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
     ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);   
-}
+}*/
 
 void Toimintosivu::on_pushButtonNosta_clicked()
 {
@@ -133,7 +121,7 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 
 }
 
-void Toimintosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
+/*void Toimintosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
 {
     QByteArray response_data=reply->readAll();
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
@@ -168,7 +156,7 @@ void Toimintosivu::naytaSaldoTilitapahtumat()
     reply = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Saldo Tilitapahtumat painettu";
 }
-
+*/
 
 void Toimintosivu::on_pushButtonPane_clicked()
 {

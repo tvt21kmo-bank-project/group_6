@@ -18,6 +18,7 @@ SOURCES += \
     nostarahaa.cpp \
     paasivu.cpp \
     pano.cpp \
+    saldosivu.cpp \
     toimintosivu.cpp \
     tyyppi.cpp \
     tilitapahtumat.cpp
@@ -30,6 +31,7 @@ HEADERS += \
     nostarahaa.h \
     paasivu.h \
     pano.h \
+    saldosivu.h \
     toimintosivu.h \
     tyyppi.h \
     tilitapahtumat.h
@@ -41,6 +43,7 @@ FORMS += \
     nostarahaa.ui \
     paasivu.ui \
     pano.ui \
+    saldosivu.ui \
     toimintosivu.ui \
     tyyppi.ui \
     tilitapahtumat.ui
