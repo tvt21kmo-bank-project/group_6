@@ -57,6 +57,7 @@ private:
     MuuSumma *olioMuuSumma;
 
     QString kayttajatunnus2;
+    apusivu *olioApuSivu;
 
 
 

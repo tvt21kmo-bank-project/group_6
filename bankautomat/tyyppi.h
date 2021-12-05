@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include "toimintosivu.h"
-//#include "apusivu.h"
+#include "apusivu.h"
 //#include "mainwindow.h"
 
 namespace Ui {
@@ -32,6 +32,7 @@ private:
     Ui::Tyyppi *ui;
     Toimintosivu *olioToimintoSivu;
     QString kayttajaTunnus;
+    apusivu *olioApusivu;
 
 };
 

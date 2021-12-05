@@ -8,7 +8,9 @@ Tyyppi::Tyyppi(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
+    olioApusivu = new apusivu;
+
+    connect(olioApusivu->olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
 }
 
 Tyyppi::~Tyyppi()
@@ -33,9 +35,9 @@ void Tyyppi::on_pushButtonDebit_clicked()
     //olioToimintoSivu->setKT(kayttajaTunnus);
     olioToimintoSivu->show();
     this->close();
-    olioTyyppiQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    olioApusivu-> olioTyyppiQtimer->stop();
+    olioApusivu-> timerCounter = 0;
+    olioApusivu-> olioToimintosivuQtimer->start(1000);
 }
 
 
@@ -46,14 +48,14 @@ void Tyyppi::on_pushButtonKirjauduUlos_clicked()
 
 void Tyyppi::MyTimerTyyppiSlot()
 {
-    timerCounter++;
-    qDebug()<<"TyyppiSivuTimer "<<timerCounter;
+    olioApusivu-> timerCounter++;
+    qDebug()<<"TyyppiSivuTimer "<<olioApusivu-> timerCounter;
 
-    if (timerCounter==timerAika2)
+    if (olioApusivu->timerCounter==olioApusivu-> timerAika2)
     {
-        olioTyyppiQtimer->stop();
+        olioApusivu-> olioTyyppiQtimer->stop();
         qDebug()<<"Timer stop";
-        timerCounter = 0;
+        olioApusivu-> timerCounter = 0;
         this->close();
     }
 }
@@ -61,6 +63,6 @@ void Tyyppi::MyTimerTyyppiSlot()
 void Tyyppi::setKayttajaTunnus(const QString &newKayttajaTunnus)
 {
     kayttajaTunnus = newKayttajaTunnus;
-    olioTyyppiQtimer->start(1000);
+    olioApusivu-> olioTyyppiQtimer->start(1000);
 }
 

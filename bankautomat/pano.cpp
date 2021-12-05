@@ -10,15 +10,16 @@ Pano::Pano(QString test2, QWidget *parent) :
     qDebug()<<"KT2"+kayttajatunnus2;
     qDebug()<<"KT2"+kayttis;
 
-    connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
+    olioApuSivu = new apusivu;
 
+    connect(olioApuSivu->olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
 }
 
 Pano::~Pano()
 {
     delete ui;
-    delete olioPanoQtimer;
-    olioPanoQtimer = nullptr;
+    delete olioApuSivu-> olioPanoQtimer;
+    olioApuSivu-> olioPanoQtimer = nullptr;
 }
 
 void Pano::setKayttajatunnus2(const QString &newKayttajatunnus2)
@@ -48,7 +49,7 @@ void Pano::on_pushButton_pane20_clicked()
 
 
     ui->label_pane->setText("Pantu parilla kympillä");
-    timerCounter=0;
+    olioApuSivu-> timerCounter=0;
 }
 
 void Pano::on_pushButtonKuuskymppia_clicked()
@@ -73,7 +74,7 @@ void Pano::on_pushButtonKuuskymppia_clicked()
 
 
     ui->label_pane->setText("Pantu kuudella kympillä");
-    timerCounter=0;
+    olioApuSivu-> timerCounter=0;
 
 }
 
@@ -99,7 +100,7 @@ void Pano::on_pushButtonSatane_clicked()
 
 
     ui->label_pane->setText("Pantu satasella");
-    timerCounter=0;
+    olioApuSivu-> timerCounter=0;
 }
 
 void Pano::on_pushButtonNelkyt_clicked()
@@ -124,7 +125,7 @@ void Pano::on_pushButtonNelkyt_clicked()
 
 
     ui->label_pane->setText("Pantu Neljalla kympilla");
-    timerCounter=0;
+    olioApuSivu-> timerCounter=0;
 }
 
 void Pano::on_pushButtonKaksSataa_clicked()
@@ -149,22 +150,22 @@ void Pano::on_pushButtonKaksSataa_clicked()
 
 
     ui->label_pane->setText("Pantu Kahdella sadalla");
-    timerCounter=0;
+    olioApuSivu-> timerCounter=0;
 }
 
 
 void Pano::PaneTimerSlot()
 {
-    timerCounter++;
-    qDebug()<<"Pano timer "<<timerCounter;
+    olioApuSivu-> timerCounter++;
+    qDebug()<<"Pano timer "<<olioApuSivu-> timerCounter;
 
-    if (timerCounter==timerAika2)
+    if (olioApuSivu-> timerCounter==olioApuSivu-> timerAika2)
     {
-        olioPanoQtimer->stop();
+        olioApuSivu-> olioPanoQtimer->stop();
         qDebug()<<"Timer stop";
-        timerCounter = 0;
+        olioApuSivu-> timerCounter = 0;
         this->close();
-        olioToimintosivuQtimer->start(1000);
+        olioApuSivu-> olioToimintosivuQtimer->start(1000);
     }
 
 }
@@ -172,9 +173,9 @@ void Pano::PaneTimerSlot()
 
 void Pano::on_pushButton_Palaa_clicked()
 {
-    olioPanoQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    olioApuSivu-> olioPanoQtimer->stop();
+    olioApuSivu-> timerCounter = 0;
+    olioApuSivu-> olioToimintosivuQtimer->start(1000);
     this->close();
 
 }

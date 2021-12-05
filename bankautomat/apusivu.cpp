@@ -1,14 +1,24 @@
 #include "apusivu.h"
-//#include <QString>
 
-QTimer *olioQtimer = new QTimer;
-QTimer *olioTyyppiQtimer = new QTimer;
-QTimer *olioPinQtimer = new QTimer;
-QTimer *olioToimintosivuQtimer = new QTimer;
-QTimer *olioNostaRahaaQtimer = new QTimer;
-QTimer *olioPanoQtimer = new QTimer;
+apusivu::apusivu(QObject *parent) : QObject(parent)
+{
 
-short timerCounter = 0;
-short timerCounter2 = 0;
-short timerAika1 = 5;
-short timerAika2 = 50;
+    olioQtimer = new QTimer;
+
+    olioPinQtimer = new QTimer;
+
+    olioTyyppiQtimer = new QTimer;
+
+    olioNostaRahaaQtimer = new QTimer;
+
+    olioToimintosivuQtimer = new QTimer;
+
+    olioPanoQtimer = new QTimer;
+
+   // connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+}
+
+apusivu::~apusivu()
+{
+
+}

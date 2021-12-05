@@ -48,6 +48,8 @@ private:
     QString kayttajaTunnus;
     int vaaraPin = 0;
 
+    apusivu *olioApusivu;
+
 
 signals:
 

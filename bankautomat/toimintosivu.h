@@ -28,6 +28,7 @@ public:
 
     void setKayttajatunnus2(const QString &newKayttajatunnus2);
 
+
 private slots:
 
 
@@ -68,6 +69,9 @@ private:
     QString kayttajatunnus2;
     Tilitapahtumat *olioTilitapahtumat;
     Saldosivu *olioSaldoSivu;
+    apusivu *olioApuSivu;
+
+
 
 
 

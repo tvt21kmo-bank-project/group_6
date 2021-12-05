@@ -1,33 +1,35 @@
 #ifndef APUSIVU_H
 #define APUSIVU_H
 
+#include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <QThread>
 
-#include <QTimer>
+class apusivu : public QObject
+{
+    Q_OBJECT
+public:
+    explicit apusivu(QObject *parent = nullptr);
+    ~apusivu();
 
-
-//#include <QtGlobal>
-
-/*
-
-QT_BEGIN_NAMESPACE
-class QString;
-QT_END_NAMESPACE
-*/
-
-
-extern short timerCounter;
-extern short timerCounter2;
-extern short timerAika1;
-extern short timerAika2;
-
-
-extern QTimer *olioQtimer;
-extern QTimer *olioTyyppiQtimer;
-extern QTimer *olioPinQtimer;
-extern QTimer *olioToimintosivuQtimer;
-extern QTimer *olioNostaRahaaQtimer;
-extern QTimer *olioPanoQtimer;
+    short timerCounter = 0;
+    short timerCounter2 = 0;;
+    short timerAika1 = 5;
+    short timerAika2 = 10;
 
 
+
+    QTimer *olioQtimer;
+    QTimer *olioTyyppiQtimer;
+    QTimer *olioPinQtimer;
+    QTimer *olioToimintosivuQtimer;
+    QTimer *olioNostaRahaaQtimer;
+    QTimer *olioPanoQtimer;
+
+signals:
+
+};
 
 #endif // APUSIVU_H

@@ -49,6 +49,7 @@ private:
 
     QString kayttis;
     MuuSummaNosto *olioMuuSummaNosto;
+    apusivu *olioApuSivu;
 
 
 };

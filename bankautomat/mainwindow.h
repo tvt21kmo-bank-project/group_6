@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QThread>
 
+//#include "apusivu.h"
 #include "paasivu.h"
 #include "tyyppi.h"
 
@@ -29,5 +30,6 @@ private:
     Ui::MainWindow *ui;
     paaSivu *olioPaaSivu;
     //Toimintosivu *olioToimintoSivu;
+     apusivu *olioApusivu;
 };
 #endif // MAINWINDOW_H

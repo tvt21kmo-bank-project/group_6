@@ -7,16 +7,17 @@ NostaRahaa::NostaRahaa(QString test2, QWidget *parent) :
 {
     ui->setupUi(this);
     kayttis=test2;
+    olioApuSivu = new apusivu;
 
-    connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
+    connect(olioApuSivu-> olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
 
 }
 
 NostaRahaa::~NostaRahaa()
 {
     delete ui;
-    delete olioNostaRahaaQtimer;
-    olioNostaRahaaQtimer = nullptr;
+    delete olioApuSivu-> olioNostaRahaaQtimer;
+    olioApuSivu-> olioNostaRahaaQtimer = nullptr;
 }
 
 void NostaRahaa::on_pushButton_20_clicked()
@@ -51,24 +52,24 @@ void NostaRahaa::naytaSaldoSlot2(QNetworkReply *reply3)
 
 void NostaRahaa::nostaRahaaTimerSlot()
 {
-    timerCounter++;
-    qDebug()<<"nosta rahaa timer "<<timerCounter;
+    olioApuSivu-> timerCounter++;
+    qDebug()<<"nosta rahaa timer "<<olioApuSivu-> timerCounter;
 
-    if (timerCounter==timerAika2)
+    if (olioApuSivu-> timerCounter==olioApuSivu-> timerAika2)
     {
-        olioNostaRahaaQtimer->stop();
+        olioApuSivu-> olioNostaRahaaQtimer->stop();
         qDebug()<<"Timer stop";
-        timerCounter = 0;
+        olioApuSivu-> timerCounter = 0;
         this->close();
-        olioToimintosivuQtimer->start(1000);
+        olioApuSivu-> olioToimintosivuQtimer->start(1000);
     }
 }
 
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
-    olioNostaRahaaQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    olioApuSivu-> olioNostaRahaaQtimer->stop();
+    olioApuSivu-> timerCounter = 0;
+    olioApuSivu-> olioToimintosivuQtimer->start(1000);
     this->close();
 }
 
