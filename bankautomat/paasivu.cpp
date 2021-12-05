@@ -5,14 +5,21 @@ paaSivu::paaSivu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::paaSivu)
 {
+
+     olioQtimer = new QTimer;
+     connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+
+
     ui->setupUi(this);
    // olioQtimer = new QTimer;
    // timerCounter = 0;
 
-    connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
-    connect(olioPinQtimer,SIGNAL(timeout()),this,SLOT(myPinTimerSlot()));
+   // connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+    //connect(olioPinQtimer,SIGNAL(timeout()),this,SLOT(myPinTimerSlot()));
 
     oliotyyppi = new Tyyppi;
+    //olioTiliTapahtumat = new Tilitapahtumat(asdf);
+
 }
 
 paaSivu::~paaSivu()
@@ -63,6 +70,7 @@ void paaSivu::on_takaisinNappi_clicked()
 {
     this->close();                                      // suljetaan pääsivu
     qDebug()<<"takaisin painettu";
+
 }
 
 void paaSivu::myTimerSlot()

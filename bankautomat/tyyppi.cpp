@@ -8,7 +8,7 @@ Tyyppi::Tyyppi(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
+    //connect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
 }
 
 Tyyppi::~Tyyppi()
@@ -42,25 +42,28 @@ void Tyyppi::on_pushButtonDebit_clicked()
 void Tyyppi::on_pushButtonKirjauduUlos_clicked()
 {
     this->close();
+    //olioQtimer->~QTimer();
+    //olioTyyppiQtimer->~QTimer();
+
 }
 
 void Tyyppi::MyTimerTyyppiSlot()
 {
-    timerCounter++;
+/*    timerCounter++;
     qDebug()<<"TyyppiSivuTimer "<<timerCounter;
 
     if (timerCounter==timerAika2)
     {
-        olioTyyppiQtimer->stop();
+        //olioTyyppiQtimer->stop();
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
-    }
+    }*/
 }
 
 void Tyyppi::setKayttajaTunnus(const QString &newKayttajaTunnus)
 {
     kayttajaTunnus = newKayttajaTunnus;
-    olioTyyppiQtimer->start(1000);
+    //olioTyyppiQtimer->start(1000);
 }
 

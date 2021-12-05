@@ -23,7 +23,7 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     this, SLOT(naytaAsiakasSlot(QNetworkReply*)));
     reply2 = naytaAsiakasManager->get(request);
 
-    connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
+    //connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
 
 
 }
@@ -72,18 +72,23 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 /*void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);   
+    ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);
 }*/
 
 void Toimintosivu::on_pushButtonNosta_clicked()
 {
-    olioToimintosivuQtimer->stop();
-    olioNostaRahaaQtimer->stop();
-    timerCounter = 0;
-    olioNostaRahaaQtimer->start(1000);
+
+   // QTimer *olioNostaRahaaQtimer = new QTimer;
 
     olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioNostarahaa->show();
+
+   // olioToimintosivuQtimer->stop();
+   //// olioNostaRahaaQtimer->stop();
+   // timerCounter = 0;
+    //olioNostaRahaaQtimer->start(1000);
+
+
 }
 
 void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
@@ -161,14 +166,15 @@ void Toimintosivu::naytaSaldoTilitapahtumat()
 void Toimintosivu::on_pushButtonPane_clicked()
 {
     olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
-    olioPano->show();  
-    olioToimintosivuQtimer->stop();
-    timerCounter = 0;
-    olioPanoQtimer->start(1000);
+    olioPano->show();
+    //olioToimintosivuQtimer->stop();
+    //timerCounter = 0;
+    //olioPanoQtimer->start(1000);
+    //olioNostarahaa->close();
 }
 
 void Toimintosivu::toimintosivuTimerSlot()
-{
+{/*
     timerCounter++;
     qDebug()<<"toimintosivu timer "<<timerCounter;
 
@@ -178,6 +184,6 @@ void Toimintosivu::toimintosivuTimerSlot()
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
-    }
+    }*/
 }
 

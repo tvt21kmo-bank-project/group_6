@@ -15,8 +15,9 @@ QT_END_NAMESPACE
 */
 
 
-extern short timerCounter;
-extern short timerCounter2;
+
+extern int timerCounter;
+extern int timerCounter2;
 extern short timerAika1;
 extern short timerAika2;
 

@@ -30,7 +30,7 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
 
 
     urli=test2;
-    ui->setupUi(this);  
+    ui->setupUi(this);
     QString site_url= QString("http://localhost:3000/tapahtumat/saldotapahtuma/%1").arg(urli);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -69,7 +69,7 @@ void Tilitapahtumat::Naytatilitapahtumat()
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply3 = naytaTilitapahtumatManager->post(request, QJsonDocument(json).toJson());
 
-    timerCounter=0;
+   // timerCounter=0;
 }
 
 void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
@@ -123,8 +123,8 @@ void Tilitapahtumat::on_pushButton_Palaa_clicked()
     {
        /*olioNostaRahaaQtimer->stop();  // tahan oma timer
         */
-        timerCounter = 0;
-        olioToimintosivuQtimer->start(1000);
+     //   timerCounter = 0;
+      //  olioToimintosivuQtimer->start(1000);
         this->close();
     }
 

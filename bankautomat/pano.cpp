@@ -10,7 +10,7 @@ Pano::Pano(QString test2, QWidget *parent) :
     qDebug()<<"KT2"+kayttajatunnus2;
     qDebug()<<"KT2"+kayttis;
 
-    connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
+    //connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
 
 }
 
@@ -48,7 +48,7 @@ void Pano::on_pushButton_pane20_clicked()
 
 
     ui->label_pane->setText("Pantu parilla kympillä");
-    timerCounter=0;
+  //  timerCounter=0;
 }
 
 void Pano::on_pushButtonKuuskymppia_clicked()
@@ -73,7 +73,7 @@ void Pano::on_pushButtonKuuskymppia_clicked()
 
 
     ui->label_pane->setText("Pantu kuudella kympillä");
-    timerCounter=0;
+   // timerCounter=0;
 
 }
 
@@ -99,7 +99,7 @@ void Pano::on_pushButtonSatane_clicked()
 
 
     ui->label_pane->setText("Pantu satasella");
-    timerCounter=0;
+   // timerCounter=0;
 }
 
 void Pano::on_pushButtonNelkyt_clicked()
@@ -124,7 +124,7 @@ void Pano::on_pushButtonNelkyt_clicked()
 
 
     ui->label_pane->setText("Pantu Neljalla kympilla");
-    timerCounter=0;
+ //  timerCounter=0;
 }
 
 void Pano::on_pushButtonKaksSataa_clicked()
@@ -149,12 +149,12 @@ void Pano::on_pushButtonKaksSataa_clicked()
 
 
     ui->label_pane->setText("Pantu Kahdella sadalla");
-    timerCounter=0;
+  //  timerCounter=0;
 }
 
 
 void Pano::PaneTimerSlot()
-{
+{/*
     timerCounter++;
     qDebug()<<"Pano timer "<<timerCounter;
 
@@ -166,15 +166,15 @@ void Pano::PaneTimerSlot()
         this->close();
         olioToimintosivuQtimer->start(1000);
     }
-
+*/
 }
 
 
 void Pano::on_pushButton_Palaa_clicked()
 {
-    olioPanoQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+   // olioPanoQtimer->stop();
+   // timerCounter = 0;
+   // olioToimintosivuQtimer->start(1000);
     this->close();
 
 }
