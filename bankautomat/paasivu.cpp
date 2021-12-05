@@ -8,6 +8,7 @@ paaSivu::paaSivu(QWidget *parent) :
 
      olioQtimer = new QTimer;
      connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+     connect(this,SIGNAL(aikaloppu()),this,SLOT(suljekaikki()));
 
 
     ui->setupUi(this);
@@ -30,6 +31,14 @@ paaSivu::~paaSivu()
     delete oliotyyppi;
     oliotyyppi = nullptr;
 
+}
+
+void paaSivu::resettimer()
+{
+    olioQtimer->stop();
+    qDebug()<<"resettimer";
+    timerCounter = 0;
+    olioQtimer->start(1000);
 }
 
 void paaSivu::on_kirjauduNappi_clicked()
@@ -76,20 +85,21 @@ void paaSivu::on_takaisinNappi_clicked()
 void paaSivu::myTimerSlot()
 {
     timerCounter++;
-    qDebug()<<"paasivu timer "<<timerCounter;
+    qDebug()<<"kaikkien timer "<<timerCounter;
 
     if (timerCounter==timerAika2)
     {
         olioQtimer->stop();
         qDebug()<<"Timer stop";
-        timerCounter = 0;
-        ui->labelHylatty->setText("");
-        this->close();
+        resettimer();//timerCounter = 0;
+        emit aikaloppu();
+        //ui->labelHylatty->setText("");
+        //this->close();
     }
 }
 
 void paaSivu::myPinTimerSlot()
-{
+{/*
     timerCounter++;
     qDebug()<<"vaara pin timer "<<timerCounter;
 
@@ -99,7 +109,14 @@ void paaSivu::myPinTimerSlot()
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
-    }
+    }*/
+}
+
+void paaSivu::suljekaikki()
+{
+    this->close();
+    oliotyyppi->close();
+    olioQtimer->stop();
 }
 
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
@@ -112,8 +129,9 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             oliotyyppi->show();
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
-            olioQtimer->stop();
+            //olioQtimer->stop();
             timerCounter = 0;
+            olioQtimer->start(1000);
             this->close();
         }
         else {

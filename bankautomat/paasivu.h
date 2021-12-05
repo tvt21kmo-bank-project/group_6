@@ -25,6 +25,15 @@ public:
     explicit paaSivu(QWidget *parent = nullptr);
     ~paaSivu();
 
+    int  timerCounter = 0;
+    int timerAika1 = 5;
+    int timerAika2 = 10;
+    QTimer *olioQtimer;
+
+    int sivuauki = 1;
+    void resettimer();
+
+
 private slots:
     void on_kirjauduNappi_clicked();
     void on_takaisinNappi_clicked();
@@ -34,6 +43,7 @@ private slots:
 public slots:
     void myTimerSlot();
     void myPinTimerSlot();
+    void suljekaikki();
 
 
 private:
@@ -50,7 +60,7 @@ private:
 
 
 signals:
-
+    void aikaloppu();
 };
 
 #endif // PAASIVU_H

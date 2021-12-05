@@ -33,9 +33,10 @@ void Tyyppi::on_pushButtonDebit_clicked()
     //olioToimintoSivu->setKT(kayttajaTunnus);
     olioToimintoSivu->show();
     this->close();
-    olioTyyppiQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+
+    //olioTyyppiQtimer->stop();
+    //timerCounter = 0;
+    //olioToimintosivuQtimer->start(1000);
 }
 
 

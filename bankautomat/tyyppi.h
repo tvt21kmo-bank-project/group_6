@@ -33,6 +33,7 @@ private:
     Toimintosivu *olioToimintoSivu;
     QString kayttajaTunnus;
 
+
 };
 
 #endif // TYYPPI_H
