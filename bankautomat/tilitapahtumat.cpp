@@ -146,13 +146,9 @@ void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
 
      Naytatilitapahtumat();
     }
-
-
-
-
-
-
-
-
 }
+
+
+
+
 
