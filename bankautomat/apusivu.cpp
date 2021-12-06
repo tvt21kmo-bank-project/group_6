@@ -7,8 +7,9 @@ QTimer *olioPinQtimer = new QTimer;
 QTimer *olioToimintosivuQtimer = new QTimer;
 QTimer *olioNostaRahaaQtimer = new QTimer;
 QTimer *olioPanoQtimer = new QTimer;
+QTimer *olioTilitapahtumatQtimer = new QTimer;
 
 short timerCounter = 0;
 short timerCounter2 = 0;
 short timerAika1 = 5;
-short timerAika2 = 50;
+short timerAika2 = 10;

@@ -1,6 +1,7 @@
 #include "tilitapahtumat.h"
 #include "ui_tilitapahtumat.h"
 
+
 Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Tilitapahtumat)
@@ -8,6 +9,8 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     ui->setupUi(this);
     kayttis=test2;
     Naytatilitapahtumat();
+
+    connect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
 
     /*
     QJsonObject json;
@@ -145,6 +148,21 @@ void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
         offsetmuuttuja= offsetmuuttuja+10;
 
      Naytatilitapahtumat();
+    }
+}
+
+void Tilitapahtumat::TilitapahtumatTimerSlot()
+{
+    timerCounter++;
+    qDebug()<<"Tilitapahtumat timer "<<timerCounter;
+
+    if (timerCounter==timerAika2)
+    {
+        olioTilitapahtumatQtimer->stop();
+        qDebug()<<"Timer stop";
+        timerCounter = 0;
+        this->close();
+        olioToimintosivuQtimer->start(1000);
     }
 }
 

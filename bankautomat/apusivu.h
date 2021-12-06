@@ -27,6 +27,7 @@ extern QTimer *olioPinQtimer;
 extern QTimer *olioToimintosivuQtimer;
 extern QTimer *olioNostaRahaaQtimer;
 extern QTimer *olioPanoQtimer;
+extern QTimer *olioTilitapahtumatQtimer;
 
 
 

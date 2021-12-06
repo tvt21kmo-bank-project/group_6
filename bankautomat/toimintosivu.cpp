@@ -98,7 +98,9 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 
     olioTilitapahtumat = new Tilitapahtumat(kayttajatunnus2);
     olioTilitapahtumat->show();
-
+    olioToimintosivuQtimer->stop();
+    timerCounter = 0;
+    olioTilitapahtumatQtimer->start(1000);
 
 
 
@@ -115,7 +117,6 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
     reply = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Tilitapahtumat painettu"; */
 
-    olioToimintosivuQtimer->stop();
     timerCounter = 0;
     //olioToimintosivuQtimer->start(1000);
 

@@ -39,6 +39,7 @@ private slots:
     void on_pushButton_KirjauduUlos_clicked();
     void on_pushButton_Palaa_clicked();
     void on_pushButton_NaytaLisaa_clicked();
+    void TilitapahtumatTimerSlot();
 };
 
 #endif // TILITAPAHTUMAT_H
