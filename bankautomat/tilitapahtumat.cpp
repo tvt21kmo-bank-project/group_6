@@ -126,6 +126,7 @@ void Tilitapahtumat::on_pushButton_Palaa_clicked()
     {
        /*olioNostaRahaaQtimer->stop();  // tahan oma timer
         */
+        olioTilitapahtumatQtimer->stop();
         timerCounter = 0;
         olioToimintosivuQtimer->start(1000);
         this->close();

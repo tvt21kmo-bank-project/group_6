@@ -63,6 +63,9 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
     olioSaldoSivu->show();
     olioSaldoSivu->naytaSaldo();
     olioSaldoSivu->naytaTilitapahtumat();
+    olioToimintosivuQtimer->stop();
+    timerCounter = 0;
+    olioSaldosivuQtimer->start(1000);
 
 
 

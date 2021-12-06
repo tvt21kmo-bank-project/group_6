@@ -8,6 +8,8 @@ Saldosivu::Saldosivu(QString test2, QWidget *parent) :
     urli = test2;
     ui->setupUi(this);
 
+    connect(olioSaldosivuQtimer,SIGNAL(timeout()),this,SLOT(SaldosivuTimerSlot()));
+
    // on_pushButtonTilitapahtumat_clicked();
 
     //naytaTilitapahtumat();
@@ -37,6 +39,8 @@ void Saldosivu::naytaTilitapahtumat()
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Saldo Tilitapahtumat painettu";
+
+    timerCounter=0;
 }
 
 void Saldosivu::naytaSaldo()
@@ -83,7 +87,25 @@ void Saldosivu::naytaSaldotapahtumatSlot(QNetworkReply *reply)
 
 void Saldosivu::on_pushButton_takaisin_clicked()
 {
+    olioSaldosivuQtimer->stop();
+    timerCounter = 0;
+    olioToimintosivuQtimer->start(1000);
     this->close();
 
+}
+
+void Saldosivu::SaldosivuTimerSlot()
+{
+    timerCounter++;
+    qDebug()<<"Saldosivu timer "<<timerCounter;
+
+    if (timerCounter==timerAika2)
+    {
+        olioSaldosivuQtimer->stop();
+        qDebug()<<"Timer stop";
+        timerCounter = 0;
+        this->close();
+        olioToimintosivuQtimer->start(1000);
+    }
 }
 

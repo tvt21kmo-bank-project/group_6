@@ -28,7 +28,7 @@ extern QTimer *olioToimintosivuQtimer;
 extern QTimer *olioNostaRahaaQtimer;
 extern QTimer *olioPanoQtimer;
 extern QTimer *olioTilitapahtumatQtimer;
-
+extern QTimer *olioSaldosivuQtimer;
 
 
 #endif // APUSIVU_H

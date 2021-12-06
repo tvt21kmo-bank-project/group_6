@@ -37,7 +37,9 @@ private:
 private slots:
     void naytaTilitapahtumatSlot (QNetworkReply *reply3);
     void naytaSaldotapahtumatSlot (QNetworkReply *reply3);
+    void SaldosivuTimerSlot();
     void on_pushButton_takaisin_clicked();
+
 };
 
 #endif // SALDOSIVU_H
