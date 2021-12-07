@@ -1,6 +1,8 @@
 #include "muusumma.h"
 #include "ui_muusumma.h"
 
+//timer sulkeutumiseen, kun push buttonia painettu
+
 MuuSumma::MuuSumma(QString test2, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MuuSumma)
