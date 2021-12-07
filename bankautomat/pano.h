@@ -46,6 +46,10 @@ private slots:
 
     void on_pushButtonKaksSataa_clicked();
 
+
+
+    void on_pushButtonKahekskyt_clicked();
+
 private:
     Ui::Pano *ui;
 

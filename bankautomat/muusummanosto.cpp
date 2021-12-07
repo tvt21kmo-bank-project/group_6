@@ -1,6 +1,8 @@
 #include "muusummanosto.h"
 #include "ui_muusummanosto.h"
 
+// timer tanne kun painettu nostettava summa, niin palais kayttoliittymaaan
+
 MuuSummaNosto::MuuSummaNosto(QString test2, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MuuSummaNosto)
