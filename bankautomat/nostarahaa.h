@@ -39,6 +39,16 @@ private slots:
 
     void on_pushButton_Muu_Summa_clicked();
 
+    void on_pushButton_200_clicked();
+
+    void on_pushButton_40_clicked();
+
+    void on_pushButton_60_clicked();
+
+    void on_pushButton_80_clicked();
+
+    void on_pushButton_100_clicked();
+
 private:
     Ui::NostaRahaa *ui;
     //QNetworkAccessManager *debitManager;

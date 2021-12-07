@@ -28,7 +28,7 @@ void Pano::setKayttajatunnus2(const QString &newKayttajatunnus2)
 
 void Pano::on_pushButton_pane20_clicked()
 {
-    qDebug()<<"20ellä pannaa";
+    qDebug()<<"20:llä pannaa";
     QJsonObject json; //luodaan JSON objekti ja lisätään data
   //  kayttis = olioToimintosivu->urli;
 
@@ -42,8 +42,8 @@ void Pano::on_pushButton_pane20_clicked()
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
-    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    //connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
+    //this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
@@ -53,7 +53,7 @@ void Pano::on_pushButton_pane20_clicked()
 
 void Pano::on_pushButtonKuuskymppia_clicked()
 {
-    qDebug()<<"60ellä pannaa";
+    qDebug()<<"60:llä pannaa";
     QJsonObject json; //luodaan JSON objekti ja lisätään data
   //  kayttis = olioToimintosivu->urli;
 

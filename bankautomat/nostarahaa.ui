@@ -94,8 +94,8 @@
   <widget class="QPushButton" name="pushButton_Muu_Summa">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>200</y>
+     <x>450</x>
+     <y>190</y>
      <width>80</width>
      <height>21</height>
     </rect>
@@ -104,11 +104,11 @@
     <string>PushButton</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_8">
+  <widget class="QPushButton" name="pushButton_200">
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>160</y>
+     <y>150</y>
      <width>80</width>
      <height>21</height>
     </rect>
@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;60				80&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100			          &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;100			                           200&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Palaa Takaisin 			             Muu Summa&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

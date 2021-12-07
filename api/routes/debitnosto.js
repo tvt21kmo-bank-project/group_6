@@ -16,8 +16,13 @@ router.post('/nostarahaa', function(request, response){
             else{
             console.log("succes1");
             console.log(dbResult.affectedRows);
-            //response.json(dbResult.affectedRows);
-            response.json("Nosto onnistu! ");
+
+            //response.json(dbResult.affectedRows);           
+
+            response.json("Nosto onnistu!");
+          //response.json(dbResult.affectedRows);
+
+
             }}
     }
     )
