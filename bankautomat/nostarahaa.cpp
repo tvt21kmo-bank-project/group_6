@@ -7,9 +7,6 @@ NostaRahaa::NostaRahaa(QString test2, QWidget *parent) :
 {
     ui->setupUi(this);
     kayttis=test2;
-
-    connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
-
 }
 
 NostaRahaa::~NostaRahaa()
@@ -137,7 +134,12 @@ void NostaRahaa::on_pushButton_100_clicked()
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-   // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 100");
+    // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 100");
+}
+
+void NostaRahaa::nostaTimerConnect()
+{
+    connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
 }
 
 void NostaRahaa::on_pushButton_200_clicked()
@@ -180,6 +182,7 @@ void NostaRahaa::nostaRahaaTimerSlot()
     {
         olioNostaRahaaQtimer->stop();
         qDebug()<<"Timer stop";
+        disconnect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
         timerCounter = 0;
         this->close();
         olioToimintosivuQtimer->start(1000);
@@ -188,6 +191,8 @@ void NostaRahaa::nostaRahaaTimerSlot()
 
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
+    disconnect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
+   // connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
     olioNostaRahaaQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);

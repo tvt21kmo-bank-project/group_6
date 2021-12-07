@@ -28,6 +28,8 @@ public:
     explicit NostaRahaa(QString test2, QWidget *parent = nullptr);
     ~NostaRahaa();
 
+    void nostaTimerConnect();
+
 private slots:
     void on_pushButton_20_clicked();
 

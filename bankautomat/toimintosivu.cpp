@@ -54,6 +54,7 @@ Toimintosivu::~Toimintosivu()
 void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
 {
     this->close();
+    olioToimintosivuQtimer->stop();
     qDebug()<<"kirjaudu ulos painettu";
 }
 
@@ -80,6 +81,8 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
 
 void Toimintosivu::on_pushButtonNosta_clicked()
 {
+   // disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
+   // connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
     olioToimintosivuQtimer->stop();
     olioNostaRahaaQtimer->stop();
     timerCounter = 0;
@@ -87,6 +90,7 @@ void Toimintosivu::on_pushButtonNosta_clicked()
 
     olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioNostarahaa->show();
+    olioNostarahaa->nostaTimerConnect();
 }
 
 void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
@@ -176,6 +180,7 @@ void Toimintosivu::on_pushButtonPane_clicked()
     olioToimintosivuQtimer->stop();
     timerCounter = 0;
     olioPanoQtimer->start(1000);
+    olioPano->panoTimerConnect();
 }
 
 void Toimintosivu::toimintosivuTimerSlot()

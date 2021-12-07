@@ -10,7 +10,6 @@ Pano::Pano(QString test2, QWidget *parent) :
     qDebug()<<"KT2"+kayttajatunnus2;
     qDebug()<<"KT2"+kayttis;
 
-    connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
 
 }
 
@@ -24,6 +23,11 @@ Pano::~Pano()
 void Pano::setKayttajatunnus2(const QString &newKayttajatunnus2)
 {
     kayttajatunnus2 = newKayttajatunnus2;
+}
+
+void Pano::panoTimerConnect()
+{
+    connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
 }
 
 void Pano::on_pushButton_pane20_clicked()
@@ -162,6 +166,7 @@ void Pano::PaneTimerSlot()
     {
         olioPanoQtimer->stop();
         qDebug()<<"Timer stop";
+        disconnect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
         timerCounter = 0;
         this->close();
         olioToimintosivuQtimer->start(1000);
@@ -172,6 +177,7 @@ void Pano::PaneTimerSlot()
 
 void Pano::on_pushButton_Palaa_clicked()
 {
+    disconnect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
     olioPanoQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
