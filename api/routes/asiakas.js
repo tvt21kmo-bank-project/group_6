@@ -24,7 +24,7 @@ router.get('/:id?',
     });
   }
 });
-/*router.post('/', 
+router.post('/', 
 function(request, response) {
   user.add(request.body, function(err, count) {
     if (err) {
@@ -33,7 +33,7 @@ function(request, response) {
       response.json(request.body); 
     }
   });
-});
+});/*
 
 router.delete('/:id', 
 function(request, response) {

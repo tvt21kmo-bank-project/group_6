@@ -16,6 +16,7 @@ short timerAika1 = 5;
 
 
 
-short timerAika2 = 10;
+short timerAika2 = 50;
 short korttiTyyppi = 0;
 
+int Debit_Credit = 1;

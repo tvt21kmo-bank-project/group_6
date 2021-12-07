@@ -4,8 +4,8 @@ const db = require('../database');
 const bank = {
 
     debit: function(postData, callback){
-        return db.query('call nostarahaa(?,?)',
-        [postData.idKortti, postData.summa],
+        return db.query('call nostarahaa(?,?,?)',
+        [postData.idKortti, postData.summa, postData.Tila1],
         callback);
     },/*
     credit: function(postData, callback){
