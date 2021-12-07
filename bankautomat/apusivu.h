@@ -30,5 +30,6 @@ extern QTimer *olioPanoQtimer;
 extern QTimer *olioTilitapahtumatQtimer;
 extern QTimer *olioSaldosivuQtimer;
 
+extern int Debit_Credit;
 
 #endif // APUSIVU_H
