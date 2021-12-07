@@ -20,7 +20,11 @@ Tyyppi::~Tyyppi()
 
 void Tyyppi::on_pushButtonCredit_clicked()
 {
+    olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     qDebug()<<"credit painettu";
+    korttiTyyppi = 1;
+    olioToimintoSivu->tarkistaTyyppi();
+    olioToimintoSivu->show();
     this->close();
 }
 

@@ -24,7 +24,7 @@ router.get('/:id?',
     });
   }
 });
-router.post('/', 
+/*router.post('/', 
 function(request, response) {
   user.add(request.body, function(err, count) {
     if (err) {
@@ -45,9 +45,9 @@ function(request, response) {
     }
   });
 });
+*/
 
-
-router.put('/:id', 
+router.put('/update', 
 function(request, response) {
   user.update(request.params.id, request.body, function(err, dbResult) {
     if (err) {
