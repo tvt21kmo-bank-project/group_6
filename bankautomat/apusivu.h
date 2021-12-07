@@ -19,7 +19,7 @@ extern short timerCounter;
 extern short timerCounter2;
 extern short timerAika1;
 extern short timerAika2;
-
+extern short korttiTyyppi;
 
 extern QTimer *olioQtimer;
 extern QTimer *olioTyyppiQtimer;

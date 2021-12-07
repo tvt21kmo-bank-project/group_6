@@ -94,6 +94,13 @@ void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
     kayttajatunnus2 = newKayttajatunnus2;
 }
 
+void Toimintosivu::tarkistaTyyppi()
+{
+    if (korttiTyyppi == 1){
+    ui->pushButtonPane->setText("Lyhennä luottoa");
+    }
+}
+
 
 
 void Toimintosivu::on_pushButtonTilitapahtumat_clicked()

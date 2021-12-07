@@ -27,6 +27,7 @@ public:
     //void setOlioNostarahaa(NostaRahaa *newOlioNostarahaa);
 
     void setKayttajatunnus2(const QString &newKayttajatunnus2);
+    void tarkistaTyyppi();
 
 private slots:
 

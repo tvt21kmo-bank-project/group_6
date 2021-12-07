@@ -13,4 +13,9 @@ QTimer *olioSaldosivuQtimer = new QTimer;
 short timerCounter = 0;
 short timerCounter2 = 0;
 short timerAika1 = 5;
-short timerAika2 = 10;
+
+
+
+short timerAika2 = 50;
+short korttiTyyppi = 0;
+
