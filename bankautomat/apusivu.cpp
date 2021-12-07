@@ -16,6 +16,6 @@ short timerAika1 = 5;
 
 
 
-short timerAika2 = 50;
+short timerAika2 = 10;
 short korttiTyyppi = 0;
 

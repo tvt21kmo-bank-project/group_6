@@ -105,6 +105,8 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
             olioQtimer->stop();
+            //disconnect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
+            oliotyyppi->timerTyyppiConnect();
             timerCounter = 0;
             this->close();
         }

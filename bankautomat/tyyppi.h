@@ -21,6 +21,8 @@ public:
 
     void setKayttajaTunnus(const QString &newKayttajaTunnus);
 
+    void timerTyyppiConnect();
+
 private slots:
     void on_pushButtonCredit_clicked();
     void on_pushButtonDebit_clicked();

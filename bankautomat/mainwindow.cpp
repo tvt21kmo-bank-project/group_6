@@ -21,7 +21,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_jatka_clicked()
 {
    // this->hide();                         // piilotetaan nykyinen sivu
-    olioPaaSivu->show();                    // avataan pääsivu
+    olioPaaSivu->show();
+
     olioQtimer->start(1000);
 
 

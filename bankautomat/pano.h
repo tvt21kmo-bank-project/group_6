@@ -27,6 +27,8 @@ public:
     ~Pano();
     void setKayttajatunnus2(const QString &newKayttajatunnus2);
 
+    void panoTimerConnect();
+
 private slots:
     void on_pushButton_pane20_clicked();
 
