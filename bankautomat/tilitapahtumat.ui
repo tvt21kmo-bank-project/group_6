@@ -33,13 +33,26 @@
     </rect>
    </property>
    <property name="text">
-    <string>Nayta lisaa</string>
+    <string>Näytä Lisää</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_Palaa">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>140</x>
+     <y>320</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Näytä Edelliset </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_KirjauduUlos">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
      <y>320</y>
      <width>101</width>
      <height>41</height>
@@ -47,19 +60,6 @@
    </property>
    <property name="text">
     <string>Palaa takaisin</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_KirjauduUlos">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>320</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Kirjaudu Ulos</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

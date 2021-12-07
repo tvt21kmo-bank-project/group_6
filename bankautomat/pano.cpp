@@ -170,6 +170,11 @@ void Pano::PaneTimerSlot()
 
 void Pano::on_pushButton_Palaa_clicked()
 {
+    /*olioNostaRahaaQtimer->stop();  // tahan oma timer
+     */
+     timerCounter = 0;
+     olioToimintosivuQtimer->start(1000);
+     this->close();
                                                         //Laura tekee tähän
 }
 

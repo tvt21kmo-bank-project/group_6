@@ -62,13 +62,9 @@ void Tilitapahtumat::on_pushButton_KirjauduUlos_clicked()
 
 
 void Tilitapahtumat::on_pushButton_Palaa_clicked()
-{ // tajan vissiin halutaankin palaa takasin tapahtumissa? nyt se palaa takaisin edelliseen sivuun niinkuin toi kirjaudu uloskin. OOn nappara
+{ // tajan vissiin halutaankin palaa takasin päin tapahtumissa?
     {
-       /*olioNostaRahaaQtimer->stop();  // tahan oma timer
-        */
-        timerCounter = 0;
-        olioToimintosivuQtimer->start(1000);
-        this->close();
+
     }
 
 }

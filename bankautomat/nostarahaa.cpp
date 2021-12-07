@@ -19,28 +19,7 @@ NostaRahaa::~NostaRahaa()
     olioNostaRahaaQtimer = nullptr;
 }
 
-void NostaRahaa::on_pushButton_20_clicked()
-{
-    qDebug()<<"20e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
 
-    json.insert("idKortti",kayttis);
-    json.insert("summa",200);
-    QString site_url="http://localhost:3000/debitnosto/nostarahaa";
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaSaldoManager2 = new QNetworkAccessManager(this);
-    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
-    reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-}
 
 void NostaRahaa::naytaSaldoSlot2(QNetworkReply *reply3)
 {
@@ -66,22 +45,92 @@ void NostaRahaa::nostaRahaaTimerSlot()
 
 
 
-void NostaRahaa::on_pushButton_Palaa_clicked()
+
+
+void NostaRahaa::on_pushButton_20_clicked()
 {
-    olioNostaRahaaQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
-    this->close();
+    qDebug()<<"20e tulossa";
+    QJsonObject json; //luodaan JSON objekti ja lisätään data
+  //  kayttis = olioToimintosivu->urli;
+
+    json.insert("idKortti",kayttis);
+    json.insert("summa",20);
+    QString site_url="http://localhost:3000/debitnosto/nostarahaa";
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    naytaSaldoManager2 = new QNetworkAccessManager(this);
+    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
+
+
 }
 
 
+void NostaRahaa::on_pushButton_40_clicked()
+{
+    qDebug()<<"40e tulossa";
+    QJsonObject json; //luodaan JSON objekti ja lisätään data
+  //  kayttis = olioToimintosivu->urli;
 
-void NostaRahaa::on_pushButton_Muu_Summa_clicked()
+    json.insert("idKortti",kayttis);
+    json.insert("summa",40);
+    QString site_url="http://localhost:3000/debitnosto/nostarahaa";
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    naytaSaldoManager2 = new QNetworkAccessManager(this);
+    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
+
+}
+
+
+void NostaRahaa::on_pushButton_60_clicked()
+{
+
+}
+
+
+void NostaRahaa::on_pushButton_80_clicked()
+{
+
+}
+
+
+void NostaRahaa::on_pushButton_100_clicked()
+{
+
+}
+
+
+void NostaRahaa::on_pushButton_8_clicked() // 200 painike
+{
+
+
+}
+void NostaRahaa::on_pushButton_Muu_Summa_clicked() // Muu summa
 {
 
     olioMuuSummaNosto = new MuuSummaNosto(kayttis);
     olioMuuSummaNosto -> show();
 
 
+}
+
+void NostaRahaa::on_pushButton_Palaa_clicked() // Palaa takaisin
+{
+    olioNostaRahaaQtimer->stop();
+    timerCounter = 0;
+    olioToimintosivuQtimer->start(1000);
+    this->close();
 }
 
