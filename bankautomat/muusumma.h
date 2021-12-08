@@ -11,6 +11,7 @@
 #include <QMainWindow>
 #include <QtNetwork>
 #include "apusivu.h"
+//#include "toimintosivu.h"
 
 namespace Ui {
 class MuuSumma;
@@ -24,8 +25,14 @@ public:
     explicit MuuSumma(QString test2, QWidget *parent = nullptr);
     ~MuuSumma();
 
+    void connectTimerMuusumma();
+    void connectTimerMuuPano();
+
 private slots:
     void on_pushButton_MuuSummaSET_clicked();
+
+    void MuusummaTimerSlot();
+    void MuuPanoTimerSlot();
 
 private:
     Ui::MuuSumma *ui;

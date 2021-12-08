@@ -23,9 +23,6 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     this, SLOT(naytaAsiakasSlot(QNetworkReply*)));
     reply2 = naytaAsiakasManager->get(request);
 
-    connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
-
-
 }
 
 void Toimintosivu::naytaAsiakasSlot(QNetworkReply *reply2)
@@ -56,6 +53,8 @@ void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
     this->close();
     olioToimintosivuQtimer->stop();
     qDebug()<<"kirjaudu ulos painettu";
+    disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
+    timerCounter = 0;
 }
 
 void Toimintosivu::on_pushButtonSaldo_clicked()
@@ -106,6 +105,13 @@ void Toimintosivu::tarkistaTyyppi()
     }
 }
 
+void Toimintosivu::connectTimerToimintosivu()
+{
+    connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
+    timerCounter=0;
+    olioToimintosivuQtimer->start(1000);
+}
+
 
 
 void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
@@ -137,6 +143,7 @@ void Toimintosivu::toimintosivuTimerSlot()
     {
         olioToimintosivuQtimer->stop();
         qDebug()<<"Timer stop";
+        disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
         timerCounter = 0;
         this->close();
     }
