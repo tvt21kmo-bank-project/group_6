@@ -26,6 +26,7 @@ public:
 
 private slots:
     void on_pushButton_MuuSummaSET_clicked();
+    void naytaSaldoSlot4(QNetworkReply *reply);
 
 private:
     Ui::MuuSumma *ui;
