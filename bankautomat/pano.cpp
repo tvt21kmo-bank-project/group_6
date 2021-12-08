@@ -224,28 +224,13 @@ void Pano::on_pushButton_Palaa_clicked()
 void Pano::on_pushButton_MuuPano_clicked()
 {
     qDebug()<<kayttajatunnus2;
-    //QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
 
-   /* json.insert("idKortti",kayttis);
-    json.insert("summa",1);
-    QString site_url="http://localhost:3000/pano/panerahaa";
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaSaldoManager2 = new QNetworkAccessManager(this);
-    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
-    reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-*/
-
+    disconnect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
     olioMuuSumma = new MuuSumma(kayttis);
     olioMuuSumma->show();
-
-
+    olioMuuSumma->connectTimerMuusumma();
+    olioPanoQtimer->stop();
+    this->close();
 }
 
 

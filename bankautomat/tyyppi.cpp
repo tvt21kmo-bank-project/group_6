@@ -28,7 +28,8 @@ void Tyyppi::on_pushButtonCredit_clicked()
     this->close();
     olioTyyppiQtimer->stop();
     timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    olioToimintoSivu->connectTimerToimintosivu();
+    disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
 
 }
 
@@ -44,13 +45,14 @@ void Tyyppi::on_pushButtonDebit_clicked()
     this->close();
     Debit_Credit = 1;
     olioTyyppiQtimer->stop();
-    timerCounter = 0;
-    olioToimintosivuQtimer->start(1000);
+    olioToimintoSivu->connectTimerToimintosivu();
+    disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
 }
 
 
 void Tyyppi::on_pushButtonKirjauduUlos_clicked()
 {
+    timerCounter=0;
     disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
     this->close();
 }
