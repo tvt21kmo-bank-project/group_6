@@ -10,7 +10,7 @@ const bank = {
     },/*
     credit: function(postData, callback){
         return db.query('call credit_transfer(?,?,?)',
-        [postData.id1, postData.id2, postData.summa],
+        [postData.idKortti, postData.id2, postData.summa],
         callback);
     }*/
 };

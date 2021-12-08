@@ -27,7 +27,7 @@ Saldosivu::~Saldosivu()
 
 void Saldosivu::naytaTilitapahtumat()
 {
-    QString site_url= QString("http://localhost:3000/tapahtumat/saldoTapahtuma/%1").arg(urli);
+    QString site_url= QString("http://localhost:3000/tapahtumat/saldoTapahtuma/%1/%2").arg(urli).arg(Debit_Credit);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -45,7 +45,7 @@ void Saldosivu::naytaTilitapahtumat()
 
 void Saldosivu::naytaSaldo()
 {
-    QString site_url= QString("http://localhost:3000/pankki/%1").arg(urli);
+    QString site_url= QString("http://localhost:3000/pankki/%1/%2").arg(urli).arg(Debit_Credit);
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

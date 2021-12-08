@@ -24,7 +24,7 @@ void NostaRahaa::on_pushButton_20_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",20);
-    json.insert("Tila1", Debit_Credit);
+    json.insert("Tila1", Debit_Credit);                 //taman voi kopioida muihin mnostobuttoneihin
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));

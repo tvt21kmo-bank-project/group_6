@@ -40,6 +40,7 @@ void Pano::on_pushButton_pane20_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",20);
+    json.insert("Tila1", Debit_Credit);                         //kopioda voi
     QString site_url="http://localhost:3000/pano/panerahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
