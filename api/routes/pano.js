@@ -9,7 +9,7 @@ router.post('/panerahaa', function(request, response){
         }
         
         else{
-            if(dbResult.affectedRows < 1 ){
+            if(dbResult.affectedRows < 1){
             console.log("et saa");
             response.json("Luottoraha ylitetty");
             }
@@ -27,6 +27,26 @@ router.post('/panerahaa', function(request, response){
     })
 }
 );
+router.post('/saato', function(request, response){
+    bank.debit(request.body, function(err, dbResult){
+        if(dbResult.affectedRows < 1 ){
+            console.log("et saa");
+            response.json("Luottoraja ylitetty");
+            }
+            else{
+            console.log("succes1");
+            console.log(dbResult);
+
+            //response.json(dbResult.affectedRows);           
+
+            response.json("Pantu onnistuneesti");
+          //response.json(dbResult.affectedRows);
+
+
+            }
+    })
+});
+
 /*
 router.post('/credit_transfer', function(request, response){
     bank.credit(request.body, function(err, dbResult){

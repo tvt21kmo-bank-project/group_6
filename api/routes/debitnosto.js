@@ -29,16 +29,24 @@ router.post('/nostarahaa', function(request, response){
 }
 );
 /*
-router.post('/credit_transfer', function(request, response){
-    bank.credit(request.body, function(err, dbResult){
-        if(err){
-            response.json(err);
-        }
-        else{
-            response.json(dbResult.affectedRows);
-        }
+router.post('/saato', function(request, response){
+    bank.debit(request.body, function(err, dbResult){
+        if(dbResult.affectedRows < 1 ){
+            console.log("et saa");
+            response.json("if saato");
+            }
+            else{
+            console.log("succes1");
+            console.log(dbResult.affectedRows);
+
+            //response.json(dbResult.affectedRows);           
+
+            response.json("else saato");
+          //response.json(dbResult.affectedRows);
+
+
+            }
     })
 }
-);
-*/
+);*/
 module.exports = router;

@@ -52,6 +52,8 @@ private slots:
 
     void on_pushButtonKahekskyt_clicked();
 
+    void naytaPanoVastausSlot (QNetworkReply *reply3);
+
 private:
     Ui::Pano *ui;
 
