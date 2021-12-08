@@ -50,6 +50,7 @@ void NostaRahaa::on_pushButton_40_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",40);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -74,6 +75,7 @@ void NostaRahaa::on_pushButton_60_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",60);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -98,6 +100,7 @@ void NostaRahaa::on_pushButton_80_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",80);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -122,6 +125,7 @@ void NostaRahaa::on_pushButton_100_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",100);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
@@ -153,6 +157,7 @@ void NostaRahaa::on_pushButton_200_clicked()
 
     json.insert("idKortti",kayttis);
     json.insert("summa",200);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/debitnosto/nostarahaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));

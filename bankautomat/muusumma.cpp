@@ -27,6 +27,7 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
         qDebug()<<kayttis;
         json.insert("idKortti",kayttis);
         json.insert("summa",ui->lineEdit_MuuSumma->text());
+        json.insert("Tila1", Debit_Credit);
         QString site_url="http://localhost:3000/pano/panerahaa";
         QString credentials="newAdmin:newPass";
         QNetworkRequest request((site_url));
