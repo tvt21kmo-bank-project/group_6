@@ -25,6 +25,7 @@ void MuuSummaNosto::on_pushButton_MuuSummaNosto_clicked()
         qDebug()<<kayttis;
         json.insert("idKortti",kayttis);
         json.insert("summa",ui->lineEdit_MuuNosto->text());
+        json.insert("Tila1", Debit_Credit);
         QString site_url="http://localhost:3000/debitnosto/nostarahaa";
         QString credentials="newAdmin:newPass";
         QNetworkRequest request((site_url));

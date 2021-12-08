@@ -9,44 +9,6 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     ui->setupUi(this);
     kayttis=test2;
     Naytatilitapahtumat();
-
-
-    /*
-    QJsonObject json;
-    json.insert("idKortti",kayttis);
-    json.insert("offset",offsetmuuttuja);
-    QString site_url="http://localhost:3000/tapahtumat/TapahtumaLisaa";
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaTilitapahtumatManager = new QNetworkAccessManager(this);
-    connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
-    reply3 = naytaTilitapahtumatManager->post(request, QJsonDocument(json).toJson());
-
-    timerCounter=0;
-
-
-
-    urli=test2;
-    ui->setupUi(this);  
-    QString site_url= QString("http://localhost:3000/tapahtumat/saldotapahtuma/%1").arg(urli);
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaTilitapahtumatManager = new QNetworkAccessManager(this);
-    connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
-    reply3 = naytaTilitapahtumatManager->get(request);
-    qDebug()<<"Tilitapahtumat painettu";*/
-
-    //qDebug()<< "mitävittua";
 }
 
 Tilitapahtumat::~Tilitapahtumat()

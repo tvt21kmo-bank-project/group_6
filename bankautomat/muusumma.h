@@ -10,6 +10,7 @@
 
 #include <QMainWindow>
 #include <QtNetwork>
+#include "apusivu.h"
 
 namespace Ui {
 class MuuSumma;
