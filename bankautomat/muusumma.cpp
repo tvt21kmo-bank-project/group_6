@@ -18,12 +18,26 @@ MuuSumma::~MuuSumma()
     delete ui;
 }
 
+void MuuSumma::connectTimerMuusumma()
+{
+    connect(olioMuusummaQtimer,SIGNAL(timeout()),this,SLOT(MuusummaTimerSlot()));
+    timerCounter=0;
+    olioMuusummaQtimer->start(1000);
+}
+
+void MuuSumma::connectTimerMuuPano()
+{
+    connect(olioMuuPanoQtimer,SIGNAL(timeout()),this,SLOT(MuuPanoTimerSlot()));
+    timerCounter=0;
+    olioMuuPanoQtimer->start(1000);
+    olioMuusummaQtimer->stop();
+    disconnect(olioMuusummaQtimer,SIGNAL(timeout()),this,SLOT(MuusummaTimerSlot()));
+}
+
 void MuuSumma::on_pushButton_MuuSummaSET_clicked()
 {
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-       // MuuSumma1 = ui->lineEdit_MuuSumma->text();
+    QJsonObject json;
 
-       // json.insert("summa",ui->LineEdit_pinKoodi->text());
         qDebug()<<kayttis;
         json.insert("idKortti",kayttis);
         json.insert("summa",ui->lineEdit_MuuSumma->text());
@@ -36,12 +50,30 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
         QString headerData = "Basic " + data;
         request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
         loginManager = new QNetworkAccessManager(this);
+
         connect(loginManager, SIGNAL(finished (QNetworkReply*)),
         this, SLOT(naytaSaldoSlot4(QNetworkReply*)));
         reply = loginManager->post(request, QJsonDocument(json).toJson());
+      
+        connectTimerMuuPano();
+}
 
+void MuuSumma::MuusummaTimerSlot()
+{
+    timerCounter++;
+    qDebug()<<"Muusumma timer "<<timerCounter;
 
+    if (timerCounter==timerAika2)
+    {
 
+        olioMuusummaQtimer->stop();
+        qDebug()<<"Timer stop";
+        disconnect(olioMuusummaQtimer,SIGNAL(timeout()),this,SLOT(MuusummaTimerSlot()));
+        timerCounter = 0;
+        this->close();
+        olioToimintosivuQtimer->start(1000);
+    }
+}
 
 
 }
@@ -50,5 +82,22 @@ void MuuSumma::naytaSaldoSlot4(QNetworkReply *reply)
 {
      QByteArray response_data=reply->readAll();
      ui->label_Panosumma->setText(response_data);
+}
+void MuuSumma::MuuPanoTimerSlot()
+{
+    timerCounter++;
+    qDebug()<<"MuuPano timer "<<timerCounter;
+
+    if (timerCounter==timerAika3)
+    {
+
+        olioMuuPanoQtimer->stop();
+        qDebug()<<"Timer stop";
+        disconnect(olioMuuPanoQtimer,SIGNAL(timeout()),this,SLOT(MuuPanoTimerSlot()));
+        timerCounter = 0;
+        this->close();
+        olioToimintosivuQtimer->start(1000);
+    }
+
 }
 

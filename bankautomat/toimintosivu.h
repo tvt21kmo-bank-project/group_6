@@ -28,6 +28,7 @@ public:
 
     void setKayttajatunnus2(const QString &newKayttajatunnus2);
     void tarkistaTyyppi();
+    void connectTimerToimintosivu();
 
 private slots:
 

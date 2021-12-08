@@ -61,6 +61,8 @@ void paaSivu::on_kirjauduNappi_clicked()
 
 void paaSivu::on_takaisinNappi_clicked()
 {
+    olioQtimer->stop();
+    timerCounter=0;
     this->close();                                      // suljetaan pääsivu
     qDebug()<<"takaisin painettu";
 }
