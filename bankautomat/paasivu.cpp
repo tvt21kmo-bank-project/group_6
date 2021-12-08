@@ -32,17 +32,9 @@ void paaSivu::on_kirjauduNappi_clicked()
 
        QJsonObject json; //luodaan JSON objekti ja lisätään data
            kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
-           qDebug()<< kayttajaTunnus;
+           //qDebug()<< kayttajaTunnus;
            json.insert("username",ui->LineEdit_kayttajaTunnus->text());
            json.insert("password",ui->LineEdit_pinKoodi->text());
-
-         //  QJsonObject json2;
-         //  json2.insert("username",ui->LineEdit_kayttajaTunnus->text());
-          // QJsonDocument doc(json2);                                      //nailla saa tulostettua kayttajatunnuksen qdebugilla
-           //QByteArray bytes = doc.toJson();
-           //qDebug() << json2;
-
-
            QString site_url="http://localhost:3000/login";
            QString credentials="newAdmin:newPass";
            QNetworkRequest request((site_url));
@@ -55,6 +47,7 @@ void paaSivu::on_kirjauduNappi_clicked()
            this, SLOT(kirjauduSisaan(QNetworkReply*)));
            reply = loginManager->post(request, QJsonDocument(json).toJson());
 
+           KortinTyyppi();
 
 
 }
@@ -70,7 +63,7 @@ void paaSivu::on_takaisinNappi_clicked()
 void paaSivu::myTimerSlot()
 {
     timerCounter++;
-    qDebug()<<"paasivu timer "<<timerCounter;
+    //qDebug()<<"paasivu timer "<<timerCounter;
 
     if (timerCounter==timerAika2)
     {
@@ -94,6 +87,59 @@ void paaSivu::myPinTimerSlot()
         timerCounter = 0;
         this->close();
     }
+}
+
+void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
+{
+    QByteArray response_data=reply8->readAll();
+   // qDebug()<<(response_data);
+   // QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    //QJsonArray json_array = json_doc.array();
+   // QString Tapahtumat;
+   // Tapahtumat.toInt();
+
+
+    //qDebug()<<response_data;
+    //qDebug()<<"tassa mennaan5678";
+
+
+   // /foreach (const QJsonValue &value, json_array)
+  //  {
+  //  QJsonObject json_obj = value.toObject();
+ //   Tapahtumat+=QString::number(json_obj["Tila"].toInt())+"\r";
+  //  }
+  //  qDebug()<<Tapahtumat;
+
+   // Tapahtumat2= Tapahtumat;
+   // qDebug()<<Tapahtumat;
+    if (response_data == "[]"){
+
+        qDebug()<<"töttörööpaskaa";
+  Debit_Credit = 1;
+  oliotyyppi->piilotaCredit();
+    }
+
+
+
+}
+
+void paaSivu::KortinTyyppi()
+{
+    QString site_url= QString("http://localhost:3000/login/%1").arg(kayttajaTunnus);
+    //qDebug()<<"tottorooo" <<kayttajaTunnus;
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    haeKorttiManager = new QNetworkAccessManager(this);
+    connect(haeKorttiManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(KortinTyyppiSlot(QNetworkReply*)));
+    reply8 = haeKorttiManager->get(request);
+    //qDebug()<<"Saldo Tilitapahtumat painettu";
+
+
 }
 
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)

@@ -22,6 +22,7 @@ void Tyyppi::on_pushButtonCredit_clicked()
 {
     olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     qDebug()<<"credit painettu";
+    qDebug()<<Debit_Credit;
     Debit_Credit = 0;
     olioToimintoSivu->tarkistaTyyppi();
     olioToimintoSivu->show();
@@ -31,22 +32,25 @@ void Tyyppi::on_pushButtonCredit_clicked()
     olioToimintoSivu->connectTimerToimintosivu();
     disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
 
+
 }
 
 
 void Tyyppi::on_pushButtonDebit_clicked()
 {
     qDebug()<<"debit painettu";
+    qDebug()<<Debit_Credit;
     qDebug()<<kayttajaTunnus;
+    Debit_Credit = 1;
     olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     //olioToimintoSivu->setKT(kayttajaTunnus);
     olioToimintoSivu->tarkistaTyyppi();
     olioToimintoSivu->show();
     this->close();
-    Debit_Credit = 1;
     olioTyyppiQtimer->stop();
     olioToimintoSivu->connectTimerToimintosivu();
     disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
+    ui->pushButtonCredit->show();
 }
 
 
@@ -55,6 +59,7 @@ void Tyyppi::on_pushButtonKirjauduUlos_clicked()
     timerCounter=0;
     disconnect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
     this->close();
+    ui->pushButtonCredit->show();
 }
 
 void Tyyppi::MyTimerTyyppiSlot()
@@ -81,5 +86,10 @@ void Tyyppi::setKayttajaTunnus(const QString &newKayttajaTunnus)
 void Tyyppi::timerTyyppiConnect()
 {
     connect(olioTyyppiQtimer,SIGNAL(timeout()),this,SLOT(MyTimerTyyppiSlot()));
+}
+
+void Tyyppi::piilotaCredit()
+{
+    ui->pushButtonCredit->hide();
 }
 

@@ -97,6 +97,8 @@ void Toimintosivu::tarkistaTyyppi()
     ui->pushButtonPane->setText("Lyhennä luottoa");
     ui->label_Credit_debit->setText("Credit");
     //tahan kaikki mita muokataan
+    qDebug()<<Debit_Credit;
+    qDebug()<<"toimintosicu";
     }
     else {
     ui->pushButtonPane->setText("Pane rahaa");

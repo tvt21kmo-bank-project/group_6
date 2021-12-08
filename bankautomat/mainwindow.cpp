@@ -26,6 +26,7 @@ void MainWindow::on_jatka_clicked()
     olioQtimer->start(1000);
 
 
+
     qDebug()<<"jatka painettu";
 
     //  olioPaaSivu->hide();

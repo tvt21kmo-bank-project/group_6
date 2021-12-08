@@ -34,6 +34,7 @@ private slots:
 public slots:
     void myTimerSlot();
     void myPinTimerSlot();
+    void KortinTyyppiSlot(QNetworkReply *reply8);
 
 
 private:
@@ -43,10 +44,14 @@ private:
 
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
+    QNetworkAccessManager *haeKorttiManager;
+    QNetworkReply *reply8;
 
     Tyyppi *oliotyyppi;
     QString kayttajaTunnus;
     int vaaraPin = 0;
+    void KortinTyyppi();
+    QString Tapahtumat2 = 0;
 
 
 signals:
