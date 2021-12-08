@@ -10,7 +10,6 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     kayttis=test2;
     Naytatilitapahtumat();
 
-    connect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
 
     /*
     QJsonObject json;
@@ -46,6 +45,8 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply3 = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Tilitapahtumat painettu";*/
+
+    qDebug()<< "mitävittua";
 }
 
 Tilitapahtumat::~Tilitapahtumat()
@@ -53,6 +54,13 @@ Tilitapahtumat::~Tilitapahtumat()
     delete ui;
     delete olioToimintosivuQtimer;
     olioPinQtimer = nullptr;
+}
+
+void Tilitapahtumat::connectTimerTilitapahtumat()
+{
+    connect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
+    timerCounter = 0;
+    olioTilitapahtumatQtimer->start(1000);
 }
 
 void Tilitapahtumat::Naytatilitapahtumat()
@@ -71,8 +79,6 @@ void Tilitapahtumat::Naytatilitapahtumat()
     connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply3 = naytaTilitapahtumatManager->post(request, QJsonDocument(json).toJson());
-
-    timerCounter=0;
 }
 
 void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
@@ -94,11 +100,11 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     }
 
     Tapahtumat2= Tapahtumat;
-    qDebug()<<Tapahtumat;
+   // qDebug()<<Tapahtumat;
     if (Tapahtumat == ""){
-        //ListanLoppu=1;
-        //Tapahtumat2= Tapahtumat;
-        qDebug()<<"töttöröö";
+        ListanLoppu=1;
+         Tapahtumat2= Tapahtumat;
+      //  qDebug()<<"töttöröö";
         ui->label_Eilisaa->setText("EI ENEMPÄÄ TILITAPAHTUMIA");
     }
     ui->textBrowser_2->setText(Tapahtumat);
@@ -107,31 +113,31 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
 }
 
 
-void Tilitapahtumat::on_pushButton_KirjauduUlos_clicked()
+void Tilitapahtumat::on_pushButton_NaytaVahemman_clicked()
 {
-
     offsetmuuttuja= offsetmuuttuja-10;
     if (offsetmuuttuja < 0)
     {   offsetmuuttuja = 0;
-        Naytatilitapahtumat();}
+        Naytatilitapahtumat();
+    }
 
     qDebug()<<offsetmuuttuja;
     ui->label_Eilisaa->setText("");
+
     Naytatilitapahtumat();
+
+    timerCounter=0;
 }
 
 
 void Tilitapahtumat::on_pushButton_Palaa_clicked()
-{ // tajan vissiin halutaankin palaa takasin tapahtumissa? nyt se palaa takaisin edelliseen sivuun niinkuin toi kirjaudu uloskin. OOn nappara
-    {
-       /*olioNostaRahaaQtimer->stop();  // tahan oma timer
-        */
+{
+        disconnect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
         olioTilitapahtumatQtimer->stop();
-        timerCounter = 0;
+        timerCounter=0;
+
         olioToimintosivuQtimer->start(1000);
         this->close();
-    }
-
 }
 
 
@@ -150,6 +156,7 @@ void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
 
      Naytatilitapahtumat();
     }
+    timerCounter=0;
 }
 
 void Tilitapahtumat::TilitapahtumatTimerSlot()
@@ -160,14 +167,10 @@ void Tilitapahtumat::TilitapahtumatTimerSlot()
     if (timerCounter==timerAika2)
     {
         olioTilitapahtumatQtimer->stop();
+        disconnect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
         olioToimintosivuQtimer->start(1000);
     }
 }
-
-
-
-
-

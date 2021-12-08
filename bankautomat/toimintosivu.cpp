@@ -64,13 +64,9 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
     olioSaldoSivu->show();
     olioSaldoSivu->naytaSaldo();
     olioSaldoSivu->naytaTilitapahtumat();
+
     olioToimintosivuQtimer->stop();
-    timerCounter = 0;
-    olioSaldosivuQtimer->start(1000);
-
-
-
-
+    olioSaldoSivu->connectTimerSaldo();
 }
 
 /*void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
@@ -84,9 +80,6 @@ void Toimintosivu::on_pushButtonNosta_clicked()
    // disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
    // connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
     olioToimintosivuQtimer->stop();
-    olioNostaRahaaQtimer->stop();
-    timerCounter = 0;
-    olioNostaRahaaQtimer->start(1000);
 
     olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioNostarahaa->show();
@@ -109,77 +102,21 @@ void Toimintosivu::tarkistaTyyppi()
 
 void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 {
-
     olioTilitapahtumat = new Tilitapahtumat(kayttajatunnus2);
-    olioTilitapahtumat->show();
     olioToimintosivuQtimer->stop();
-    timerCounter = 0;
-    olioTilitapahtumatQtimer->start(1000);
 
 
-
-   /* QString site_url= QString("http://localhost:3000/tapahtumat/%1").arg(urli);
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaTilitapahtumatManager = new QNetworkAccessManager(this);
-    connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
-    reply = naytaTilitapahtumatManager->get(request);
-    qDebug()<<"Tilitapahtumat painettu"; */
-
-    timerCounter = 0;
-    //olioToimintosivuQtimer->start(1000);
+    olioTilitapahtumat->show();
+   // disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
+    olioTilitapahtumat->connectTimerTilitapahtumat();
 
 }
-
-/*void Toimintosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
-{
-    QByteArray response_data=reply->readAll();
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    QJsonArray json_array = json_doc.array();
-    QString Tapahtumat;
-
-
-    foreach (const QJsonValue &value, json_array)
-    {
-    QJsonObject json_obj = value.toObject();
-    Tapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" |   PVM: "+json_obj["aika"].toString()+"    |   Tapahtuma: "+json_obj["Tapahtuma"].toString()+"  |   Summa: "+QString::number(json_obj["Maara"].toInt())+"\r";
-    }
-
-    qDebug()<<Tapahtumat;
-    ui->textBrowserTiliTapahtumat->setText(Tapahtumat);
-    reply->deleteLater();
-    naytaTilitapahtumatManager->deleteLater();
-}
-
-void Toimintosivu::naytaSaldoTilitapahtumat()
-{
-    QString site_url= QString("http://localhost:3000/tapahtumat/saldoTapahtuma/%1").arg(urli);
-    QString credentials="newAdmin:newPass";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QByteArray data = credentials.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
-    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    naytaTilitapahtumatManager = new QNetworkAccessManager(this);
-    connect(naytaTilitapahtumatManager, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
-    reply = naytaTilitapahtumatManager->get(request);
-    qDebug()<<"Saldo Tilitapahtumat painettu";
-}
-*/
 
 void Toimintosivu::on_pushButtonPane_clicked()
 {
     olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioPano->show();  
     olioToimintosivuQtimer->stop();
-    timerCounter = 0;
-    olioPanoQtimer->start(1000);
     olioPano->panoTimerConnect();
 }
 

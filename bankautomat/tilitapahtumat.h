@@ -21,6 +21,7 @@ class Tilitapahtumat : public QDialog
 public:
     explicit Tilitapahtumat(QString test2, QWidget *parent = 0);
     ~Tilitapahtumat();
+    void connectTimerTilitapahtumat();
 
 private:
     Ui::Tilitapahtumat *ui;
@@ -36,10 +37,10 @@ private:
 
 private slots:
     void naytaTilitapahtumatSlot (QNetworkReply *reply3);
-    void on_pushButton_KirjauduUlos_clicked();
     void on_pushButton_Palaa_clicked();
     void on_pushButton_NaytaLisaa_clicked();
     void TilitapahtumatTimerSlot();
+    void on_pushButton_NaytaVahemman_clicked();
 };
 
 #endif // TILITAPAHTUMAT_H
