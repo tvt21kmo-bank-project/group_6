@@ -46,7 +46,7 @@ Tilitapahtumat::Tilitapahtumat(QString test2, QWidget *parent) :
     reply3 = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Tilitapahtumat painettu";*/
 
-    qDebug()<< "mitävittua";
+    //qDebug()<< "mitävittua";
 }
 
 Tilitapahtumat::~Tilitapahtumat()
@@ -68,6 +68,7 @@ void Tilitapahtumat::Naytatilitapahtumat()
     QJsonObject json;
     json.insert("idKortti",kayttis);
     json.insert("offset",offsetmuuttuja);
+    json.insert("Tila1", Debit_Credit);
     QString site_url="http://localhost:3000/tapahtumat/TapahtumaLisaa";
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));

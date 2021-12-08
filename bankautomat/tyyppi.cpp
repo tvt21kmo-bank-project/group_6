@@ -22,7 +22,7 @@ void Tyyppi::on_pushButtonCredit_clicked()
 {
     olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     qDebug()<<"credit painettu";
-    korttiTyyppi = 1;
+    Debit_Credit = 0;
     olioToimintoSivu->tarkistaTyyppi();
     olioToimintoSivu->show();
     this->close();
@@ -35,8 +35,10 @@ void Tyyppi::on_pushButtonDebit_clicked()
     qDebug()<<kayttajaTunnus;
     olioToimintoSivu = new Toimintosivu(kayttajaTunnus);
     //olioToimintoSivu->setKT(kayttajaTunnus);
+    olioToimintoSivu->tarkistaTyyppi();
     olioToimintoSivu->show();
     this->close();
+    Debit_Credit = 1;
     olioTyyppiQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);

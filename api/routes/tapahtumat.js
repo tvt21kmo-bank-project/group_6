@@ -24,9 +24,9 @@ router.get('/:id?',
     });
   }*/
 });
-router.get('/saldoTapahtuma/:id?', function(request, response) {
-  if (request.params.id) {
-    pankki.saldoTapahtuma(request.params.id, function(err, dbResult) {
+router.get('/saldoTapahtuma/:id/:Tila?', function(request, response) {
+  if (request.params.id, request.params.Tila) {
+    pankki.saldoTapahtuma(request.params.id, request.params.Tila, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {

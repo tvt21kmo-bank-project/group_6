@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const pankki = require('../models/pankki_model');
 
-router.get('/:id?',
+router.get('/:id?/:Tila?',
  function(request, response) {
-  if (request.params.id) {
-    pankki.getById(request.params.id, function(err, dbResult) {
+  if (request.params.id, request.params.Tila) {
+    pankki.getById(request.params.id, request.params.Tila, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {

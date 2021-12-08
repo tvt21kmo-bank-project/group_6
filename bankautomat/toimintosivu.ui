@@ -88,6 +88,19 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label_Credit_debit">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>25</y>
+     <width>321</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

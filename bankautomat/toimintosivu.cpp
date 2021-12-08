@@ -93,8 +93,16 @@ void Toimintosivu::setKayttajatunnus2(const QString &newKayttajatunnus2)
 
 void Toimintosivu::tarkistaTyyppi()
 {
-    if (korttiTyyppi == 1){
+
+    if (Debit_Credit == 0){
     ui->pushButtonPane->setText("Lyhennä luottoa");
+    ui->label_Credit_debit->setText("Credit");
+    //tahan kaikki mita muokataan
+    }
+    else {
+    ui->pushButtonPane->setText("Pane rahaa");
+    ui->label_Credit_debit->setText("Debit");
+    //tahan kaikki mita muokataan
     }
 }
 
