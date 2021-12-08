@@ -54,7 +54,7 @@
     <string>Palaa takaisin</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_KirjauduUlos">
+  <widget class="QPushButton" name="pushButton_NaytaVahemman">
    <property name="geometry">
     <rect>
      <x>760</x>

@@ -23,6 +23,7 @@ public:
     ~Saldosivu();
     void naytaTilitapahtumat();
     void naytaSaldo();
+    void connectTimerSaldo();
 
 private:
     Ui::Saldosivu *ui;

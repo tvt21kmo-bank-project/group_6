@@ -28,6 +28,8 @@ void Pano::setKayttajatunnus2(const QString &newKayttajatunnus2)
 void Pano::panoTimerConnect()
 {
     connect(olioPanoQtimer,SIGNAL(timeout()),this,SLOT(PaneTimerSlot()));
+    timerCounter = 0;
+    olioPanoQtimer->start(1000);
 }
 
 void Pano::on_pushButton_pane20_clicked()

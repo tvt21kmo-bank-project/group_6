@@ -32,4 +32,5 @@ extern QTimer *olioSaldosivuQtimer;
 
 extern int Debit_Credit;
 
+
 #endif // APUSIVU_H

@@ -141,6 +141,8 @@ void NostaRahaa::on_pushButton_100_clicked()
 void NostaRahaa::nostaTimerConnect()
 {
     connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
+    timerCounter = 0;
+    olioNostaRahaaQtimer->start(1000);
 }
 
 void NostaRahaa::on_pushButton_200_clicked()
