@@ -22,6 +22,7 @@ public:
     void setKayttajaTunnus(const QString &newKayttajaTunnus);
 
     void timerTyyppiConnect();
+    void piilotaCredit();
 
 private slots:
     void on_pushButtonCredit_clicked();

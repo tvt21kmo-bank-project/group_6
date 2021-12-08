@@ -41,4 +41,22 @@ router.post('/',
   }
 );
 
+
+
+router.get('/:idKortti?',
+ function(request, response) {
+  if (request.params.idKortti) {
+    login.idKortti(request.params.idKortti, function(err, dbResult) {
+      if(dbResult == ""){
+        response.json(dbResult);
+      } 
+     else {
+        response.json("0");
+      }
+    })}
+ 
+  
+});
+
+
 module.exports=router;
