@@ -50,11 +50,12 @@ void MuuSumma::on_pushButton_MuuSummaSET_clicked()
         QString headerData = "Basic " + data;
         request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
         loginManager = new QNetworkAccessManager(this);
+
+        connect(loginManager, SIGNAL(finished (QNetworkReply*)),
+        this, SLOT(naytaSaldoSlot4(QNetworkReply*)));
         reply = loginManager->post(request, QJsonDocument(json).toJson());
-
-        ui->label_Panosumma->setText(ui->lineEdit_MuuSumma->text());
+      
         connectTimerMuuPano();
-
 }
 
 void MuuSumma::MuusummaTimerSlot()
@@ -74,6 +75,14 @@ void MuuSumma::MuusummaTimerSlot()
     }
 }
 
+
+}
+
+void MuuSumma::naytaSaldoSlot4(QNetworkReply *reply)
+{
+     QByteArray response_data=reply->readAll();
+     ui->label_Panosumma->setText(response_data);
+}
 void MuuSumma::MuuPanoTimerSlot()
 {
     timerCounter++;
@@ -89,5 +98,6 @@ void MuuSumma::MuuPanoTimerSlot()
         this->close();
         olioToimintosivuQtimer->start(1000);
     }
+
 }
 

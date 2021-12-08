@@ -30,6 +30,7 @@ public:
 
 private slots:
     void on_pushButton_MuuSummaSET_clicked();
+    void naytaSaldoSlot4(QNetworkReply *reply);
 
     void MuusummaTimerSlot();
     void MuuPanoTimerSlot();

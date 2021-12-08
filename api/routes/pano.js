@@ -7,9 +7,23 @@ router.post('/panerahaa', function(request, response){
         if(err){
             response.json(err);
         }
+        
         else{
-            response.json(dbResult.affectedRows);
-        }
+            if(dbResult.affectedRows < 1 ){
+            console.log("et saa");
+            response.json("Luottoraha ylitetty");
+            }
+            else{
+            console.log("succes1");
+            console.log(dbResult.affectedRows);
+
+            //response.json(dbResult.affectedRows);           
+
+            response.json("Pano onnistu!");
+          //response.json(dbResult.affectedRows);
+
+
+            }}
     })
 }
 );
