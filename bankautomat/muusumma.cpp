@@ -75,9 +75,6 @@ void MuuSumma::MuusummaTimerSlot()
     }
 }
 
-
-}
-
 void MuuSumma::naytaSaldoSlot4(QNetworkReply *reply)
 {
      QByteArray response_data=reply->readAll();
