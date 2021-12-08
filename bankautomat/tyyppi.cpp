@@ -26,6 +26,10 @@ void Tyyppi::on_pushButtonCredit_clicked()
     olioToimintoSivu->tarkistaTyyppi();
     olioToimintoSivu->show();
     this->close();
+    olioTyyppiQtimer->stop();
+    timerCounter = 0;
+    olioToimintosivuQtimer->start(1000);
+
 }
 
 
