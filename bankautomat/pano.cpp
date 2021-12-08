@@ -49,12 +49,12 @@ void Pano::on_pushButton_pane20_clicked()
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
-    //connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    //this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu parilla kympillä");
+    //ui->label_pane->setText("Pantu parilla kympillä");
     timerCounter=0;
 }
 
@@ -76,11 +76,11 @@ void Pano::on_pushButtonNelkyt_clicked()
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu Neljalla kympilla");
+   // ui->label_pane->setText("Pantu Neljalla kympilla");
     timerCounter=0;
 }
 
@@ -102,11 +102,11 @@ void Pano::on_pushButtonKuuskymppia_clicked()
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu kuudella kympillä");
+   // ui->label_pane->setText("Pantu kuudella kympillä");
     timerCounter=0;
 
 }
@@ -129,12 +129,18 @@ void Pano::on_pushButtonKahekskyt_clicked()
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu Kahdeksalla kympillä sadalla");
+   // ui->label_pane->setText("Pantu Kahdeksalla kympillä sadalla");
     timerCounter=0;
+}
+
+void Pano::naytaPanoVastausSlot(QNetworkReply *reply3)
+{
+    QByteArray response_data=reply3->readAll();
+    ui->label_pane->setText(""+response_data);
 }
 
 
@@ -156,11 +162,11 @@ void Pano::on_pushButtonSatane_clicked()
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu satasella");
+   // ui->label_pane->setText("Pantu satasella");
     timerCounter=0;
 }
 
@@ -184,11 +190,11 @@ void Pano::on_pushButtonKaksSataa_clicked()
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
     naytaSaldoManager2 = new QNetworkAccessManager(this);
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-    this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
+    this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
 
-    ui->label_pane->setText("Pantu Kahdella sadalla");
+  //  ui->label_pane->setText("Pantu Kahdella sadalla");
     timerCounter=0;
 }
 
