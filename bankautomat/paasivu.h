@@ -35,6 +35,7 @@ public slots:
     void myTimerSlot();
     void myPinTimerSlot();
     void KortinTyyppiSlot(QNetworkReply *reply8);
+    void KorttiLukittuSlot(QNetworkReply *reply12);
 
 
 private:
@@ -52,6 +53,8 @@ private:
     int vaaraPin = 0;
     void KortinTyyppi();
     QString Tapahtumat2 = 0;
+    void KorttiLukittu();
+    int Kortinlukitus = 0;
 
 
 signals:

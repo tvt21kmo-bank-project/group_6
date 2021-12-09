@@ -58,7 +58,7 @@ router.get('/:idKortti?',
   
 });
 
-router.get('/:id?',
+router.get('/lukittu/:id?',
  function(request, response) {
   if (request.params.id) {
     login.getById(request.params.id, function(err, dbResult) {
