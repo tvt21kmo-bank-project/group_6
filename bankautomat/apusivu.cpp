@@ -11,6 +11,8 @@ QTimer *olioTilitapahtumatQtimer = new QTimer;
 QTimer *olioSaldosivuQtimer = new QTimer;
 QTimer *olioMuusummaQtimer = new QTimer;
 QTimer *olioMuuPanoQtimer = new QTimer;
+QTimer *olioMuuNostoQtimer = new QTimer;
+QTimer *olioMuuNostoPaQtimer = new QTimer;
 
 short timerCounter = 0;
 short timerCounter2 = 0;

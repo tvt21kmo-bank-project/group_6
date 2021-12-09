@@ -32,6 +32,8 @@ extern QTimer *olioTilitapahtumatQtimer;
 extern QTimer *olioSaldosivuQtimer;
 extern QTimer *olioMuusummaQtimer;
 extern QTimer *olioMuuPanoQtimer;
+extern QTimer *olioMuuNostoQtimer;
+extern QTimer *olioMuuNostoPaQtimer;
 
 extern int Debit_Credit;
 
