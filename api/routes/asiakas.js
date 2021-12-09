@@ -58,4 +58,25 @@ function(request, response) {
   });
 });
 
+router.post('/lukitus', function(request, response) {
+  user.lukitus(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult);
+    }
+  });
+});
+
+router.post('/lukitusavaa', function(request, response) {
+  user.lukitusavaa(request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult);
+    }
+  });
+});
+
+
 module.exports = router;

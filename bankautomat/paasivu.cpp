@@ -47,7 +47,9 @@ void paaSivu::on_kirjauduNappi_clicked()
            this, SLOT(kirjauduSisaan(QNetworkReply*)));
            reply = loginManager->post(request, QJsonDocument(json).toJson());
 
+           KorttiLukittu();
            KortinTyyppi();
+
 
 
 }
@@ -92,26 +94,6 @@ void paaSivu::myPinTimerSlot()
 void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
 {
     QByteArray response_data=reply8->readAll();
-   // qDebug()<<(response_data);
-   // QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    //QJsonArray json_array = json_doc.array();
-   // QString Tapahtumat;
-   // Tapahtumat.toInt();
-
-
-    //qDebug()<<response_data;
-    //qDebug()<<"tassa mennaan5678";
-
-
-   // /foreach (const QJsonValue &value, json_array)
-  //  {
-  //  QJsonObject json_obj = value.toObject();
- //   Tapahtumat+=QString::number(json_obj["Tila"].toInt())+"\r";
-  //  }
-  //  qDebug()<<Tapahtumat;
-
-   // Tapahtumat2= Tapahtumat;
-   // qDebug()<<Tapahtumat;
     if (response_data == "[]"){
 
         qDebug()<<"töttörööpaskaa";
@@ -120,6 +102,20 @@ void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
     }
 
 
+
+}
+
+void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
+{
+    QByteArray response_data=reply12->readAll();
+    if (response_data == "1"){
+        qDebug()<<"töttörööLukittu";
+        Kortinlukitus = 1;
+        ui->labelHylatty->setText("haista paska");
+    }
+    else{
+        Kortinlukitus=0;
+    }
 
 }
 
@@ -142,11 +138,31 @@ void paaSivu::KortinTyyppi()
 
 }
 
+void paaSivu::KorttiLukittu()
+{
+    QString site_url= QString("http://localhost:3000/login/lukittu/%1").arg(kayttajaTunnus);
+    QString credentials="newAdmin:newPass";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QByteArray data = credentials.toLocal8Bit().toBase64();
+    QString headerData = "Basic " + data;
+    request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+    haeKorttiManager = new QNetworkAccessManager(this);
+    connect(haeKorttiManager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(KorttiLukittuSlot(QNetworkReply*)));
+    reply8 = haeKorttiManager->get(request);
+    //qDebug()<<"Saldo Tilitapahtumat painettu";
+}
+
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
         qDebug()<<response_data;
-        if(response_data=="true"){
+        KorttiLukittu();
+        qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
+        if(Kortinlukitus == 0){
+
+            if(response_data=="true"){
             qDebug()<<"Oikea tunnus ...avaa form";
             oliotyyppi->setKayttajaTunnus(kayttajaTunnus);
             oliotyyppi->show();
@@ -157,8 +173,8 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             oliotyyppi->timerTyyppiConnect();
             timerCounter = 0;
             this->close();
-        }
-        else {
+            }
+            else {
             vaaraPin++;
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
@@ -166,8 +182,22 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             ui->labelHylatty->setText("koitappa uudellee");
             timerCounter = 0;
 
-            if (vaaraPin >= 3)
+             if (vaaraPin >= 3)
             {
+                 QJsonObject json;
+                 json.insert("id",kayttajaTunnus);
+                 QString site_url="http://localhost:3000/asiakas/lukitus";
+                 QString credentials="newAdmin:newPass";
+                 QNetworkRequest request((site_url));
+                 request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+                 QByteArray data = credentials.toLocal8Bit().toBase64();
+                 QString headerData = "Basic " + data;
+                 request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+                 loginManager = new QNetworkAccessManager(this);
+                // connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
+               //  this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
+                 reply = loginManager->post(request, QJsonDocument(json).toJson());
+
                 qDebug()<<"kortti lukittu " << vaaraPin;
                 ui->labelHylatty->setText("kortti lukittu kolmmannen yrityksen jälkeen");
                 vaaraPin = 0;
@@ -175,7 +205,8 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
                 timerCounter = 0;
                 olioPinQtimer->start(1000);
 
-            }
+
+            }}
         }
 }
 

@@ -14,6 +14,12 @@ const user={
       return db.query('insert into kortti (idKortti, pin, Asiakas_idAsiakas, Tili_idTili, Tila) values(?,?,?,?,?)',       // tassaa yritetty kaikkea kummallista
       [user.idKortti, hash, user.Asiakas_idAsiakas, user.Tili_idTili, user.Tila], callback); 
     });
+  },
+  lukitus: function(postData, callback) {         
+    return db.query('UPDATE pankkiautomaatti.kortti SET Lukittu = 1 WHERE idKortti=?', [postData.id], callback);         // tasta tulee kortti idlla asiakkaan nimi
+  },
+  lukitusavaa: function(postData, callback) {         
+    return db.query('UPDATE pankkiautomaatti.kortti SET Lukittu = 0 WHERE idKortti=?', [postData.id], callback);         // tasta tulee kortti idlla asiakkaan nimi
   },/*
   update: function(id, callback) {         
     return db.query('UPDATE pankkiautomaatti.kortti SET Tila = 0 WHERE idKortti=?', [id], callback);         // tasta tulee kortti idlla asiakkaan nimi
