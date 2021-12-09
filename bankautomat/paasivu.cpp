@@ -97,8 +97,8 @@ void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
     if (response_data == "[]"){
 
         qDebug()<<"töttörööpaskaa";
-  Debit_Credit = 1;
-  oliotyyppi->piilotaCredit();
+        Debit_Credit = 1;
+        oliotyyppi->piilotaCredit();
     }
 
 
@@ -111,10 +111,11 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     if (response_data == "1"){
         qDebug()<<"töttörööLukittu";
         Kortinlukitus = 1;
-        ui->labelHylatty->setText("haista paska");
+        ui->labelHylatty->setText("Kortti lukittu!");
     }
-    else{
-        Kortinlukitus=0;
+    else
+    {
+        Kortinlukitus=0;        
     }
 
 }

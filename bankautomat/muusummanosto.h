@@ -24,10 +24,15 @@ public:
     explicit MuuSummaNosto(QString test2, QWidget *parent = nullptr);
     ~MuuSummaNosto();
 
+    void connectMuuNosto();
+    void connectMuuNostoPa();
+
 private slots:
     void on_pushButton_MuuSummaNosto_clicked();
-
     void naytaSaldoSlot3 (QNetworkReply *reply4);
+
+    void MuuNostoTimerSlot();
+    void MuuNostoPaTimerSlot();
 
 private:
     Ui::MuuSummaNosto *ui;

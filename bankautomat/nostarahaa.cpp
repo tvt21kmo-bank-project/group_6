@@ -204,16 +204,19 @@ void NostaRahaa::on_pushButton_Palaa_clicked()
     olioNostaRahaaQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
-    this->close();
+    this->close(); 
 }
 
 
 
 void NostaRahaa::on_pushButton_Muu_Summa_clicked()
 {
-
+    disconnect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
     olioMuuSummaNosto = new MuuSummaNosto(kayttis);
     olioMuuSummaNosto -> show();
+    olioMuuSummaNosto->connectMuuNosto();
+    olioNostaRahaaQtimer->stop();
+    this->close();
 }
 
 
