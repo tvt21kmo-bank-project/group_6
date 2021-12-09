@@ -18,3 +18,44 @@ id              pin
 5678            1234
 5432            1234
 </pre>
+
+<pre>
+
+
+                                                                             POST KOMENNOT
+                                                               
+                                                               
+LukitseKortti, POST     id=idKortti
+                        {{Sovellusprojekti}}/asiakas/lukitus                               id
+
+Avaa Kortti, POST       id=idKortti
+                        {{Sovellusprojekti}}/asiakas/lukitusavaa                           id
+  
+Lukituksen tarkastus GET   
+                        {{Sovellusprojekti}}/login/lukittu/5678
+    
+    
+                                                                     
+
+hae lisaa tapahtumia offsetilla  POST
+                        {{Sovellusprojekti}}/tapahtumat/TapahtumaLisaa               idKortti, offset, Tila1
+
+hae 5 viimeista saldotapahtumaa GET
+                        {{Sovellusprojekti}}/tapahtumat/saldotapahtuma/5432/0
+
+nayta lisaa tapahtumia GET
+                        {{Sovellusprojekti}}/tapahtumat/TapahtumaLisaa     
+
+Pane rahaa, POST
+                        {{Sovellusprojekti}}/pano/panerahaa                          idKortti, summa, Tila1
+
+
+
+nosta rahaa,       POST   
+                        {{Sovellusprojekti}}/debitnosto/nostarahaa                   bodyyn idKortti, summa
+
+
+ asiakkaan nimi    GET   
+                        {{Sovellusprojekti}}/asiakas/5432      
+ 
+ </pre>
