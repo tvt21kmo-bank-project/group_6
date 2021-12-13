@@ -32,6 +32,16 @@ void Pano::panoTimerConnect()
     olioPanoQtimer->start(1000);
 }
 
+void Pano::tarkastaTyyppiPane()
+{
+ if(Debit_Credit ==0)
+ ui->textBrowser->setText("Lyhennä luottoa");
+ else
+     {
+         ui->textBrowser->setText("Pane rahaa");
+     }
+}
+
 void Pano::on_pushButton_pane20_clicked()
 {
     qDebug()<<"20:llä pannaa";

@@ -149,6 +149,19 @@ void NostaRahaa::nostaTimerConnect()
     olioNostaRahaaQtimer->start(1000);
 }
 
+void NostaRahaa::tarkastaTyyppiNosta()
+{
+    //if(Debit_Credit ==0)
+    {
+
+      //  ui->label_laurantesti->setText("Lyhennä luottoa");
+    }
+    /*else
+    {
+        ui->textBrowser->setText("Laura on testi");
+    }*/
+}
+
 void NostaRahaa::on_pushButton_200_clicked()
 {
     qDebug()<<"200e tulossa";
@@ -218,6 +231,8 @@ void NostaRahaa::on_pushButton_Muu_Summa_clicked()
     olioNostaRahaaQtimer->stop();
     this->close();
 }
+
+//if pane rahaa muutetaan lyhennä luottoa homma
 
 
 

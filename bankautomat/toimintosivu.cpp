@@ -96,6 +96,7 @@ void Toimintosivu::tarkistaTyyppi()
     if (Debit_Credit == 0){
     ui->pushButtonPane->setText("Lyhennä luottoa");
     ui->label_Credit_debit->setText("Credit");
+
     //tahan kaikki mita muokataan
     qDebug()<<Debit_Credit;
     qDebug()<<"toimintosivu";
@@ -130,10 +131,13 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 
 void Toimintosivu::on_pushButtonPane_clicked()
 {
+    //olioNostarahaa->tarkastaTyyppiNosta(); //olio nostarahaa vittaa nostarahaan cpp:hen, voidaan kayttaa siks tarkastatyyppi nosta taalla
     olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioPano->show();  
     olioToimintosivuQtimer->stop();
     olioPano->panoTimerConnect();
+    olioPano->tarkastaTyyppiPane();
+    //olioNostarahaa->tarkastaTyyppiNosta(); //olio nostarahaa vittaa nostarahaan cpp:hen, voidaan kayttaa siks tarkastatyyppi nosta taalla
 }
 
 void Toimintosivu::toimintosivuTimerSlot()

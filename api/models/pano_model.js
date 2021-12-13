@@ -4,7 +4,7 @@ const db = require('../database');
 const bank = {
 
     debit: function(postData, callback){
-        return db.query('call panerahaa(?,?,?)',
+        return db.query('call panerahaa(?,?,?)', //proseduuri mysql varten
         [postData.idKortti, postData.summa, postData.Tila1],
         callback);
     },/*

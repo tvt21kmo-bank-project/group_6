@@ -29,6 +29,8 @@ public:
 
     void panoTimerConnect();
 
+    void tarkastaTyyppiPane();
+
 private slots:
     void on_pushButton_pane20_clicked();
 
