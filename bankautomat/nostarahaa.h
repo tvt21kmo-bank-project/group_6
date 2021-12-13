@@ -30,6 +30,8 @@ public:
 
     void nostaTimerConnect();
 
+    void tarkastaTyyppiNosta();
+
 private slots:
     void on_pushButton_20_clicked();
 
