@@ -14,15 +14,7 @@ router.get('/:id?',
         response.json(dbResult);
       }
     });
-  }/* else {
-    pankki.getAll(function(err, dbResult) {
-      if (err) {
-        response.json(err);
-      } else {
-        response.json(dbResult);
-      }
-    });
-  }*/
+  }
 });
 router.get('/saldoTapahtuma/:id/:Tila?', function(request, response) {
   if (request.params.id, request.params.Tila) {
@@ -39,8 +31,6 @@ router.post('/tapahtumaLisaa', function(request, response){
   pankki.TapahtumaLisaa(request.body, function(err, dbResult){
       if(err){
           response.json(err);
-          //console.log("tapahtuma lisaa if");
-          //response.json("Varat tapahtumaei riitä");
       }
       else{
         response.json(dbResult[0]);

@@ -40,9 +40,6 @@ public slots:
 
 private:
     Ui::paaSivu *ui;
-    //short timerCounter;
-    //QTimer *olioQtimer;
-
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QNetworkAccessManager *haeKorttiManager;

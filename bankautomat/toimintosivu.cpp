@@ -22,14 +22,12 @@ Toimintosivu::Toimintosivu(QString test, QWidget *parent) :
     connect(naytaAsiakasManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaAsiakasSlot(QNetworkReply*)));
     reply2 = naytaAsiakasManager->get(request);
-
 }
 
 void Toimintosivu::naytaAsiakasSlot(QNetworkReply *reply2)
 {
     QByteArray response_data2=reply2->readAll();
     ui->textBrowserAsiakkaanNimi->setText("Tervetuloa: "+response_data2);
-
 }
 
 Toimintosivu::~Toimintosivu()
@@ -45,7 +43,6 @@ Toimintosivu::~Toimintosivu()
     olioPano = nullptr;
     olioTilitapahtumat = nullptr;
     olioSaldoSivu = nullptr;
-
 }
 
 void Toimintosivu::on_pushButtonKirjauduUlos2_clicked()
@@ -68,18 +65,10 @@ void Toimintosivu::on_pushButtonSaldo_clicked()
     olioSaldoSivu->connectTimerSaldo();
 }
 
-/*void Toimintosivu::naytaSaldoSlot(QNetworkReply *reply)
-{
-    QByteArray response_data=reply->readAll();
-    ui->textBrowserSaldo->setText("Tilin Saldo: "+response_data);   
-}*/
 
 void Toimintosivu::on_pushButtonNosta_clicked()
 {
-   // disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
-   // connect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
     olioToimintosivuQtimer->stop();
-
     olioNostarahaa = new NostaRahaa(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
     olioNostarahaa->show();
     olioNostarahaa->nostaTimerConnect();
@@ -96,15 +85,12 @@ void Toimintosivu::tarkistaTyyppi()
     if (Debit_Credit == 0){
     ui->pushButtonPane->setText("Lyhennä luottoa");
     ui->label_Credit_debit->setText("Credit");
-
-    //tahan kaikki mita muokataan
     qDebug()<<Debit_Credit;
     qDebug()<<"toimintosivu";
     }
     else {
     ui->pushButtonPane->setText("Pane rahaa");
     ui->label_Credit_debit->setText("Debit");
-    //tahan kaikki mita muokataan
     }
 }
 
@@ -124,27 +110,23 @@ void Toimintosivu::on_pushButtonTilitapahtumat_clicked()
 
 
     olioTilitapahtumat->show();
-   // disconnect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
     olioTilitapahtumat->connectTimerTilitapahtumat();
 
 }
 
 void Toimintosivu::on_pushButtonPane_clicked()
 {
-    //olioNostarahaa->tarkastaTyyppiNosta(); //olio nostarahaa vittaa nostarahaan cpp:hen, voidaan kayttaa siks tarkastatyyppi nosta taalla
-    olioPano = new Pano(kayttajatunnus2); //Nostarahaa(kayttajatunnus2);
+    olioPano = new Pano(kayttajatunnus2);
     olioPano->show();  
     olioToimintosivuQtimer->stop();
     olioPano->panoTimerConnect();
     olioPano->tarkastaTyyppiPane();
-    //olioNostarahaa->tarkastaTyyppiNosta(); //olio nostarahaa vittaa nostarahaan cpp:hen, voidaan kayttaa siks tarkastatyyppi nosta taalla
 }
 
 void Toimintosivu::toimintosivuTimerSlot()
 {
     timerCounter++;
     qDebug()<<"toimintosivu timer "<<timerCounter;
-
     if (timerCounter==timerAika2)
     {
         olioToimintosivuQtimer->stop();

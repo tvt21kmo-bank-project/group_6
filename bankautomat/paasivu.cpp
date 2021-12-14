@@ -6,12 +6,8 @@ paaSivu::paaSivu(QWidget *parent) :
     ui(new Ui::paaSivu)
 {
     ui->setupUi(this);
-   // olioQtimer = new QTimer;
-   // timerCounter = 0;
-
     connect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
     connect(olioPinQtimer,SIGNAL(timeout()),this,SLOT(myPinTimerSlot()));
-
     oliotyyppi = new Tyyppi;
 }
 
@@ -22,7 +18,6 @@ paaSivu::~paaSivu()
     olioQtimer = nullptr;
     delete oliotyyppi;
     oliotyyppi = nullptr;
-
 }
 
 void paaSivu::on_kirjauduNappi_clicked()
@@ -30,9 +25,8 @@ void paaSivu::on_kirjauduNappi_clicked()
     qDebug()<<"Kirjaudu painettu";
 
 
-       QJsonObject json; //luodaan JSON objekti ja lisätään data
+       QJsonObject json;                                    //luodaan JSON objekti ja lisätään data
            kayttajaTunnus = ui->LineEdit_kayttajaTunnus->text();
-           //qDebug()<< kayttajaTunnus;
            json.insert("username",ui->LineEdit_kayttajaTunnus->text());
            json.insert("password",ui->LineEdit_pinKoodi->text());
            QString site_url="http://localhost:3000/login";
@@ -46,12 +40,8 @@ void paaSivu::on_kirjauduNappi_clicked()
            connect(loginManager, SIGNAL(finished (QNetworkReply*)),
            this, SLOT(kirjauduSisaan(QNetworkReply*)));
            reply = loginManager->post(request, QJsonDocument(json).toJson());
-
            KorttiLukittu();
            KortinTyyppi();
-
-
-
 }
 
 void paaSivu::on_takaisinNappi_clicked()
@@ -65,8 +55,6 @@ void paaSivu::on_takaisinNappi_clicked()
 void paaSivu::myTimerSlot()
 {
     timerCounter++;
-    //qDebug()<<"paasivu timer "<<timerCounter;
-
     if (timerCounter==timerAika2)
     {
         olioQtimer->stop();
@@ -95,14 +83,10 @@ void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
 {
     QByteArray response_data=reply8->readAll();
     if (response_data == "[]"){
-
         qDebug()<<"töttörööpaskaa";
         Debit_Credit = 1;
         oliotyyppi->piilotaCredit();
     }
-
-
-
 }
 
 void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
@@ -117,13 +101,11 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     {
         Kortinlukitus=0;        
     }
-
 }
 
 void paaSivu::KortinTyyppi()
 {
     QString site_url= QString("http://localhost:3000/login/%1").arg(kayttajaTunnus);
-    //qDebug()<<"tottorooo" <<kayttajaTunnus;
     QString credentials="newAdmin:newPass";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -134,8 +116,6 @@ void paaSivu::KortinTyyppi()
     connect(haeKorttiManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(KortinTyyppiSlot(QNetworkReply*)));
     reply8 = haeKorttiManager->get(request);
-    //qDebug()<<"Saldo Tilitapahtumat painettu";
-
 
 }
 
@@ -152,7 +132,6 @@ void paaSivu::KorttiLukittu()
     connect(haeKorttiManager, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(KorttiLukittuSlot(QNetworkReply*)));
     reply8 = haeKorttiManager->get(request);
-    //qDebug()<<"Saldo Tilitapahtumat painettu";
 }
 
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
@@ -170,7 +149,6 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
             olioQtimer->stop();
-            //disconnect(olioQtimer,SIGNAL(timeout()),this,SLOT(myTimerSlot()));
             oliotyyppi->timerTyyppiConnect();
             timerCounter = 0;
             this->close();
@@ -195,8 +173,6 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
                  QString headerData = "Basic " + data;
                  request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
                  loginManager = new QNetworkAccessManager(this);
-                // connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
-               //  this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
                  reply = loginManager->post(request, QJsonDocument(json).toJson());
 
                 qDebug()<<"kortti lukittu " << vaaraPin;
@@ -205,9 +181,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
                 olioQtimer->stop();
                 timerCounter = 0;
                 olioPinQtimer->start(1000);
-
-
-            }}
+              }}
         }
 }
 

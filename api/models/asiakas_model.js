@@ -3,9 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const saltRounds=10;
 const user={
- // get: function(callback) {
- //   return db.query('select * from Asiakas', callback);
- // },
+
   getById: function(id, callback) {         
     return db.query('select Nimi from Asiakas JOIN kortti ON Asiakas.idAsiakas=Kortti.Asiakas_idAsiakas where idKortti=?', [id], callback);         // tasta tulee kortti idlla asiakkaan nimi
   },
@@ -20,20 +18,7 @@ const user={
   },
   lukitusavaa: function(postData, callback) {         
     return db.query('UPDATE pankkiautomaatti.kortti SET Lukittu = 0 WHERE idKortti=?', [postData.id], callback);         // tasta tulee kortti idlla asiakkaan nimi
-  },/*
-  update: function(id, callback) {         
-    return db.query('UPDATE pankkiautomaatti.kortti SET Tila = 0 WHERE idKortti=?', [id], callback);         // tasta tulee kortti idlla asiakkaan nimi
-  },/*
-  delete: function(id, callback) {
-    return db.query('delete from user_table where id_user=?', [id], callback);
   },
-  update: function(id, user, callback) {
-    bcrypt.hash(user.password, saltRounds, function(err, hash) {
-      return db.query('update user_table set username=?, password=? where id_user=?',
-      [user.username, hash, id], callback);
-    });
-  }*/
-
 }
           
 module.exports = user;

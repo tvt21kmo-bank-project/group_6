@@ -16,13 +16,9 @@ router.post('/panerahaa', function(request, response){
             else{
             console.log("succes1");
             console.log(dbResult.affectedRows);
-
-            //response.json(dbResult.affectedRows);           
-
+         
             response.json("Pano onnistu!");
-          //response.json(dbResult.affectedRows);
-
-
+        
             }}
     })
 }
@@ -36,28 +32,14 @@ router.post('/saato', function(request, response){
             else{
             console.log("succes1");
             console.log(dbResult);
-
-            //response.json(dbResult.affectedRows);           
-
+    
             response.json("Pantu onnistuneesti");
-          //response.json(dbResult.affectedRows);
+         
 
 
             }
     })
 });
 
-/*
-router.post('/credit_transfer', function(request, response){
-    bank.credit(request.body, function(err, dbResult){
-        if(err){
-            response.json(err);
-        }
-        else{
-            response.json(dbResult.affectedRows);
-        }
-    })
-}
-);
-*/
+
 module.exports = router;

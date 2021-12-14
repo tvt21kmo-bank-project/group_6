@@ -1,5 +1,4 @@
 #include "apusivu.h"
-//#include <QString>
 
 QTimer *olioQtimer = new QTimer;
 QTimer *olioTyyppiQtimer = new QTimer;

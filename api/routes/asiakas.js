@@ -9,9 +9,8 @@ router.get('/:id?',
       if (err) {
         response.json(err);
       } else {
-        //response.json(dbResult);
         response.json(dbResult[0].Nimi);
-        //response.send(dbResult[0].nimi);
+        
       }
     });
   } else {
@@ -33,19 +32,7 @@ function(request, response) {
       response.json(request.body); 
     }
   });
-});/*
-
-router.delete('/:id', 
-function(request, response) {
-  user.delete(request.params.id, function(err, count) {
-    if (err) {
-      response.json(err);
-    } else {
-      response.json(count);
-    }
-  });
 });
-*/
 
 router.put('/update', 
 function(request, response) {

@@ -37,10 +37,7 @@ void MuuSummaNosto::connectMuuNostoPa()
 
 void MuuSummaNosto::on_pushButton_MuuSummaNosto_clicked()
 {
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-       // MuuSumma1 = ui->lineEdit_MuuSumma->text();
-
-       // json.insert("summa",ui->LineEdit_pinKoodi->text());
+        QJsonObject json; //luodaan JSON objekti ja lisätään data
         qDebug()<<kayttis;
         json.insert("idKortti",kayttis);
         json.insert("summa",ui->lineEdit_MuuNosto->text());
@@ -74,7 +71,6 @@ void MuuSummaNosto::MuuNostoTimerSlot()
 
     if (timerCounter==timerAika2)
     {
-
         olioMuuNostoQtimer->stop();
         qDebug()<<"Timer stop";
         disconnect(olioMuuNostoQtimer,SIGNAL(timeout()),this,SLOT(MuuNostoTimerSlot()));
@@ -91,7 +87,6 @@ void MuuSummaNosto::MuuNostoPaTimerSlot()
 
     if (timerCounter==timerAika3)
     {
-
         olioMuuNostoPaQtimer->stop();
         qDebug()<<"Timer stop";
         disconnect(olioMuuNostoPaQtimer,SIGNAL(timeout()),this,SLOT(MuuNostoPaTimerSlot()));

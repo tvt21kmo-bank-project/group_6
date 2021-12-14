@@ -7,17 +7,6 @@ Saldosivu::Saldosivu(QString test2, QWidget *parent) :
 {
     urli = test2;
     ui->setupUi(this);
-
-    //connect(olioSaldosivuQtimer,SIGNAL(timeout()),this,SLOT(SaldosivuTimerSlot()));
-
-   // on_pushButtonTilitapahtumat_clicked();
-
-    //naytaTilitapahtumat();
-    //naytaSaldo();
-
-   // timerCounter = 0;
-   // olioToimintosivuQtimer->start(1000);
-
 }
 
 Saldosivu::~Saldosivu()
@@ -39,7 +28,6 @@ void Saldosivu::naytaTilitapahtumat()
     this, SLOT(naytaTilitapahtumatSlot(QNetworkReply*)));
     reply = naytaTilitapahtumatManager->get(request);
     qDebug()<<"Saldo Tilitapahtumat painettu";
-
     timerCounter=0;
 }
 
@@ -64,7 +52,6 @@ void Saldosivu::connectTimerSaldo()
     connect(olioSaldosivuQtimer,SIGNAL(timeout()),this,SLOT(SaldosivuTimerSlot()));
     timerCounter = 0;
     olioSaldosivuQtimer->start(1000);
-
 }
 
 void Saldosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
@@ -73,8 +60,6 @@ void Saldosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString Tapahtumat;
-
-
     foreach (const QJsonValue &value, json_array)
     {
     QJsonObject json_obj = value.toObject();

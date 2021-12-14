@@ -3,17 +3,17 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const login = require('../models/login_model');
 
-router.post('/', 
+router.post('/',   // tassa maaritellaan postimanin kaytto, mita komentoa postmanissa kaytetaan
   function(request, response) {
     if(request.body.username && request.body.password){
       const username = request.body.username;
       const password = request.body.password;
-        login.checkPassword(username, function(dbError, dbResult) {
+        login.checkPassword(username, function(dbError, dbResult) { // tarkastaaa databasesta salasanan
           if(dbError){
             response.json(dbError);
           }
           else{
-            if (dbResult.length > 0) {
+            if (dbResult.length > 0) { // vertailee databasen salasanaa annettuun, paatos jatkosta true/false
               bcrypt.compare(password,dbResult[0].pin, function(err,compareResult) {
                 if(compareResult) {
                   console.log("succes");

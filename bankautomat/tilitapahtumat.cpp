@@ -50,11 +50,7 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString Tapahtumat;
-
-
-    //qDebug()<<response_data;
     qDebug()<<"tassa mennaan";
-
 
     foreach (const QJsonValue &value, json_array)
     {
@@ -63,11 +59,10 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     }
 
     Tapahtumat2= Tapahtumat;
-   // qDebug()<<Tapahtumat;
-    if (Tapahtumat == ""){
+    if (Tapahtumat == "")
+    {
         ListanLoppu=1;
          Tapahtumat2= Tapahtumat;
-      //  qDebug()<<"töttöröö";
         ui->label_Eilisaa->setText("EI ENEMPÄÄ TILITAPAHTUMIA");
     }
     ui->textBrowser_2->setText(Tapahtumat);
@@ -83,12 +78,9 @@ void Tilitapahtumat::on_pushButton_NaytaVahemman_clicked()
     {   offsetmuuttuja = 0;
         Naytatilitapahtumat();
     }
-
     qDebug()<<offsetmuuttuja;
     ui->label_Eilisaa->setText("");
-
     Naytatilitapahtumat();
-
     timerCounter=0;
 }
 
@@ -98,12 +90,9 @@ void Tilitapahtumat::on_pushButton_Palaa_clicked()
         disconnect(olioTilitapahtumatQtimer,SIGNAL(timeout()),this,SLOT(TilitapahtumatTimerSlot()));
         olioTilitapahtumatQtimer->stop();
         timerCounter=0;
-
         olioToimintosivuQtimer->start(1000);
         this->close();
 }
-
-
 void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
 {
 
@@ -111,7 +100,6 @@ void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
 
     if (Tapahtumat2 == ""){
     Naytatilitapahtumat();
-   //ui->label_Eilisaa->setText("EI ENEMPÄÄ TILITAPAHTUMIA");
     }
     else
     {   qDebug()<<"tassa mennaan2";
@@ -126,7 +114,6 @@ void Tilitapahtumat::TilitapahtumatTimerSlot()
 {
     timerCounter++;
     qDebug()<<"Tilitapahtumat timer "<<timerCounter;
-
     if (timerCounter==timerAika2)
     {
         olioTilitapahtumatQtimer->stop();

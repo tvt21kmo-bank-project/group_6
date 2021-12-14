@@ -55,9 +55,7 @@ private slots:
 
 private:
     Ui::NostaRahaa *ui;
-    //QNetworkAccessManager *debitManager;
-    //QNetworkReply *reply;
-   // Toimintosivu *olioToimintosivu;
+
     QNetworkAccessManager *naytaSaldoManager2;
     QNetworkReply *reply3;
 

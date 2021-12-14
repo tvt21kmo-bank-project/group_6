@@ -9,8 +9,6 @@ Pano::Pano(QString test2, QWidget *parent) :
     kayttis=test2;
     qDebug()<<"KT2"+kayttajatunnus2;
     qDebug()<<"KT2"+kayttis;
-
-
 }
 
 Pano::~Pano()
@@ -45,9 +43,7 @@ void Pano::tarkastaTyyppiPane()
 void Pano::on_pushButton_pane20_clicked()
 {
     qDebug()<<"20:llä pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",20);
     json.insert("Tila1", Debit_Credit);
@@ -62,17 +58,14 @@ void Pano::on_pushButton_pane20_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-    //ui->label_pane->setText("Pantu parilla kympillä");
     timerCounter=0;
 }
 
 void Pano::on_pushButtonNelkyt_clicked()
 {
     qDebug()<<"Nelkyt euroa pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
+
 
     json.insert("idKortti",kayttis);
     json.insert("summa",40);
@@ -88,18 +81,13 @@ void Pano::on_pushButtonNelkyt_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->label_pane->setText("Pantu Neljalla kympilla");
     timerCounter=0;
 }
 
 void Pano::on_pushButtonKuuskymppia_clicked()
 {
     qDebug()<<"60:llä pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",60);
     json.insert("Tila1", Debit_Credit);
@@ -114,9 +102,6 @@ void Pano::on_pushButtonKuuskymppia_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->label_pane->setText("Pantu kuudella kympillä");
     timerCounter=0;
 
 }
@@ -124,9 +109,7 @@ void Pano::on_pushButtonKuuskymppia_clicked()
 void Pano::on_pushButtonKahekskyt_clicked()
 {
     qDebug()<<"Kahdeksankymmentä euroa pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                           //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",80);
     json.insert("Tila1", Debit_Credit);
@@ -141,9 +124,6 @@ void Pano::on_pushButtonKahekskyt_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->label_pane->setText("Pantu Kahdeksalla kympillä sadalla");
     timerCounter=0;
 }
 
@@ -157,9 +137,7 @@ void Pano::naytaPanoVastausSlot(QNetworkReply *reply3)
 void Pano::on_pushButtonSatane_clicked()
 {
     qDebug()<<"Satasella pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",100);
     json.insert("Tila1", Debit_Credit);
@@ -174,20 +152,13 @@ void Pano::on_pushButtonSatane_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->label_pane->setText("Pantu satasella");
     timerCounter=0;
 }
-
-
 
 void Pano::on_pushButtonKaksSataa_clicked()
 {
     qDebug()<<"Kaksi sataa euroa pannaa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",200);
     json.insert("Tila1", Debit_Credit);
@@ -202,9 +173,6 @@ void Pano::on_pushButtonKaksSataa_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaPanoVastausSlot(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-  //  ui->label_pane->setText("Pantu Kahdella sadalla");
     timerCounter=0;
 }
 
@@ -223,7 +191,6 @@ void Pano::PaneTimerSlot()
         this->close();
         olioToimintosivuQtimer->start(1000);
     }
-
 }
 
 
@@ -234,7 +201,6 @@ void Pano::on_pushButton_Palaa_clicked()
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
     this->close();
-
 }
 
 void Pano::on_pushButton_MuuPano_clicked()
