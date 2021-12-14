@@ -66,7 +66,7 @@ void Saldosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     Tapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" |   PVM: "+json_obj["aika"].toString()+"    |   Tapahtuma: "+json_obj["Tapahtuma"].toString()+"  |   Summa: "+QString::number(json_obj["Maara"].toInt())+"\r";
     }
 
-    qDebug()<<Tapahtumat;
+   // qDebug()<<Tapahtumat;
     ui->textBrowser_Tilitapahtumat->setText(Tapahtumat);
     reply3->deleteLater();
     naytaTilitapahtumatManager->deleteLater();
