@@ -93,6 +93,7 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
 {
     QByteArray response_data=reply12->readAll();
     //qDebug()<<Kortinlukitus<<"kortinlukitus77";
+    qDebug()<<response_data<<"kortinlukitus77";
     while (Kortinlukitus==3){
 
     if (response_data == "1"){
@@ -103,6 +104,12 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     else if (response_data == "0")
     {
         Kortinlukitus=0;
+        ui->labelHylatty->setText("Toimii");
+    }
+    else if (response_data =="[]"){
+        ui->labelHylatty->setText("Korttia ei olemassa :o!");
+        qDebug()<<"töttörööLukittu";
+        Kortinlukitus=1;
     }
     }
 
@@ -114,6 +121,11 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     else if (response_data == "0")
     {
         Kortinlukitus=0;
+        ui->labelHylatty->setText("");
+    }
+    else if (response_data =="[]"){
+        ui->labelHylatty->setText("Korttia ei olemassa :o!");
+        qDebug()<<"töttörööLukittu2";
     }
 
 
@@ -156,7 +168,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
     QByteArray response_data=reply->readAll();
         //qDebug()<<response_data;
         KorttiLukittu();
-        //qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
+        qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
         if(Kortinlukitus == 0){
 
             if(response_data=="true"){

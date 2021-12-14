@@ -41,8 +41,6 @@ router.post('/',   // tassa maaritellaan postimanin kaytto, mita komentoa postma
   }
 );
 
-
-
 router.get('/:idKortti?',
  function(request, response) {
   if (request.params.idKortti) {
@@ -62,8 +60,8 @@ router.get('/lukittu/:id?',
  function(request, response) {
   if (request.params.id) {
     login.getById(request.params.id, function(err, dbResult) {
-      if (err) {
-        response.json(err);
+      if (dbResult == "") {
+        response.json(dbResult);
       } else {
         response.json(dbResult[0].Lukittu);
       }
