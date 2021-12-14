@@ -50,7 +50,7 @@ void Tilitapahtumat::naytaTilitapahtumatSlot(QNetworkReply *reply3)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString Tapahtumat;
-    qDebug()<<"tassa mennaan";
+    //qDebug()<<"tassa mennaan";
 
     foreach (const QJsonValue &value, json_array)
     {
@@ -78,7 +78,7 @@ void Tilitapahtumat::on_pushButton_NaytaVahemman_clicked()
     {   offsetmuuttuja = 0;
         Naytatilitapahtumat();
     }
-    qDebug()<<offsetmuuttuja;
+    //qDebug()<<offsetmuuttuja;
     ui->label_Eilisaa->setText("");
     Naytatilitapahtumat();
     timerCounter=0;
@@ -96,13 +96,13 @@ void Tilitapahtumat::on_pushButton_Palaa_clicked()
 void Tilitapahtumat::on_pushButton_NaytaLisaa_clicked()
 {
 
-    qDebug()<<offsetmuuttuja;
+    //qDebug()<<offsetmuuttuja;
 
     if (Tapahtumat2 == ""){
     Naytatilitapahtumat();
     }
     else
-    {   qDebug()<<"tassa mennaan2";
+    {   //qDebug()<<"tassa mennaan2";
         offsetmuuttuja= offsetmuuttuja+10;
 
      Naytatilitapahtumat();

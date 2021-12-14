@@ -92,11 +92,11 @@ void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
 void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
 {
     QByteArray response_data=reply12->readAll();
-    qDebug()<<Kortinlukitus<<"kortinlukitus77";
+    //qDebug()<<Kortinlukitus<<"kortinlukitus77";
     while (Kortinlukitus==3){
 
     if (response_data == "1"){
-        qDebug()<<"töttörööLukittu";
+        //qDebug()<<"töttörööLukittu";
         Kortinlukitus = 1;
         ui->labelHylatty->setText("Kortti lukittu!");
     }
@@ -107,7 +107,7 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     }
 
     if (response_data == "1"){
-        qDebug()<<"töttörööLukittu";
+        //qDebug()<<"töttörööLukittu";
         Kortinlukitus = 1;
         ui->labelHylatty->setText("Kortti lukittu!");
     }
@@ -154,9 +154,9 @@ void paaSivu::KorttiLukittu()
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-        qDebug()<<response_data;
+        //qDebug()<<response_data;
         KorttiLukittu();
-        qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
+        //qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
         if(Kortinlukitus == 0){
 
             if(response_data=="true"){
@@ -165,6 +165,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
             oliotyyppi->show();
             ui->LineEdit_pinKoodi->setText("");
             ui->LineEdit_kayttajaTunnus->setText("");
+            ui->labelHylatty->setText("");
             olioQtimer->stop();
             oliotyyppi->timerTyyppiConnect();
             timerCounter = 0;
@@ -192,7 +193,7 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
                  loginManager = new QNetworkAccessManager(this);
                  reply = loginManager->post(request, QJsonDocument(json).toJson());
 
-                qDebug()<<"kortti lukittu " << vaaraPin;
+                //qDebug()<<"kortti lukittu " << vaaraPin;
                 ui->labelHylatty->setText("kortti lukittu kolmmannen yrityksen jälkeen");
                 vaaraPin = 0;
                 olioQtimer->stop();
