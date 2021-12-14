@@ -51,7 +51,7 @@ private:
     void KortinTyyppi();
     QString Tapahtumat2 = 0;
     void KorttiLukittu();
-    int Kortinlukitus = 0;
+    int Kortinlukitus = 3;
 
 
 signals:

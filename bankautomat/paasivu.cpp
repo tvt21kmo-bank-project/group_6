@@ -92,15 +92,32 @@ void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
 void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
 {
     QByteArray response_data=reply12->readAll();
+    qDebug()<<Kortinlukitus<<"kortinlukitus77";
+    while (Kortinlukitus==3){
+
     if (response_data == "1"){
         qDebug()<<"töttörööLukittu";
         Kortinlukitus = 1;
         ui->labelHylatty->setText("Kortti lukittu!");
     }
-    else
+    else if (response_data == "0")
     {
-        Kortinlukitus=0;        
+        Kortinlukitus=0;
     }
+    }
+
+    if (response_data == "1"){
+        qDebug()<<"töttörööLukittu";
+        Kortinlukitus = 1;
+        ui->labelHylatty->setText("Kortti lukittu!");
+    }
+    else if (response_data == "0")
+    {
+        Kortinlukitus=0;
+    }
+
+
+
 }
 
 void paaSivu::KortinTyyppi()
