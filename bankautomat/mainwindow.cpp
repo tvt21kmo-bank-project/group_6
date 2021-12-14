@@ -20,15 +20,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_jatka_clicked()
 {
-   // this->hide();                         // piilotetaan nykyinen sivu
     olioPaaSivu->show();
-
     olioQtimer->start(1000);
-
-
-
     qDebug()<<"jatka painettu";
 
-    //  olioPaaSivu->hide();
-    //  this->show();
 }

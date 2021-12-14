@@ -23,39 +23,5 @@ router.get('/:id?/:Tila?',
   }
 });
 
-/*
-router.post('/debitnosto', function(request, response) {
-  pankki.nosta(request.body, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else {
-      response.json(dbResult.affectedRows);
-    }
-  });
-});
-/*
-
-router.delete('/:id', 
-function(request, response) {
-  book.delete(request.params.id, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else {
-      response.json(dbResult);
-    }
-  });
-});
-
-
-router.put('/:id', 
-function(request, response) {
-  book.update(request.params.id, request.body, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else {
-      response.json(dbResult);
-    }
-  });
-});*/
 
 module.exports = router;

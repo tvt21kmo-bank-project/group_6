@@ -4,8 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include "toimintosivu.h"
-//#include "apusivu.h"
-//#include "mainwindow.h"
+
 
 namespace Ui {
 class Tyyppi;

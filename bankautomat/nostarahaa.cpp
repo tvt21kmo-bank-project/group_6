@@ -19,9 +19,7 @@ NostaRahaa::~NostaRahaa()
 void NostaRahaa::on_pushButton_20_clicked()
 {
     qDebug()<<"20e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",20);
     json.insert("Tila1", Debit_Credit);                 //taman voi kopioida muihin mnostobuttoneihin
@@ -36,18 +34,12 @@ void NostaRahaa::on_pushButton_20_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-  //  ui->textBrowser_Infokentta->setText("Tililtä nostettu: 20");
-
 }
 
 void NostaRahaa::on_pushButton_40_clicked()
 {
     qDebug()<<"40e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",40);
     json.insert("Tila1", Debit_Credit);
@@ -62,17 +54,12 @@ void NostaRahaa::on_pushButton_40_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 40");
 }
 
 void NostaRahaa::on_pushButton_60_clicked()
 {
     qDebug()<<"60e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                               //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",60);
     json.insert("Tila1", Debit_Credit);
@@ -88,16 +75,12 @@ void NostaRahaa::on_pushButton_60_clicked()
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
 
-
-  //  ui->textBrowser_Infokentta->setText("Tililtä nostettu: 60");
 }
 
 void NostaRahaa::on_pushButton_80_clicked()
 {
     qDebug()<<"80e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",80);
     json.insert("Tila1", Debit_Credit);
@@ -112,17 +95,12 @@ void NostaRahaa::on_pushButton_80_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 80");
 }
 
 void NostaRahaa::on_pushButton_100_clicked()
 {
     qDebug()<<"100e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",100);
     json.insert("Tila1", Debit_Credit);
@@ -137,9 +115,6 @@ void NostaRahaa::on_pushButton_100_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-    // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 100");
 }
 
 void NostaRahaa::nostaTimerConnect()
@@ -151,23 +126,13 @@ void NostaRahaa::nostaTimerConnect()
 
 void NostaRahaa::tarkastaTyyppiNosta()
 {
-    //if(Debit_Credit ==0)
-    {
 
-      //  ui->label_laurantesti->setText("Lyhennä luottoa");
-    }
-    /*else
-    {
-        ui->textBrowser->setText("Laura on testi");
-    }*/
 }
 
 void NostaRahaa::on_pushButton_200_clicked()
 {
     qDebug()<<"200e tulossa";
-    QJsonObject json; //luodaan JSON objekti ja lisätään data
-  //  kayttis = olioToimintosivu->urli;
-
+    QJsonObject json;                                   //luodaan JSON objekti ja lisätään data
     json.insert("idKortti",kayttis);
     json.insert("summa",200);
     json.insert("Tila1", Debit_Credit);
@@ -182,10 +147,6 @@ void NostaRahaa::on_pushButton_200_clicked()
     connect(naytaSaldoManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(naytaSaldoSlot2(QNetworkReply*)));
     reply3 = naytaSaldoManager2->post(request, QJsonDocument(json).toJson());
-
-
-   // ui->textBrowser_Infokentta->setText("Tililtä nostettu: 200");
-
 }
 
 void NostaRahaa::naytaSaldoSlot2(QNetworkReply *reply3)
@@ -213,13 +174,11 @@ void NostaRahaa::nostaRahaaTimerSlot()
 void NostaRahaa::on_pushButton_Palaa_clicked()
 {
     disconnect(olioNostaRahaaQtimer,SIGNAL(timeout()),this,SLOT(nostaRahaaTimerSlot()));
-   // connect(olioToimintosivuQtimer,SIGNAL(timeout()),this,SLOT(toimintosivuTimerSlot()));
     olioNostaRahaaQtimer->stop();
     timerCounter = 0;
     olioToimintosivuQtimer->start(1000);
     this->close(); 
 }
-
 
 
 void NostaRahaa::on_pushButton_Muu_Summa_clicked()
@@ -232,7 +191,7 @@ void NostaRahaa::on_pushButton_Muu_Summa_clicked()
     this->close();
 }
 
-//if pane rahaa muutetaan lyhennä luottoa homma
+
 
 
 

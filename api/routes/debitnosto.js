@@ -16,11 +16,8 @@ router.post('/nostarahaa', function(request, response){
             else{
             console.log("succes1");
             console.log(dbResult.affectedRows);
-
-            //response.json(dbResult.affectedRows);           
-
             response.json("Nosto onnistu!");
-          //response.json(dbResult.affectedRows);
+          
 
 
             }}
@@ -28,25 +25,5 @@ router.post('/nostarahaa', function(request, response){
     )
 }
 );
-/*
-router.post('/saato', function(request, response){
-    bank.debit(request.body, function(err, dbResult){
-        if(dbResult.affectedRows < 1 ){
-            console.log("et saa");
-            response.json("if saato");
-            }
-            else{
-            console.log("succes1");
-            console.log(dbResult.affectedRows);
 
-            //response.json(dbResult.affectedRows);           
-
-            response.json("else saato");
-          //response.json(dbResult.affectedRows);
-
-
-            }
-    })
-}
-);*/
 module.exports = router;
