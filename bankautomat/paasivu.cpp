@@ -175,13 +175,9 @@ void paaSivu::KorttiLukittu()
 
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
 {
-        //
+        KorttiLukittu();
         QByteArray response_data=reply->readAll();
-        //qDebug()<<response_data;
-        qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
-        while (Kortinlukitus==3){
-            KorttiLukittu();
-        }
+        qDebug()<<"Kortin ukitus oon1"<<Kortinlukitus;
 
         if(Kortinlukitus == 0){
 

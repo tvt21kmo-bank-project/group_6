@@ -9,6 +9,7 @@
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include <QThread>
 
 #include "tyyppi.h"
 #include "apusivu.h"
