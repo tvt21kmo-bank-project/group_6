@@ -50,6 +50,9 @@ void paaSivu::on_takaisinNappi_clicked()
     timerCounter=0;
     this->close();                                      // suljetaan pääsivu
     qDebug()<<"takaisin painettu";
+    ui->labelHylatty->setText("");
+    ui->LineEdit_pinKoodi->setText("");
+    ui->LineEdit_kayttajaTunnus->setText("");
 }
 
 void paaSivu::myTimerSlot()
@@ -62,6 +65,8 @@ void paaSivu::myTimerSlot()
         timerCounter = 0;
         ui->labelHylatty->setText("");
         this->close();
+        ui->LineEdit_pinKoodi->setText("");
+        ui->LineEdit_kayttajaTunnus->setText("");
     }
 }
 
@@ -76,7 +81,11 @@ void paaSivu::myPinTimerSlot()
         qDebug()<<"Timer stop";
         timerCounter = 0;
         this->close();
+        ui->labelHylatty->setText("");
+        ui->LineEdit_pinKoodi->setText("");
+        ui->LineEdit_kayttajaTunnus->setText("");
     }
+
 }
 
 void paaSivu::KortinTyyppiSlot(QNetworkReply *reply8)
@@ -104,7 +113,8 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     else if (response_data == "0")
     {
         Kortinlukitus=0;
-        ui->labelHylatty->setText("Toimii");
+        qDebug()<<"töttörööeiLukittu";
+        ui->labelHylatty->setText("koitappa uudellee");
     }
     else if (response_data =="[]"){
         ui->labelHylatty->setText("Korttia ei olemassa :o!");
@@ -121,7 +131,7 @@ void paaSivu::KorttiLukittuSlot(QNetworkReply *reply12)
     else if (response_data == "0")
     {
         Kortinlukitus=0;
-        ui->labelHylatty->setText("");
+        //ui->labelHylatty->setText("");
     }
     else if (response_data =="[]"){
         ui->labelHylatty->setText("Korttia ei olemassa :o!");
@@ -141,10 +151,10 @@ void paaSivu::KortinTyyppi()
     QByteArray data = credentials.toLocal8Bit().toBase64();
     QString headerData = "Basic " + data;
     request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
-    haeKorttiManager = new QNetworkAccessManager(this);
-    connect(haeKorttiManager, SIGNAL(finished (QNetworkReply*)),
+    haeKorttiManager2 = new QNetworkAccessManager(this);
+    connect(haeKorttiManager2, SIGNAL(finished (QNetworkReply*)),
     this, SLOT(KortinTyyppiSlot(QNetworkReply*)));
-    reply8 = haeKorttiManager->get(request);
+    reply8 = haeKorttiManager2->get(request);
 
 }
 
@@ -165,10 +175,10 @@ void paaSivu::KorttiLukittu()
 
 void paaSivu::kirjauduSisaan(QNetworkReply *reply)
 {
-    QByteArray response_data=reply->readAll();
-        //qDebug()<<response_data;
         KorttiLukittu();
-        qDebug()<<"Kortin ukitus oon"<<Kortinlukitus;
+        QByteArray response_data=reply->readAll();
+        qDebug()<<"Kortin ukitus oon1"<<Kortinlukitus;
+
         if(Kortinlukitus == 0){
 
             if(response_data=="true"){
@@ -211,8 +221,9 @@ void paaSivu::kirjauduSisaan(QNetworkReply *reply)
                 olioQtimer->stop();
                 timerCounter = 0;
                 olioPinQtimer->start(1000);
-              }}
-        }
+              }}}
+
+     //   }
 }
 
 

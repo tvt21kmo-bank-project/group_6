@@ -45,6 +45,7 @@ void Saldosivu::naytaSaldo()
     this, SLOT(naytaSaldotapahtumatSlot(QNetworkReply*)));
     reply = naytaSaldoManager->get(request);
     qDebug()<<"Nayta saldo painettu";
+
 }
 
 void Saldosivu::connectTimerSaldo()
@@ -75,7 +76,14 @@ void Saldosivu::naytaTilitapahtumatSlot(QNetworkReply *reply3)
 void Saldosivu::naytaSaldotapahtumatSlot(QNetworkReply *reply)
 {
     QByteArray response_data=reply->readAll();
-    ui->textBrowser_Saldo->setText("Tilin Saldo: "+response_data);
+
+    if (Debit_Credit == 0){
+        ui->textBrowser_Saldo->setText("Luottoa Jäljellä: "+response_data);
+    }
+    else{
+        ui->textBrowser_Saldo->setText("Tilin Saldo: "+response_data);
+
+    }
 }
 
 void Saldosivu::on_pushButton_takaisin_clicked()

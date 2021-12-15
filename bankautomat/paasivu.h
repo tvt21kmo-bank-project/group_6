@@ -10,6 +10,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
+
 #include "tyyppi.h"
 #include "apusivu.h"
 
@@ -43,6 +44,7 @@ private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QNetworkAccessManager *haeKorttiManager;
+    QNetworkAccessManager *haeKorttiManager2;
     QNetworkReply *reply8;
 
     Tyyppi *oliotyyppi;
