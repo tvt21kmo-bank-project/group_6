@@ -87,10 +87,12 @@ void Toimintosivu::tarkistaTyyppi()
     ui->label_Credit_debit->setText("Credit");
     qDebug()<<Debit_Credit;
     qDebug()<<"toimintosivu";
+
     }
     else {
     ui->pushButtonPane->setText("Pane rahaa");
     ui->label_Credit_debit->setText("Debit");
+
     }
 }
 
